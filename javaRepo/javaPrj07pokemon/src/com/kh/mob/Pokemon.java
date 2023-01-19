@@ -1,5 +1,8 @@
 package com.kh.mob;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pokemon {
 	
 	public Pokemon(String name, int hp, int atk) {
@@ -44,9 +47,6 @@ public class Pokemon {
 	public void setAtk(int atk) {
 		this.atk = atk;
 	}
-
-	
-	
 
 }//class
 
