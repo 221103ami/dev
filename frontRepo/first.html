@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table td input{
+            width: 100%;
+        }
+        #sal > thead{
+            background-color: red;
+        }
+        #sal > tbody{
+            background-color: blue;
+        }
+        #sal > tfoot{
+            background-color: green;
+        }
+        #sal {
+            color : white;
+        }
+        input{
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> 안녕 </h1>
+
+    <form>
+        <table border="1">
+            <tr>
+                <td>아이디 :</td>
+                <td><input type="text" name="memberId" required></td>
+            </tr>
+            <tr>
+                <td>패스워드</td>
+                <td><input type="password" name="memberPwd" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="가입하기"></td>
+            </tr>
+        </table>
+    </form>
+
+    <hr>
+
+    <form>
+        <fieldset>
+        <legend>급여관리 페이지</legend>
+        <table id="sal" border="1">
+            <thead>
+                <tr>
+                    <th>사원번호</th>
+                    <th>사원명</th>
+                    <th>급여</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>심원용</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>심투용</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>심삼용</td>
+                    <td>300</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>심사용</td>
+                    <td>400</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>심오용</td>
+                    <td>500</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">급여합계</td>
+                    <td>9999</td>
+                </tr>
+            </tfoot>
+        </table>
+        </fieldset>
+    </form>
+
+
+
+
+
+
+    
+    
+</body>
+</html>
