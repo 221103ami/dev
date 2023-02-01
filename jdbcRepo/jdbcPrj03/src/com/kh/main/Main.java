@@ -2,6 +2,7 @@ package com.kh.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class Main {
 
@@ -12,8 +13,8 @@ public class Main {
 		//JDBC
 		Connection conn = null;
 		
-		String id = "kh";	//대문자로 변경해야됨... 근데 잘 되는지 궁금하니까 테스트,,,
-		String pwd = "kh";
+		String id = "KH";
+		String pwd = "KH";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		
 		//DB 커넥션 객체 생성
@@ -21,7 +22,13 @@ public class Main {
 		Class.forName("oracle.jdbc.OracleDriver");
 		conn = DriverManager.getConnection(url , id , pwd);
 		
+		String sql = "INSERT INTO MEMBER(ID, PWD, NICK) VALUES('SWY', '1234', '1DRAGON')";
 		
+		Statement stmt = conn.createStatement();
+		int result = stmt.executeUpdate(sql);
+		System.out.println("result : " + result);
+		
+		conn.close();
 
 	}//main
 
