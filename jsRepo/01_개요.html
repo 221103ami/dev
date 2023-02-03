@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 개요</title>
+</head>
+<body>
+    
+    <h1>자바스크립트 개요</h1>
+
+    <!-- 
+        웹 브라우저에서 많이 사용되는 인터프리터 방식의 스크립트 언어(함수, 객체지향)
+            - 인터프리터 방식 : 컴파일 과정 없이 실행하면서 코드를 하나씩 읽어내는 방식이다. 
+            (코드에 문법에 오류가 있으면 실행 시점에 알 수 있다.)
+     -->
+
+     <h2>inline (인라인)</h2>
+     <!-- 
+        태그 내에 직접 간단한 코드를 작성해서 실행하는 방법
+        자바스크립트 소스가 몇 줄 안되는 경우 inline 방식을 사용한다.
+      -->
+
+      <button onclick="alert('메세지ㅋㅋ');">버튼ㅋㅋㅋ</button>
+
+
+      <h2>내부</h2>
+      
+      <script>
+        console.log("내부 js 동작 ~~~ !");
+      </script>
+
+      <h2>외부</h2>
+
+      <script src="./01_개요.js"></script>
+
+
+      <script>
+        // 한줄주석 ㅋㅋ
+        /*
+            여러줄
+            주석
+            ㅎㅎ
+        */
+        // 입출력
+
+        //console.log("콘솔창에 글자 출력");
+        // window.alert("알람ㅋㅋ");
+
+        // result = confirm("yes or no ?");
+        // console.log(result);
+
+        // if(result){
+        //     alert("확인을 누르셨습니다.");
+        // }else{
+        //     alert("취소를 누르셨습니다.");
+        // }
+
+      </script>
+
+      <script>
+        //window.prompt()
+        // s = prompt("이름??");
+        // alert("당신의 이름은 " + s);
+      </script>
+
+      <script>
+        //document.write('<h1>hello</h1>');
+      </script>
+
+      <hr>
+
+      <div class="box" id="target01">1번박스</div>
+      <div class="box">2번박스</div>
+      <div class="box" id="target03">3번박스</div>
+      <div class="box">4번박스</div>
+      <div class="box">5번박스</div>
+
+      <script>
+        //요소 가져오기
+        // x = document.querySelectorAll('div');
+        // console.log(x);
+
+        // id가 target01 인 요소 가져오기
+        a = document.querySelector("#target01");
+        console.log(a);
+
+        // class 가 box 인 요소 모두 가져오기
+        b = document.querySelectorAll('.box');
+        console.log(b);
+
+        // class 가 box 인 요소 중 첫번째 요소 가져오기
+        c = document.querySelectorAll('.box');
+        console.log(c[0]);
+      </script>
+
+      <script>
+        // 3번박스 글자만 꺼내오기
+        boxArr = document.querySelectorAll('.box');
+        temp = boxArr[2];
+        console.log(temp.innerText);
+      </script>
+
+    <input type="text" name="memberId" id="targetInput" value="1dragon">
+    <button onclick='f01();'>회원가입</button>
+
+    <script>
+        //input 에 입력된 글자 꺼내오기
+
+        function f01(){
+            inputTag = document.querySelector("input[name=memberId]");
+            console.log(inputTag.value);
+        }
+        
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

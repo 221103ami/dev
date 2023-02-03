@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 문법</title>
+</head>
+<body>
+    
+    <h1>기본 문법</h1>
+
+    <h2>1. 변수와 자료형</h2>
+
+    <h3>1) 변수 선언</h3>
+    <pre>
+        - 함수 내부에서 'var 변수명;'으로 선언하면 함수에서만 사용 가능한 지역변수가 된다. <br>
+        - 함수 내부에서 '변수명;'으로 선언하거나 함수 밖에서 'var 변수명;'으로 선언하면 전역변수가 된다. <br>
+        - 전역변수와 지역변수가 동일한 이름인 경우, 함수 내부에서 호출하면 지역변수가 우선권을 가진다. <br>
+        - 전역변수 사용 시 'window.변수명' 혹은 'this.변수명'으로 표현해서 사용한다. (window, this) <br>
+        - 전역변수는 해당 window 내에서 어디든 사용할 수 있고, 지역변수는 해당 함수 내에서만 사용이 가능하다.
+        <br><br>
+        *참고 - window 객체는 브라우저에서 제공하는 브라우저창(window)에 대한 정보를 담고 있는 객체이다.
+    </pre>
+
+    <script src="./02_기본문법.js"></script>
+
+
+    <h3>2) 자료형</h3>
+    <pre>
+        자바스크립트에서는 변수에 별도로 자료형을 지정해 주지 않고 리터럴에 의해 자료형이 결정된다.
+    </pre>
+
+    <ul>
+        <li>string</li>
+        <li>number</li>
+        <li>boolean</li>
+        <li>object</li>
+        <li>function</li>
+        <li>undefined</li>
+    </ul>
+
+    <h2>2. 데이터 형변환</h2>
+
+    <h3>1) 문자열과 숫자의 + 연산</h3>
+
+    <h3>2) 강제 형변환</h3>
+    <pre>
+        parseInt()
+        parseFloat()
+        String 객체
+    </pre>
+
+    <h3> == vs === </h3>
+
+
+    <h2>제어문</h2>
+    
+    <script>
+
+        const arr = [10,20,30];
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);
+        console.log(arr[3]);
+
+    </script>
+
+
+
+</body>
+</html>
