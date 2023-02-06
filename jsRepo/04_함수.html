@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <script defer src="./04_함수.js"></script>
+</head>
+<body>
+    
+    <h1>함수</h1>
+
+    <hr>
+
+    <h2>1. 함수 선언</h2>
+
+    <h3>1) 선언적 함수</h3>
+    <button id="btn01">선언적 함수 테스트</button>
+    <pre>
+        function 키워드 로 작성
+    </pre>
+
+    <h3>2) 익명 함수</h3>
+    <button id="btn02">익명 함수 테스트</button>
+    <pre>
+        함수이름 작성 X
+    </pre>
+
+    <h3>3) 자동 실행 함수</h3>
+    <button id="btn03">자동실행함수 테스트</button>
+    <pre>
+        함수 정의하는 즉시 실행 (재호출 X)
+    </pre>
+
+    <h3>4) 화살표 함수</h3>
+    <button id="btn04">화살표 함수 테스트</button>
+    <pre>
+        function 키워드를 이용하여 선언하는 대신 "->" 를 사용하여 선언
+
+        [문법]
+        - 매개 변수가 없을 때 : () => { ... }
+        - 매개 변수가 하나 일 때 : x => { ... }
+        - 매개 변수가 두 개 이상일 때 : (x, y) => { ... }
+        - 리턴 처리
+            - 처리할 라인이 여러 개라면 {}로 감싸서 처리해야 한다.
+            (x, y) => {
+                실행 구문;
+                return x * y;
+            }
+            - 처리할 라인이 하나라면 {}와 return 문을 생략할 수 있다.
+            (x, y) => x * y;
+    
+    * 기존 function과 this가 가리키는 대상이 조금 다르기 때문에 주의해야 한다. (javascript arrow function this)
+    </pre>
+
+    <hr>
+
+    <h2>2. 함수의 매개 변수</h2>
+
+    <h3>1) 매개 변수</h3>
+    <button id="btn05">매개 변수 테스트</button>
+    <pre>
+        갯수 안맞아도 에러 안남
+    </pre>
+
+    <h3>2) arguments</h3>
+    <button id="btn06">arguments 테스트</button>
+    <pre>
+        매개값을 가변적으로 받을 때 사용
+    </pre>
+
+    <hr>
+
+    <h2>3. 내장 함수</h2>
+
+    <h3>eval() 함수</h3>
+    <button id="btn07">eval 테스트</button>
+    <pre>
+        문자열을 js 코드로 변환해서 실행
+    </pre>
+
+    <h3>isInfinity() , isNaN()</h3>
+    <button id="btn08">isInfinity() , isNaN() 테스트</button>
+    <pre>
+        나누기 0 체크
+        NaN(Not A Number) 인지 체크
+    </pre>
+
+    
+
+</body>
+</html>
+

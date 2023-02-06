@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 실습</title>
+    <style>
+        table {
+            border:3px solid blue;
+        }
+        #result {
+            height:50px;
+            font-size:2em;
+            font-weight:bold;
+            text-align:right;
+            border:1px solid black;
+            width:210px;
+            overflow:hidden;
+        }
+        button {
+            font-size:1.5em;
+            font-weight:bold;
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수 실습</h1>
+
+    <hr>
+
+    <h3>계산기 만들기(내장 함수 사용)</h3>
+
+    <div>
+		<table>
+			<tr>
+				<td colspan="4">
+					<div id="result">0</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="left" onclick="buttonClick(this.innerHTML);">(</button>
+				</td>
+				<td>
+					<button id="right" onclick="buttonClick(this.innerHTML);">)</button>
+				</td>
+				<td>
+					<button id="percent" onclick="buttonClick(this.innerHTML);">%</button>
+				</td>
+				<td>
+					<button id="clear" onclick="buttonClick(this.innerHTML);">AC</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="seven" onclick="buttonClick(this.innerHTML);">7</button>
+				</td>
+				<td>
+					<button id="eight" onclick="buttonClick(this.innerHTML);">8</button>
+				</td>
+				<td>
+					<button id="nine" onclick="buttonClick(this.innerHTML);">9</button>
+				</td>
+				<td>
+					<button id="devide" onclick="buttonClick(this.innerHTML);">/</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="four" onclick="buttonClick(this.innerHTML);">4</button>
+				</td>
+				<td>
+					<button id="five" onclick="buttonClick(this.innerHTML);">5</button>
+				</td>
+				<td>
+					<button id="six" onclick="buttonClick(this.innerHTML);">6</button>
+				</td>
+				<td>
+					<button id="astric" onclick="buttonClick(this.innerHTML);">*</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="one" onclick="buttonClick(this.innerHTML);">1</button>
+				</td>
+				<td>
+					<button id="two" onclick="buttonClick(this.innerHTML);">2</button>
+				</td>
+				<td>
+					<button id="three" onclick="buttonClick(this.innerHTML);">3</button>
+				</td>
+				<td>
+					<button id="minus" onclick="buttonClick(this.innerHTML);">-</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="zero" onclick="buttonClick(this.innerHTML);">0</button>
+				</td>
+				<td>
+					<button id="dot" onclick="buttonClick(this.innerHTML);">.</button>
+				</td>
+				<td>
+					<button id="equal" onclick="buttonClick(this.innerHTML);">=</button>
+				</td>
+				<td>
+					<button id="plus" onclick="buttonClick(this.innerHTML);">+</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<script>
+		function buttonClick(button){
+			
+		}
+	</script>
+</body>
+</html>

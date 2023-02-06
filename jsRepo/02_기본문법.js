@@ -52,8 +52,10 @@ window.onload = function f01(){
     String(777);
 
     const arr = [10,20,30];
+    
     arr = [111,222,333];
     arr[0] = 777;
+
     // for(let i = 0 ; i < arr.length; ++i){
     //     console.log(arr[i]);
     // }

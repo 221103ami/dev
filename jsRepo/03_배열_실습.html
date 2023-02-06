@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>배열_실습</title>
+</head>
+<body>
+    <h1>배열_실습</h1>
+
+    <hr>
+
+    <h2>문제 1</h2>
+    <p>
+        다음 보기에 있는 데이터들은 배열로 받고 하나의 배열로 합쳐보세요.<br>
+        이때 입력 필드에 배열에 있는 데이터를 전송하면 배열의 alert를 통하여<br>
+        배열의 위치를 알려주고, 없으면 "존재하지 않습니다"를 알려주면 됩니다.<br>
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="la1">사과,바나나,당근</label><br>
+        <label id="la2">김밥,치즈,떡볶이,햄버거</label><br>
+        <label id="la3">환타,사이다,콜라</label><br>
+        <label id="la4">고양이,강아지</label><br>
+	</fieldset>
+	<br>
+    <input type="text" placeholder="찾을 문자열을 입력하세요" size=100 id="text">
+	
+    <button onclick="arrayTest1();"> 전송 및 처리 </button>
+
+    <script>
+        function arrayTest1() {
+            
+        }
+    </script>
+    
+    <hr>
+
+    <h2>문제 2 </h2>
+
+    <p>    
+        다음 보기에 있는 문자열을 가지고 정답과 같이 만드세요. (별도의 문자열을 쓰면 안 된다.)<br>
+        그리고 출력 부분에 출력하도록 하면 됩니다.
+        정답 : "bklove"
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+
+        <label id="stringla1">k b</label><br>
+        <label id="stringla2">e v o l</label><br>
+    </fieldset>
+
+    <br>
+
+    <p style="border:1px solid red;" id="print">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+
+    <button onclick="reverseTest();">처리</button>
+    
+    <script>
+        function reverseTest(){
+            
+        }
+    </script> 
+
+    <hr>
+    
+    <h2>문제 3</h2>
+    <p>
+        문자열을 여러 개 입력받은 후 출력 버튼 클릭 시 입력했던 모든 문자열이 출력되도록 만드세요.<br>
+        단, 모든 문자열은 내림차순으로 정렬 후에 출력된다.
+        예) 개구리 -> 입력, 바나나 -> 입력, 복숭아 -> 입력<br>
+        출력 : 복숭아, 바나나, 개구리
+    </p>
+    
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="strInput"><button onclick="input()">입력</button>
+	</fieldset>
+	<br>
+    <p style="border:1px solid red;" id="print2">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+	<div id="result1"></div>
+    <button onclick="print()">출력</button>
+
+    <script>
+        function input() {
+            
+        }
+
+        function print() {
+           
+        }
+    </script>
+    
+    <hr>
+
+    <h2>문제 4</h2>
+
+    <p>
+        다음 보기의 문자열을 바탕으로<br>
+        삭제할 음식과 추가할 음식을 입력받아서  <br>
+        지우고, 추가하는 코드를 작성하여라. (단, 1개씩 입력)<br>
+        <br>
+        예시) 삭제 : 당근  / 추가 : 타코야끼 <br>
+        결과-> 피자 치킨 햄버거 떡볶이 타코야끼  <br>
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla4">피자 치킨 당근 햄버거 떡볶이</label><br>
+    </fieldset>
+    
+    <br>
+    
+	<input type="text" id="remove" size="25" placeholder="삭제할 음식 이름을 입력하세요">
+	<input type="text" id="add" size="25" placeholder="추가할 음식 이름을 입력하세요">
+    <p style="border:1px solid red;" id="print4">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+	<button onclick="arrayTest3();">처리 및 출력</button>  
+    
+    <script>
+        function arrayTest3() {
+            
+        }
+    </script>
+</body>
+</html>
