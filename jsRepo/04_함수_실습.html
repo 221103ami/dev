@@ -113,8 +113,24 @@
 		</table>
 	</div>
 	<script>
-		function buttonClick(button){
+		var result = document.getElementById("result");
 			
+		function buttonClick(button){
+				
+			if(button == 'AC'){
+				result.innerHTML = 0;
+			}else if(button == '='){
+				result.innerHTML = eval(result.innerHTML);
+
+			}else{
+				var str = button;
+				
+				if(result.innerHTML == '0'){
+					result.innerHTML = str;
+				}else{
+					result.innerHTML += str;
+				}
+			}
 		}
 	</script>
 </body>

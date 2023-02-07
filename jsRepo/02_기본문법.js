@@ -2,8 +2,9 @@
 // 전역 변수 선언
 x1 = "함수밖에만든변수(전역변수임)"; 
 var x2 = "함수밖에만든var변수(전역변수임)";
-let x3 = "함수밖에만든let변수(전역X)";
-const x4 = "함수밖에만든const변수(전역X)";
+let x3 = "함수밖에만든let변수(전역변수)";
+const x4 = "함수밖에만든const변수(전역변수)";
+
 //console.log(x);
 
 window.onload = function f01(){

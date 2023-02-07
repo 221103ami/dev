@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰02</title>
+</head>
+<body>
+    <h1>리뷰02</h1>
+
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="memberId" value="초기값ㅋㅋ"></td>
+        </tr>
+        <tr>
+            <td colspan="2" id="resultBox01">아이디 괜찮은지</td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="memberPwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2" id="resultBox02">비번 괜찮은지</td>
+        </tr>
+        <tr>
+            <td>닉네임</td>
+            <td><input type="text" name="memberNick"></td>
+        </tr>
+        <tr>
+            <td colspan="2" id="resultBox03">닉네임 괜찮은지</td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="joinBtn">회원가입</button></td>
+        </tr>
+    </table>
+
+    <script>
+        //회원가입 버튼 클릭 시,
+        //아이디가 admin 이 아닌지 체크
+        //비밀번호가 4글자 이상인지 체크
+        //닉네임이 3글자 이상인지 체크
+        //조건에 맞지 않으면, 하단에 메세지 띄우기 (ex. 아이디 문제있음)
+        //조건에 맞으면, 사용가능 이라고 메세지 띄우기
+
+        const joinBtn = document.querySelector("#joinBtn");
+        const resultBox01 = document.querySelector("#resultBox01");
+        const resultBox02 = document.querySelector("#resultBox02");
+        const resultBox03 = document.querySelector("#resultBox03");
+        const input01 = document.querySelector("input[name=memberId]");
+        const input02 = document.querySelector("input[name=memberPwd]");
+        const input03 = document.querySelector("input[name=memberNick]");
+         
+        joinBtn.addEventListener("click" , function(){
+            const memberId = input01.value;
+            const memberPwd = input02.value;
+            const memberNick = input03.value;
+
+            console.log(memberId);
+            console.log(memberPwd);
+            console.log(memberNick);
+            
+            if(memberId == "admin"){
+                resultBox01.innerText = "문제있음";
+            }else{
+                resultBox01.innerText = "사용가능";
+            }
+
+            if(memberPwd.length < 4){
+                resultBox02.innerText = "문제있음";
+            }else{
+                resultBox02.innerText = "사용가능";
+            }
+
+            if(memberNick.length < 3){
+                resultBox03.innerText = "문제있음";
+            }else{
+                resultBox03.innerText = "사용가능";
+            }
+            
+        });
+
+    </script>
+
+</body>
+</html>
