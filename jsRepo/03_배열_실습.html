@@ -28,9 +28,13 @@
 	
     <button onclick="arrayTest1();"> 전송 및 처리 </button>
 
+    innerText나 html을 안붙히고
+    그냥 doc.qs로 요소를 가져오면 주소값을 가져는 걸로 알고 있는데
+    왜 이런 건지 알고싶습니다
+
     <script>
         function arrayTest1() {
-            var la1 = document.getElementById('la1').innerHTML.split(',');
+            var la1 = document.querySelector('#la1').innerHTML.split(',');
             var la2 = document.getElementById('la2').innerHTML.split(',');
             var la3 = document.getElementById('la3').innerHTML.split(',');
             var la4 = document.getElementById('la4').innerHTML.split(',');
@@ -162,7 +166,6 @@
             for (var i = 0; i < arr.length; i++) {
                 if(arr[i] === remove) {
                     arr.splice(i, 1);
-
                     break;
                 }
             }

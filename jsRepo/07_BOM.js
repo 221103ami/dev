@@ -29,3 +29,28 @@ intervalTestBtn.addEventListener("click", ()=>{
         console.log("3초 !!!");
     } , 3000);
 });
+
+const btn01 = document.querySelector("#btn01");
+btn01.addEventListener("click" , function(){
+    console.log( window.location );
+
+    const x = setTimeout(()=>{
+        //location.reload();
+        location.href = "https://www.naver.com";
+    }, 3000);
+
+    //clearTimeout(x);
+    
+});
+
+const btn03 = document.querySelector("#btn03");
+btn03.addEventListener("click", function(){
+    console.log( navigator );
+});
+
+const btn04 = document.querySelector("#btn04");
+btn04.addEventListener("click" , function(){
+    console.log( screen );
+});
+
+

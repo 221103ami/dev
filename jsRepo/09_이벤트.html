@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script defer src="./09_이벤트.js"></script>
+</head>
+<body>
+    
+    <h1>이벤트</h1>
+
+    <hr>
+
+    <h2>1. 이벤트 모델 종류</h2>
+
+    <h3>1) 고전 이벤트 모델</h3>
+    <button id="btn01">테스트</button>
+    <pre>
+        객체가 가진 이벤트 속성에 핸들러 연결
+        이벤트를 제거하려면 null 할당
+    </pre>
+
+    <h3>2) 인라인 이벤트 모델</h3>
+    <button onclick="f02();" id="btn02">테스트</button>
+    <pre>
+        태그 안 이벤트 속성에 JS 코드를 작성
+        (실행할 코드를 직접 써도 됨)
+        (함수 호출 해도 됨)
+    </pre>
+
+    <h3>3) 표준 이벤트 모델</h3>
+    <button id="btn03">테스트</button>
+    <pre>
+        w3 에서 공식적으로 지정한 이벤트 모델
+        여러 이벤트핸들러 설정 가능
+    </pre>
+
+    <h2>2. 이벤트가 발생한 요소 에 접근하는 방법</h2>
+    <button id="btn04">테스트</button>
+    <pre>
+        이벤트객체(이벤트 발생 정보가 담긴 객체)를 파라미터로 전달
+    </pre>
+
+    <h2>3. 태그별 기본 이벤트 제거</h2>
+    <button id="btn05">테스트</button>
+    <pre>
+        a : href 속성의 페이지로 이동
+        submit : form 태그 action 경로로 제출 (요청을보냄)
+
+        기본이벤트가 있는 요소에 click 이벤트를 설정하면?
+        설정한 핸들러가 먼저 동작
+        이후에 기본이벤트가 처리됨
+
+        기본이벤트 제거하는 방법은
+        이벤트 핸들러의 리턴값을 false 로 설정
+    </pre>
+
+    <a href="https://www.naver.com">네이버 이동</a>
+    <br>
+    <a href="https://www.naver.com" onclick="alert('내가설정한이벤트ㅋㅋ');">네이버 이동</a>
+    <br>
+    <a href="https://www.naver.com" onclick="return false;">네이버 이동</a>
+
+
+    <form action="" onsubmit="return checkMember();">
+
+        아이디 : <input type="text" name="memberId">
+        <br>
+        비밀번호 : <input type="password" name="memberPwd">
+        <br>
+        비밀번호 : <input type="password" name="memberPwd2">
+        <br>
+        <input type="submit">
+
+    </form>
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
