@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습</title>
+    <style>
+        .redColor{
+            color : red;
+        }
+    </style>
+</head>
+<body>
+    <h1>복습</h1>
+
+    <form action="">
+
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="memberId"></td>
+            </tr>
+            <tr>
+                <td>패스워드</td>
+                <td><input type="text" name="pwd1"></td>
+            </tr>
+            <tr>
+                <td>패스워드 확인</td>
+                <td><input type="text" name="pwd2"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="pwdResult"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input onclick="return f01();" type="submit" value="회원가입"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <script>
+        //회원가입 버튼 클릭 시 함수실행
+        //pwd1 태그의 값 , pwd2 태그의 값 을 알람으로 출력
+        //pwd1 이랑 pwd2 가 일치하는지 확인해서 기본이벤트 진행 여부 결정
+
+        const joinBtn = document.querySelector("input[type=submit]");
+        //joinBtn.addEventListener("click" , f01);
+
+        function f01(){
+            const p1 = document.querySelector("input[name=pwd1]").value;
+            const p2 = document.querySelector("input[name=pwd2]").value;
+            //alert(`p1 : ${p1} , p2 : ${p2}`);
+
+            if(p1 === p2){
+                return true;
+            }
+
+            //alert("패스워드가 일치하지 않습니다.");
+            const pwdResult = document.querySelector("#pwdResult");
+            pwdResult.innerHTML = '<strong class="redColor">패스워드가 일치하지 않습니다.</strong>';
+            return false;
+        }
+
+    </script>
+
+</body>
+</html>
