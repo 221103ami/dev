@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>복습07</h1>
+
+    <input type="text" id="t">
+    <br>
+    현재 <span id="result"></span> 글자 입력하셨습니다.
+
+    <script>
+
+        const t = document.querySelector("#t");
+        const result = document.querySelector("#result");
+
+        t.addEventListener("keyup" , ()=>{
+            result.innerText = t.value.length;
+        });
+
+    </script>
+
+</body>
+</html>

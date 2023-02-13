@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>복습08</h1>
+
+    <input type="checkbox">
+
+    <script>
+
+        const cb = document.querySelector("input[type=checkbox]");
+
+        cb.addEventListener("change" , ()=>{
+            alert("이벤트 발생 ㅋㅋ");
+        });
+
+    </script>
+
+    <hr>
+
+    <select onchange="">
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+        <option value="orange">오렌지</option>
+    </select>
+
+    <script>
+        const s = document.querySelector("select");
+        s.addEventListener("change" , ()=>{
+            alert("이벤트발생ㅎㅎ");
+        });
+    </script>
+
+</body>
+</html>

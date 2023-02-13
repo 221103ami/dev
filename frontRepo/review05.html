@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>충전할 별풍선 개수 선택</h1>
+
+    <button id="btn01" class="add" v="1">1개</button>
+    <button id="btn02" class="add" v="10">10개</button>
+    <button id="btn03" class="add" v="100">100개</button>
+    <button id="btn04">지우기</button>
+
+    <hr>
+
+    충전하실 별풍선 개수는 
+    <input type="text" id="result"> 개 입니다.
+
+    <script>
+
+        const arr = document.querySelectorAll(".add");
+        const btn01 = document.querySelector("#btn01");
+        const btn02 = document.querySelector("#btn02");
+        const btn03 = document.querySelector("#btn03");
+        const btn04 = document.querySelector("#btn04");
+        const result = document.querySelector("#result");
+
+        for(let btn of arr){
+            btn.addEventListener("click", (event)=>{
+                //result에 +???개
+                // const str = event.target.innerText;
+                // const plus = str.substr(0, str.length-1);
+                const plus = event.target.getAttribute("v");
+                const cnt = result.value;
+                result.value = Number(cnt) + Number(plus);
+            });
+        }
+
+        // btn01.addEventListener("click", ()=>{
+        //     //result 에 +1 개
+        //     const cnt = result.value;
+        //     result.value = Number(cnt) + 1;
+        // });
+
+        // btn02.addEventListener("click", ()=>{
+        //     //result 에 +10 개
+        //     const cnt = result.value;
+        //     result.value = Number(cnt) + 10;
+        // });
+
+        // btn03.addEventListener("click", ()=>{
+        //     //result 에 +100 개
+        //     const cnt = result.value;
+        //     result.value = Number(cnt) + 100;
+        // });
+
+        
+
+        btn04.addEventListener("click", ()=>{
+            result.value = "";
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>복습03</h1>
+
+    <table border="1">
+        <tr>
+            <td><input type="checkbox" id="checkbox-all"></td>
+            <td>제목</td>
+            <td>보낸사람</td>
+            <td>일시</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="email-checkbox"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="email-checkbox"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="email-checkbox"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+
+        const all = document.querySelector("#checkbox-all");
+
+        all.addEventListener("click", function(x){
+            //나머지 체크박스들 체크 되거나 말거나
+            //현재 체크박스 상태 얻기
+            
+            const status = x.target.checked;
+
+            const checkBoxArr = document.querySelectorAll(".email-checkbox");
+            
+            for(let box of checkBoxArr){
+                box.checked = status;
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

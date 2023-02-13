@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red-color{color:red;}
+        .blue-color{color:blue;}
+    </style>
+</head>
+<body>
+    
+    <form action="" onsubmit="return checkValid();">
+
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="text" name="pwd"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td><input type="text" name="pwd2"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="pwd-result" class="aaa bbb ccc">비밀번호 일치여부</td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td><input type="email"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="email-result">이메일 유효성 여부</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="회원가입"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <script>
+
+        let isPwdOk = false;
+        let isEmailOk = false;
+
+        const pwd = document.querySelector("input[name=pwd]");
+        const pwd2 = document.querySelector("input[name=pwd2]");
+        const pwdResult = document.querySelector("#pwd-result");
+
+
+        pwd2.addEventListener("blur" , ()=>{
+            //비번 일치 확인
+            if( pwd.value === pwd2.value ){
+                isPwdOk = true;
+                pwdResult.innerText = "일치합니다";
+                //pwdResult.style.backgroundColor = "blue";
+                pwdResult.classList.remove("red-color");
+                pwdResult.classList.add("blue-color");
+                console.log(pwdResult.classList);
+            }else{
+                isPwdOk = false;
+                pwdResult.innerText = "불일치합니다";
+                //pwdResult.style.color = "red";
+                pwdResult.classList.remove("blue-color");
+                pwdResult.classList.add("red-color");
+            }
+        });
+
+
+        const email = document.querySelector("input[type=email]");
+        const emailResult = document.querySelector("#email-result");
+
+        email.addEventListener("blur" , ()=>{
+            const str = email.value;
+            const reg = /^.+@.+\..+$/;
+            const result = reg.test(str);
+            if(result){
+                isEmailOk = true;
+                emailResult.innerText = "사용 가능한 이메일 입니다.";
+            }else{
+                isEmailOk = false;
+                emailResult.innerText = "사용 불가한 이메일 입니다.";
+            }
+        });
+
+
+        function checkValid(){
+
+            if(!isPwdOk){
+                alert("비밀번호를 확인하세요");
+                return false;
+            }
+
+            if(!isEmailOk){
+                alert("이메일을를 확인하세요");
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
+
+</body>
+</html>

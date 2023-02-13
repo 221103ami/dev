@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>팝업창</h1>
+
+    중복확인하려는 아이디 <input type="text" id="popupInput">
+
+    <script>
+
+        setTimeout(()=>{
+            const popupInput = document.querySelector("#popupInput");
+            const parentInput = window.opener.document.querySelector("input[name=id]");
+            popupInput.value = parentInput.value;
+            parentInput.value = "자식이 부모창에 데이터 전달 가능 ㅋㅋ";
+        } , 1000);
+
+    </script>
+
+</body>
+</html>

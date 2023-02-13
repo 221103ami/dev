@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>복습04</h1>
+
+    <br><br><br>
+
+    <h2>상품(3000원) 개수를 입력하세요</h2>
+
+    <input type="text" id="cnt"> 개
+    <br>
+    <button id="btn01">확인</button>
+    <br>
+    <input type="text" id="result">
+
+    <script>
+
+        const cnt = document.querySelector("#cnt");
+        const btn01 = document.querySelector("#btn01");
+        const result = document.querySelector("#result");
+
+        btn01.addEventListener("click", ()=>{
+            result.value = cnt.value * 3000;
+        });
+
+    </script>
+
+</body>
+</html>
