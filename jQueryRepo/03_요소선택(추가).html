@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    
+    <h1>추가선택자</h1>
+
+    <div>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <ul>
+            <li>리스트1</li>
+            <li>리스트2</li>
+            <li class="c">리스트3</li>
+            <li class="c">리스트4</li>
+            <li class="c">리스트5</li>
+        </ul>
+    </div>
+
+    <script>
+
+        $("div li.c").css("color", "red");
+
+    </script>
+
+    <hr><hr><hr>
+
+    <pre>
+        선택자[속성]     : 해당 속성 가진 모든 요소 선택
+        선택자[속성=값]  : 속성 === 값 선택
+        선택자[속성~=값] : 값 에 해당하는 속성 있으면 선택 
+        선택자[속성^=값] : 시작이 값 
+        선택자[속성$=값] : 끝 
+        선택자[속성*=값] : 포함 
+    </pre>
+
+</body>
+</html>

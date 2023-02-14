@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        .item{
+            background: green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin: 5px;
+        }
+        .item span{
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수 (요소 생성 및 제거)</h1>
+    
+    <h2>동적으로 요소 생성</h2>
+
+    <button id="btn01">요소 생성</button>
+    <div id="result01"></div>
+
+    <script>
+
+        $("#btn01").click(()=>{
+            //js
+            // a = document.createElement("h1");
+            // b = document.createTextNode("hello");
+            // a.appendChild(b);
+            // document.querySelector("#result01").appendChild(a);
+
+            //jQuery
+            a = $("<h1>hello</h1>");
+            $("#result01").append(a);
+
+            //$("#result01").append("<h1>hello</h1>");
+        });
+
+    </script>
+
+
+    <hr><hr><hr>
+
+    <h2>삽입 관련 메소드</h2>
+
+    <pre>
+        A.append(B)     : 자식레벨 , 뒤에 추가
+        A.prepend(B)    : 자식레벨 , 앞에 추가
+        A.after(B)      : 형제레벨 , 뒤에 추가
+        A.before(B)     : 형제레벨 , 앞에 추가
+    </pre>
+
+    <h1 id="test1"><span>스팬</span></h1>
+    <h1 id="test2"><span>스팬</span></h1>
+    <h1 id="test3"><span>스팬</span></h1>
+    <h1 id="test4"><span>스팬</span></h1>
+
+    <script>
+
+        $("#test1").append("<h3>어펜드</h3>");
+        $("#test2").prepend("<h3>프리펜드</h3>");
+        $("#test3").after("<h3>애프터</h3>");
+        $("#test4").before("<h3>비포</h3>");
+
+    </script>
+
+    <hr><hr><hr>
+
+    <h2>삽입 관련 메소드</h2>
+
+    <pre>
+        A.append(B)     : 자식레벨 , 뒤에 추가
+        A.prepend(B)    : 자식레벨 , 앞에 추가
+        A.after(B)      : 형제레벨 , 뒤에 추가
+        A.before(B)     : 형제레벨 , 앞에 추가
+    </pre>
+
+    <h1 id="test1"><span>스팬</span></h1>
+    <h1 id="test2"><span>스팬</span></h1>
+    <h1 id="test3"><span>스팬</span></h1>
+    <h1 id="test4"><span>스팬</span></h1>
+
+    <script>
+
+        $("#test1").append("<h3>어펜드</h3>");
+        $("#test2").prepend("<h3>프리펜드</h3>");
+        $("#test3").after("<h3>애프터</h3>");
+        $("#test4").before("<h3>비포</h3>");
+
+    </script>
+
+
+
+
+    <hr><hr><hr>
+
+    <h2>삽입 관련 메소드 2</h2>
+
+    <pre>
+        A.appendTo(B)           : 자식레벨 , 뒤에 추가
+        A.prependTo(B)          : 자식레벨 , 앞에 추가
+        A.insertAfter(B)        : 형제레벨 , 뒤에 추가
+        A.insertBefore(B)       : 형제레벨 , 앞에 추가
+    </pre>
+
+    <h1 id="test5"><span>스팬</span></h1>
+    <h1 id="test6"><span>스팬</span></h1>
+    <h1 id="test7"><span>스팬</span></h1>
+    <h1 id="test8"><span>스팬</span></h1>
+
+    <script>
+
+        $("#test5").appendTo("<h3>어펜드</h3>");
+        $("#test6").prependTo("<h3>프리펜드</h3>");
+        $("#test7").insertAfter("<h3>애프터</h3>");
+        $("#test8").insertBefore("<h3>비포</h3>");
+
+    </script>
+
+
+    <hr><hr><hr>
+
+    <h2>요소객체 복제</h2>
+    <pre>
+        변수 = 요소.clone(true|false);
+        true|false : 이벤트 복사 여부 (default : false)
+    </pre>
+
+    <button id="clone-btn">복제</button>
+    <div id="clone-result"></div>
+
+    <div id="clone-test">
+        <!-- 복제할 요소 -->
+        <div id="item1" class="item">
+            <span>안녕</span>
+        </div>
+    </div>
+
+    <script>
+
+        //복제할 요소에 이벤트 걸기
+        $("#item1").click(()=>{
+            alert("클릭ㅋㅋ");
+        });
+
+        //복제
+        $("#clone-btn").click(()=>{
+            const copy = $("#item1").clone(true);
+            $("#clone-result").append(copy);
+        });
+
+    </script>
+
+
+    <hr>
+    <hr>
+    <hr>
+
+    <h3>요소 객체 제거|잘라내기</h3>
+    <pre>
+        요소.empty()    : 하위 요소 제거
+        요소.remove()   : 잘라내기 (삭제 후 리턴) //이벤트 X
+        요소.detach()   : 잘라내기 (삭제 후 리턴) //이벤트 O
+    </pre>
+
+    <div id="remove-test">
+        <!-- 제거할 요소 -->
+        <div id="item2" class="item">
+            <span>안녕</span>
+        </div>
+    </div>
+
+    <button id="btn-empty">empty</button>
+    <button id="btn-remove">remove</button>
+    <button id="btn-detach">detach</button>
+
+    <div id="remove-result"></div>
+
+    <script>
+        //제거할 요소에 이벤트 추가
+        $("#item2").click(()=>{
+            alert("클릭ㅋㅋ");
+        });
+
+
+        $("#btn-empty").click(()=>{
+            $("#item2").empty();
+        });
+
+        $("#btn-remove").click(()=>{
+            const result = $("#item2").remove();
+            $("#remove-result").append(result);
+        });
+
+        $("#btn-detach").click(()=>{
+            const result2 = $("#item2").detach();
+            $("#remove-result").append(result2);
+        });
+
+    </script>
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

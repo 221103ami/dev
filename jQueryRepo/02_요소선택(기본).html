@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <h1>요소 선택</h1>
+
+    <h2>아이디 선택자</h2>
+    <pre>
+        특정 아이디 값 하나만 선택
+    </pre>
+
+    <h2 id="t1">t1</h2>
+    <h2 id="t2">t2</h2>
+
+    <script>
+        //js
+        document.querySelector("#t1").style.color = "red";
+    
+        //jQuery
+        $("#t2").css("color" , "blue");
+    </script>
+
+    <h2>클래스 선택자</h2>
+    <h2>태그 선택자</h2>
+
+    <h5 class="temp">클래스</h5>
+    <h5>태그</h5>
+
+    <script>
+
+        $(".temp").css("color", 'green');
+
+        $("h5").css("color" , 'pink');
+
+        console.log( $("h5") );
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

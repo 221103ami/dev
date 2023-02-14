@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap *{
+            border: 1px solid gray;
+            color : gray;
+            display: block;
+            padding: 5px;
+            margin:15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>요소탐색(형제)</h1>
+
+    <div class="wrap">
+        <p>p</p>
+        <span>span</span>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>p</p>
+    </div>
+
+    <script>
+
+        //siblings()
+        x = $("h2").siblings();
+        console.log(x);
+
+        //siblings(선택자)
+        x = $("h2").siblings("p");
+        console.log(x);
+
+        //next() , prev()
+        x = $("h2").next();
+        console.log(x);
+
+        //nextAll() , prevAll()
+        x = $("h2").nextAll();
+        console.log(x);
+
+        //nextUntil(선택자) , prevUntil(선택자)
+        x = $("h2").nextUntil('p');
+        console.log(x);
+
+
+    </script>
+
+</body>
+</html>

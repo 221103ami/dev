@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    
+    <h1>필터링</h1>
+
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>거주지</th>
+        </tr>
+        <tr>
+            <td>심원용</td>
+            <td>A형</td>
+            <td>서울</td>
+        </tr>
+        <tr class="temp">
+            <td>심투용</td>
+            <td>B형</td>
+            <td>뉴욕</td>
+        </tr>
+        <tr>
+            <td>심삼용</td>
+            <td>C형</td>
+            <td>런던</td>
+        </tr>
+        <tr>
+            <th colspan="2">총인원</th> 
+            <td>3명</td>
+        </tr>
+    </table>
+
+    <script>
+
+        //$("tr:even").css("backgroundColor", "red").css("color","blue");
+
+        //$("tr").not('.temp').css("color","red");
+        //$("tr").filter('.temp').css("color","red");
+
+        $("tr").eq(0).css("color","red");
+
+        $("tr")[0].css("color", "blue");
+
+    </script>
+
+</body>
+</html>

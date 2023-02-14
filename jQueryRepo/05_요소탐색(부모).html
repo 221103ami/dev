@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        .wrap, .wrap *{
+            border: 1px solid gray;
+            color : gray;
+            display: block;
+            padding: 5px;
+            margin:15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>요소탐색(부모)</h1>
+
+    <div class="wrap">
+        <div>증조부모 (div)
+            <ul>조부모 (ul)
+                <li>부모 (li)
+                    <span>나 (span)</span>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div>1세대 (div)
+            <p>2세대 (p)
+                <span>3세대 (span)</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+
+        //parent() : 바로 위
+        $("span").parent().css("backgroundColor", "green");
+        console.log( $("span").parent() );
+
+        //parents() : 조상
+        console.log( $("span").parents() );
+
+        //parents(선택자) : 조상 중에서 조건에 맞는 경우
+        x = $("span").parents('div')
+        console.log( x );
+
+    </script>
+
+</body>
+</html>

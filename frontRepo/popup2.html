@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>팝업창</h1>
+
+    아이디 <input type="text" name="memberId">
+    <button onclick="f01();">확인</button>
+
+    <script>
+        function f01(){
+            //아이디 중복 검사를 진행하는 복잡한 코드
+            alert("사용 가능한 아이디입니다.");
+
+            //부모창의 아이디 입력칸 에 데이터 전달
+            const parentInput = window.opener.document.querySelector("input[name=memberId]");
+            const popupInput = document.querySelector("input[name=memberId]");
+            parentInput.value = popupInput.value;
+            
+        }
+    </script>
+
+</body>
+</html>

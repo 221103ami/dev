@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <h1>함수 (기타)</h1>
+
+    <pre>
+
+    </pre>
+
+    <script>
+
+        const arr = ['a','b','c'];
+
+        //each(타겟 , 함수)
+        $.each(arr , (idx,elem)=>{
+            console.log(`${idx}번째 요소 : ${elem}`);
+        });
+
+        //타겟.each(함수)
+        $(arr).each((idx,elem)=>{
+            console.log(`${idx}번째 요소 : ${elem}`);
+        });
+
+    </script>
+
+    <h2>is 함수</h2>
+
+    <div id="t1"></div>
+
+    <script>
+        result = $("#t1").is('#t1');
+        console.log(result);
+    </script>
+
+</body>
+</html>
