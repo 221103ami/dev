@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            border: 1px solid red;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+        .item{
+            border: 1px solid blue;
+            width: 100px;
+            height: 100px;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+        #target{
+            --align-self: flex-start;
+            order: 10;
+        }
+    </style>
+</head>
+<body>
+    <h1>flex</h1>
+
+    <div class="outer">
+        <div class="item"><span>1번스팬</span></div>
+        <div class="item" id="target"><span>2번스팬</span></div>
+        <div class="item"><span>3번스팬</span></div>
+    </div>
+
+</body>
+</html>

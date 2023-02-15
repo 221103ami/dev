@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+        div{
+            border: 1px solid blue;
+            background-color: purple;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+    <script src="~~~"></script>
+</head>
+<body>
+    
+    <h1>애니메이션</h1>
+
+    <h2>hide/show</h2>
+
+    <button id="btn01">hide</button>
+    <button id="btn02">show</button>
+    <button id="btn03">toggle</button>
+    <div id="d1"></div>
+
+    <script>
+        $("#btn01").click(function(){
+            $("#d1").hide(3000);
+        });
+
+        $("#btn02").click(function(){
+            $("#d1").show(3000);
+        });
+
+        $("#btn03").click(function(){
+            $("#d1").toggle(3000);
+        });
+    </script>
+
+    <br><br><br>
+
+    <h2>fadeIn/fadeOut</h2>
+
+    <button onclick="f01();">fadeIn</button>
+    <button onclick="f02();">fadeOut</button>
+    <button onclick="f03();">fadeToggle</button>
+    <div id="d2"></div>
+
+    <script>
+        function f01(){
+            $("#d2").fadeIn(1500);
+        }
+        function f02(){
+            $("#d2").fadeOut(1500);
+        }
+        function f03(){
+            $("#d2").fadeToggle(1500);
+        }
+    </script>
+
+
+    <br><br><br>
+
+    <h2>slideDown/slideUp</h2>
+
+    <button onclick="func01();">slideDown</button>
+    <button onclick="func02();">slideUp</button>
+    <button onclick="func03();">slideToggle</button>
+
+    <div id="d3"></div>
+
+    <script>
+        function func01(){
+            $("#d3").slideDown(1500);
+        }
+        function func02(){
+            $("#d3").slideUp(1500);
+        }
+        function func03(){
+            $("#d3").slideToggle(1500);
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</body>
+</html>

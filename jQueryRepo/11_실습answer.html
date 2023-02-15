@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <h1>실습</h1>
+
+    <!-- 
+        1. 테이블 태그를 이용해서 게시판 만들기 
+
+        2. 행을 클릭하면, 해당 행의 게시글 정보를 
+        아래쪽 결과창(div태그)에 보여주기
+    -->
+
+    <table border="1">
+        <tr>
+            <td>글번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>작성일</td>
+            <td>조회수</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>제목01</td>
+            <td>작성자01</td>
+            <td>월요일</td>
+            <td>111</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>제목02</td>
+            <td>작성자02</td>
+            <td>화요일</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>제목03</td>
+            <td>작성자03</td>
+            <td>화요일</td>
+            <td>333</td>
+        </tr>
+    </table>
+
+    <div id="result"></div>
+
+    <script>
+        //tr 클릭 이벤트
+        //클릭된 행의 모든 td 태그의 내용을 확인
+        //내용을 div#result 에 보여주기
+
+        //js
+        const result = document.querySelector("#result");
+        const trArr = document.querySelectorAll("tr");
+        for(let x of trArr){
+            x.addEventListener("click", (event)=>{
+                const trTag = event.currentTarget;
+                console.log(trTag); 
+                const tdList = trTag.children;
+                
+                result.innerText = "";
+                for(let tdTag of tdList){
+                    result.innerText += tdTag.innerText + " / ";
+                }
+            });
+        }
+
+        //jquery
+        // const result = $("#result");
+        // const trArr = $("tr");
+
+        
+        // trArr.click((event)=>{
+        //     let str = "";
+        //     const trTag = event.target.parentNode;
+        //     $(trTag).children().each((idx,td)=>{
+        //         str += td.innerText + " / ";
+        //     });
+        //     result.text( str );
+        // });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    
+    <h1>이벤트</h1>
+
+    <div id="target">
+        target
+    </div>
+
+    <script>
+        // $("#target").click(function(event){
+        //     console.log(this);
+        // });
+
+        // $("#target").click(function(event){
+        //     console.log(222222);
+        // });
+
+        //on 메소드 (여러개를 한번에 걸 수 있음)
+        //클릭, 더블클릭 2개 이벤트 한번에 걸기
+        x = {
+            click : ()=>{console.log("클릭발생");} ,
+            dblclick : ()=>{console.log("더블클릭발생");} ,
+        }
+        $("#target").on(x);
+
+        $("#target").off("click");
+
+
+
+        //객체를 이용해서 여러 설정을 한번에 적용
+        x = {
+            color:"red" ,
+            backgroundColor:"blue"
+        };
+        $("#target").css(x);
+
+        
+
+    </script>
+
+</body>
+</html>
