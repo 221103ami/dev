@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./join.js"></script>
+    <style>
+        #outer{
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            border: 3px solid black;
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+        }
+        #outer>div{
+            border: 1px dashed red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #outer>div:last-child{
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <h1>회원가입</h1>
+
+    <form action="">
+        <div id="outer">
+            <div>아이디</div>
+            <div><input type="text" name="memberId"></div>
+            <div>비밀번호</div>
+            <div><input type="password" name="pwd1"></div>
+            <div>비밀번호 확인</div>
+            <div><input type="password" name="pwd2"></div>
+            <div>성별</div>
+            <div>
+                남자 
+                <input type="radio" name="gender" value="M" required> 
+                여자 
+                <input type="radio" name="gender" value="F">
+            </div>
+            <div><input type="submit" value="회원가입"></div>
+        </div>
+    </form>
+    
+</body>
+</html>

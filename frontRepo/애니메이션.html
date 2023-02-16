@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #target1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #target1:hover{
+            width: 200px;
+            height: 200px;
+            padding-left: 500px;
+            background-color: blue;
+            /* transition: 프로퍼티 타이밍펑션 듀레이션 딜레이; */
+            transition-duration: 5s;
+            transition-delay: 0s;
+            transition-timing-function: cubic-bezier(0,1.53,.98,.36);
+        }
+
+        
+        #target2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #target2:hover{
+            transform: scale(2);
+            transition-duration: 3s;
+        }
+
+        #target3{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        #target3{
+            animation-name: abc;
+            animation-duration: 3s;
+            animation-delay: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-play-state: running;
+        }
+
+        #target3:hover{
+            animation-play-state: paused;
+        }
+
+        @keyframes abc {
+            0% {
+                background-color: blue;
+            }
+            50%{
+                --transform: translate(300px);
+                background-color: pink;
+            }
+            100%{
+                transform: rotate(360deg);
+                --transform: translate(100px);
+                background-color: green;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>애니메이션</h1>
+
+    <div id="target1">타겟</div>
+
+    <hr>
+
+    <div id="target2">타겟2</div>
+
+    <hr>
+
+    <div id="target3">타겟3</div>
+
+</body>
+</html>
