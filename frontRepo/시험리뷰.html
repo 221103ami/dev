@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            display: grid;
+            width: 500px;
+            height: 500px;
+            border: 3px solid black;
+            box-sizing: border-box;
+            grid-template-rows: repeat(5 , 1fr) ;
+            grid-template-columns: 1fr 3fr 1fr;
+            margin: auto;
+        }
+
+        .item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .item:last-child{
+            grid-column: span 3;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>시험 리뷰</h1>
+
+    <form action="">
+        <div class="outer">
+            <div class="item">아이디</div>
+            <div class="item"><input type="text" name="memberId"></div>
+            <div class="item"><button type="button" onclick="checkId();">중복확인</button></div>
+            <div class="item">비밀번호</div>
+            <div class="item"><input type="password"></div>
+            <div class="item"></div>
+            <div class="item">비밀번호 확인</div>
+            <div class="item"><input type="password"></div>
+            <div class="item"></div>
+            <div class="item">지역</div>
+            <div class="item">
+                <label for="seoul">서울</label> <input type="radio" name="location" id="seoul">
+                <label for="daegu">대구</label> <input type="radio" name="location" id="daegu">
+                <label for="busan">부산</label> <input type="radio" name="location" id="busan">
+            </div>
+            <div class="item"></div>
+            <div class="item">
+                <input type="submit" value="회원가입">
+                &nbsp;
+                <input type="reset" value="초기화">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        
+        function checkId(){
+
+            const memberIdTag = document.querySelector("input[name=memberId]");
+
+            //아이디 value 랑 정규식 검사하기
+            const memberId = memberIdTag.value;
+            const regExp = /^[a-z][a-z0-9!@#]{5,11}$/;
+            const result = regExp.test(memberId);
+
+            if(result){
+                memberIdTag.style.backgroundColor = "green";
+            }else{
+                memberIdTag.style.backgroundColor = "red";
+            }
+        }
+
+        const x = document.querySelector("input[type=submit]");
+        x.addEventListener("click", join);
+
+        function join(event){
+            //지역이 선택되지 않은 경우
+            const loc = document.querySelector("input[name=location]:checked");
+            
+            if(loc === null){
+                alert("지역을 선택해주세요");
+                event.preventDefault();
+            }
+        }
+
+    </script>
+
+</body>
+</html>

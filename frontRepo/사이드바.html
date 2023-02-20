@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar{
+            background-color: red;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            --bottom: 0px;
+            height: 100vh;
+            width: 150px;
+            margin-left: -150px;
+            transition: 1s;
+        }
+
+        .sidebar.active{
+            margin-left: 0px;
+        }
+
+        .sidebar.active + .container{
+            margin-left: 150px;
+        }
+
+        .container{
+            background-color: blue;
+            margin-left: 0px;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <aside class="sidebar active">
+            사이드바
+        </aside>
+        <section class="container">
+            <button onclick="f01();">메뉴</button>
+        </section>
+    </main>
+
+    <script>
+        function f01(){
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px dashed black;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>이벤트 전파</h1>
+
+    <pre>
+        버블링 : 위로(부모) 전파    //false
+        캡처링 : 아래로(자식) 전파  //true
+    </pre>
+
+    <div id="first">첫번째
+        <div id="second">두번째
+            <div id="third">세번째</div>
+        </div>
+    </div>
+
+    <script>
+        const arr = document.querySelectorAll("div");
+
+        for(let x of arr){
+            x.addEventListener("click" , f01 , false);
+        }
+
+        function f01(event){
+            console.log(event.currentTarget);
+        }
+
+    </script>
+
+    <hr>
+
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>제목01</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>제목02</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>제목03</td>
+        </tr>
+    </table>
+
+    <script>
+        
+        const table = document.querySelector("table");
+        table.addEventListener("click" , (event)=>{
+           const arr = event.target.parentNode.children;
+           console.log( arr[0].innerText );
+           console.log( arr[1].innerText );
+        });
+
+    </script>
+
+</body>
+</html>
