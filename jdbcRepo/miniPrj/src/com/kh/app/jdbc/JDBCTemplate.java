@@ -16,7 +16,26 @@ public class JDBCTemplate {
 		String username = "MINI";
 		String password = "1234";
 		Connection conn = DriverManager.getConnection(url , username, password);
+		conn.setAutoCommit(false);
 		return conn;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
