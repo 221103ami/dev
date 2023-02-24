@@ -100,12 +100,18 @@ public class MemberService {
 	//수정
 	public void edit() throws Exception {
 		
+		if(Main.loginMember == null) {
+			System.out.println("로그인을 먼저 해주세요");
+			return;
+		}
+		
+		//현재 유저 정보 출력 (마이페이지)
+		mp.printMember(Main.loginMember);
+		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//입력받기
-		System.out.print("비밀번호를 변경할 회원 번호 : ");
-		String num = Main.SC.nextLine();
 		System.out.print("변경할 비밀번호 : ");
 		String pwd = Main.SC.nextLine();
 		
@@ -113,7 +119,7 @@ public class MemberService {
 		String sql = "UPDATE MEMBER SET PWD = ? WHERE NO = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, pwd);
-		pstmt.setString(2, num);
+		pstmt.setString(2, Main.loginMember.getNo());
 		int result = pstmt.executeUpdate();
 		
 		//result
