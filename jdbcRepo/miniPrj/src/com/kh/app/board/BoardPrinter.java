@@ -15,6 +15,7 @@ public class BoardPrinter {
 			System.out.print(data.getNick());
 			System.out.print(" / ");
 			System.out.print(data.getEnrollDate());
+			System.out.println();
 		}
 		
 	}

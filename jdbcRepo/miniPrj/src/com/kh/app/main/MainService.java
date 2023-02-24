@@ -9,7 +9,7 @@ public class MainService {
 	private final MemberService ms = new MemberService();
 	private final BoardService bs = new BoardService();
 	
-	public void start() throws Exception {
+	public boolean start() throws Exception {
 		
 		//메뉴 보여주기
 		menu.showMenu();
@@ -20,6 +20,7 @@ public class MainService {
 		
 		//서비스 실행
 		switch(input) {
+		case "0" : return true;
 		case "1" : ms.join(); break;
 		case "2" : ms.login(); break;
 		case "3" : ms.edit(); break;
@@ -31,6 +32,8 @@ public class MainService {
 		case "9" : bs.update(); break;
 		case "10" : bs.delete(); break;
 		}
+		
+		return false;
 	}
 
 }

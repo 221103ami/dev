@@ -11,6 +11,8 @@ import com.kh.app.main.Main;
 
 public class MemberService {
 	
+	private final MemberPrinter mp = new MemberPrinter();
+	
 	//회원가입 (==DB 에 insert)
 	public void join() throws Exception {
 		
@@ -68,19 +70,24 @@ public class MemberService {
 		//result
 		if( rs.next() ) {
 			//결과 꺼내기
-			int no = rs.getInt("NO");
+			String no = rs.getString("NO");
 			String memberId = rs.getString("ID");
 			String memberPwd = rs.getString("PWD");
 			String memberNick  = rs.getString("NICK");
-			//결과 출력
+			
 			System.out.println("---로그인 성공! (유저 정보)---");
-			System.out.print(no);
-			System.out.print(" / ");
-			System.out.print(memberId);
-			System.out.print(" / ");
-			System.out.print(memberPwd);
-			System.out.print(" / ");
-			System.out.print(memberNick);
+			//결과 출력
+			MemberData data = new MemberData();
+			data.setNo(no);
+			data.setId(memberId);
+			data.setPwd(memberPwd);
+			data.setNick(memberNick);
+			
+			mp.printMember(data);
+			
+			//로그인 정보 기억하기
+			Main.loginMember = data;
+			
 		}else {
 			System.out.println("로그인 실패...");
 		}
@@ -152,8 +159,39 @@ public class MemberService {
 	}
 	
 	//회원 목록조회
-	public void selectList() {
+	public void selectList() throws Exception {
 		
+		//DB
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//sql
+		String sql = "SELECT * FROM MEMBER";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//result
+		while(rs.next()) {
+			String no = rs.getString("NO");
+			String id = rs.getString("ID");
+			String pwd = rs.getString("PWD");
+			String nick = rs.getString("NICK");
+			String enrollDate = rs.getString("ENROLL_DATE");
+			String quitYn = rs.getString("QUIT_YN");
+			
+			//출력
+			MemberData data = new MemberData();
+			data.setNo(no);
+			data.setId(id);
+			data.setPwd(pwd);
+			data.setNick(nick);
+			data.setEnrollDate(enrollDate);
+			data.setQuitYn(quitYn);
+			
+			mp.printMember(data);
+		}
+		
+		//close
+		conn.close();
 	}
 	
 	

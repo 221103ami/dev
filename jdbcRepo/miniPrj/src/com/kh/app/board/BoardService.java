@@ -14,6 +14,11 @@ public class BoardService {
 	//게시글 작성
 	public void write() throws Exception {
 		
+		if(Main.loginMember == null) {
+			System.out.println("회원만 글쓰기를 할 수 있습니다.");
+			return;
+		}
+		
 		//conn
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -28,7 +33,7 @@ public class BoardService {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, title);
 		pstmt.setString(2, content);
-		pstmt.setInt(3, 2); //로그인한 유저의 회원번호를 넣어야함 //근데 이따가 수정할게요
+		pstmt.setString(3, Main.loginMember.getNo());
 		int result = pstmt.executeUpdate();
 		
 		//result
@@ -50,7 +55,7 @@ public class BoardService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//sql
-		String sql = "SELECT * FROM BOARD WHERE DELETE_YN = 'N' ORDER BY NO DESC";
+		String sql = "SELECT B.NO , B.TITLE , B.ENROLL_DATE , M.NICK FROM BOARD B JOIN MEMBER M ON (B.WRITER = M.NO) WHERE B.DELETE_YN = 'N' ORDER BY B.NO DESC";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
