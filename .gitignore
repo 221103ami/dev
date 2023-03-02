@@ -3,3 +3,7 @@ setup/
 **/.settings/
 **/bin/
 교재/
+webRepo/Servers/
+*.project
+*.classpath
+**/MANIFEST.MF
