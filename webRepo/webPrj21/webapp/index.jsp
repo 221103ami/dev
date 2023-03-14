@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+
+	<%
+		String alertMsg = (String)session.getAttribute("alertMsg");
+		session.removeAttribute("alertMsg");
+		
+		if(alertMsg != null){%>
+			alert('<%= alertMsg %>');
+		<%}
+	%>
+
+	
+	
+</script>
 </head>
 <body>
 
@@ -15,6 +29,7 @@
 	
 		if(x != null){%>
 			<h3><%= x %> 님 환영합니다.</h3>
+			<a href="/app21/member/logout">로그아웃</a>
 		<%}else{%>
 			<h3> 로그인을 해주세요 ~ </h3>
 		<%}

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.app.util.JDBCTemplate;
 
@@ -62,6 +63,8 @@ public class MemberJoinServlet extends HttpServlet {
 		// view
 		if(result == 1) {
 			//성공 -> 메인페이지
+			HttpSession session = req.getSession();
+			session.setAttribute("alertMsg", "회원가입 성공!");
 			resp.sendRedirect("/app21/");
 		}else {
 			//실패 -> 에러페이지
