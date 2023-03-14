@@ -12,7 +12,7 @@
 	
 	<ol>
 		<li><a href="/app21/member/join">회원가입</a></li>
-		<li><a href="~~~">로그인</a></li>
+		<li><a href="/app21/member/login">로그인</a></li>
 		<li><a href="~~~">비번변경</a></li>
 		<li><a href="~~~">탈퇴</a></li>
 	</ol>
