@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	a {
+		text-decoration: none;
+	}
+</style>
 <script>
 
 	<%
@@ -29,7 +34,8 @@
 	
 		if(x != null){%>
 			<h3><%= x %> 님 환영합니다.</h3>
-			<a href="/app21/member/logout">로그아웃</a>
+			<!-- <a href="/app21/member/logout">로그아웃</a> -->
+			<button onclick="location.href = '/app21/member/logout'">로그아웃</button>
 		<%}else{%>
 			<h3> 로그인을 해주세요 ~ </h3>
 		<%}
