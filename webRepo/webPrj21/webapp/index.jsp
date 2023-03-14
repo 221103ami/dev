@@ -10,6 +10,12 @@
 
 	<h1>메인페이지</h1>
 	
+	<%
+		String x = (String)session.getAttribute("nick");
+	%>
+	
+	<h3><%= x %> 님 환영합니다.</h3>
+	
 	<ol>
 		<li><a href="/app21/member/join">회원가입</a></li>
 		<li><a href="/app21/member/login">로그인</a></li>
