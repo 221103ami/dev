@@ -12,9 +12,13 @@
 	
 	<%
 		String x = (String)session.getAttribute("nick");
-	%>
 	
-	<h3><%= x %> 님 환영합니다.</h3>
+		if(x != null){%>
+			<h3><%= x %> 님 환영합니다.</h3>
+		<%}else{%>
+			<h3> 로그인을 해주세요 ~ </h3>
+		<%}
+	%>
 	
 	<ol>
 		<li><a href="/app21/member/join">회원가입</a></li>
