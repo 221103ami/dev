@@ -54,7 +54,6 @@ public class MemberJoinServlet extends HttpServlet {
 		}
 		
 		//결과 (tx , 자원정리)
-		result = 0;	//테스트를 위해 추가함. 이따가 지울거.
 		if(result == 1) {
 			//성공 (commit , 성공 안내메세지)
 //			req.getRequestDispatcher("/").forward(req, resp);

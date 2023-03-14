@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.app20.common.JDBCTemplate;
 
@@ -67,7 +68,13 @@ public class MemberLoginServlet extends HttpServlet {
 		// 문자열 내보내기
 		if(vo != null) {
 			// 로그인 성공
-			System.out.println("로그인 성공");
+			//req.setAttribute("nick", "서블릿에서전달하는닉네임ㅋㅋ");
+			
+			//데이터 담기 (req X , session O)
+			HttpSession s = req.getSession();
+			s.setAttribute("nick", vo.getMemberNick());
+			
+			resp.sendRedirect("/app20/index.jsp");
 		}else {
 			// 로그인 실패
 			System.out.println("로그인 실패");

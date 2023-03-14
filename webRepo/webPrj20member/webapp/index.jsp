@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    	String nick = (String)session.getAttribute("nick");
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,8 @@
 <body>
 
 	<h1>메인화면</h1>
+	
+	<h2><%= nick %> 님 환영합니다 ~</h2>
 	
 	<ol>
 		<li><a href="/app20/member/join">회원가입</a></li>
@@ -34,3 +43,4 @@
 
 
 
+    
