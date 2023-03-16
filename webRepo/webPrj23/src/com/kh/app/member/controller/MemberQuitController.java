@@ -25,13 +25,21 @@ public class MemberQuitController extends HttpServlet {
 		
 		//데이터 뭉치기
 		
-		//비지니스 로직
-		MemberService service = new MemberService();
-		int result = service.quit(loginMember);
+		
+		int result = 0;
+		try {
+			//비지니스 로직
+			MemberService service = new MemberService();
+			result = service.quit(loginMember);
+		}catch(Exception e) {
+			System.out.println("[ERROR] 탈퇴 중 예외발생");
+			e.printStackTrace();
+		}
 		
 		//화면
 		if(result == 1) {
-			session.setAttribute("alertMsg", "탈퇴 성공!");
+			session.invalidate();
+			req.getSession().setAttribute("alertMsg", "탈퇴 성공!");
 			resp.sendRedirect("/app23");
 		}else {
 			req.setAttribute("errorMsg", "탈퇴 실패 ...");

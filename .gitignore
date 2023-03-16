@@ -7,3 +7,4 @@ webRepo/Servers/
 *.project
 *.classpath
 **/MANIFEST.MF
+*.jar

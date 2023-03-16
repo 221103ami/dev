@@ -52,7 +52,7 @@ public class MemberLoginController extends HttpServlet {
 			req.getRequestDispatcher("/WEB-INF/views/common/errorPage.jsp").forward(req, resp);
 		}
 		
-	}
+	}//method
 
 }//class
 

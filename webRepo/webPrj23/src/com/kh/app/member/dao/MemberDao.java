@@ -55,6 +55,20 @@ public class MemberDao {
 		return loginMember;
 	}
 
+	//회원탈퇴
+	public int quit(Connection conn, MemberVo loginMember) throws Exception {
+		
+		//SQL //close
+		String sql = "DELETE MEMBER WHERE ID = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, loginMember.getId());
+		int result = pstmt.executeUpdate();
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+
 }//class
 
 

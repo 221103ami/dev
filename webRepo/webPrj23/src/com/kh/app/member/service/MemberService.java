@@ -59,7 +59,7 @@ public class MemberService {
 	}
 
 	//회원 탈퇴
-	public int quit(MemberVo loginMember) {
+	public int quit(MemberVo loginMember) throws Exception {
 		
 		//비지니스 로직
 		
@@ -71,8 +71,15 @@ public class MemberService {
 		int result = dao.quit(conn , loginMember);
 		
 		//tx , close
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
 		
+		JDBCTemplate.close(conn);
 		
+		return result;
 	}
 
 }//class
