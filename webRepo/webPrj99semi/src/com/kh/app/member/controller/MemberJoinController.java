@@ -30,13 +30,14 @@ public class MemberJoinController extends HttpServlet {
 		String memberNick = req.getParameter("memberNick");
 		String[] hobbyArr = req.getParameterValues("hobby");
 		
-		
 		//데이터 뭉치기
 		MemberVo vo = new MemberVo();
 		vo.setId(memberId);
 		vo.setPwd(memberPwd);
 		vo.setNick(memberNick);
-		vo.setHobby( String.join(",", hobbyArr) );
+		if(hobbyArr != null) {
+			vo.setHobby( String.join(",", hobbyArr) );
+		}
 		
 		//서비스 로직 호출
 		int result = 0;
