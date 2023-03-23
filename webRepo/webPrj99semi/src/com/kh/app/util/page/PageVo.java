@@ -59,6 +59,14 @@ public class PageVo {
 		return endPage;
 	}
 	
+	@Override
+	public String toString() {
+		return "PageVo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
+				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
+				+ endPage + "]";
+	}
+
+	
 	
 }//class
 

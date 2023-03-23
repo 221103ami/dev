@@ -26,7 +26,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					
 					<c:forEach items="${boardList}" var="bvo">
 						<tr>
 							<td>${bvo.no}</td>
@@ -35,21 +34,33 @@
 							<td>${bvo.enrollDate}</td>
 						</tr>
 					</c:forEach>
-					
 				</tbody>
 			</table>
 
-			<div id="btn-wrap">
-				<button onclick="location.href='/board/write'">게시글 작성</button>
-			</div>
+			<c:if test="${ loginMember != null}">
+				<div id="btn-wrap">
+					<button onclick="location.href='/board/write'">게시글 작성</button>
+				</div>
+			</c:if>
+			
 			<div id="page-area">
-				<a href="">이전</a>
-				<a href="">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="">다음</a>
+			
+				<c:if test="${ pageVo.currentPage > 1 }">
+					<a href="/board/list?page=${pageVo.currentPage-1}">이전</a>
+				</c:if>
+				
+				<c:forEach var="i" begin="${pageVo.startPage}" end="${pageVo.endPage}">					
+					<c:if test="${pageVo.currentPage == i}">
+						<span>${i}</span>
+					</c:if>
+					<c:if test="${pageVo.currentPage != i}">
+						<a href="/board/list?page=${i}">${i}</a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${ pageVo.currentPage < pageVo.maxPage }">
+					<a href="/board/list?page=${pageVo.currentPage+1}">다음</a>
+				</c:if>
 			</div>
 
 		</main>
@@ -60,6 +71,15 @@
 </html>
 
 
+<script>
+
+	const tbody = document.querySelector("main tbody");
+	tbody.addEventListener("click" , function(event){
+		const no = event.target.parentNode.children[0].innerText;
+		location.href = "/board/detail?no=" + no;
+	});
+
+</script>
 
 
 

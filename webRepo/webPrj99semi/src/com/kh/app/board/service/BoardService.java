@@ -70,6 +70,24 @@ public class BoardService {
 		return result;
 	}
 
+	//게시글 상세조회 
+	public BoardVo selectOne(String no) throws Exception {
+		
+		//비즈니스 로직
+		
+		//conn
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//DAO 호출
+		BoardDao dao = new BoardDao();
+		BoardVo boardVo = dao.selectOne(conn , no);
+		
+		//tx , close
+		JDBCTemplate.close(conn);
+		
+		return boardVo;
+	}
+
 }//class
 
 

@@ -37,9 +37,8 @@ public class BoardListController extends HttpServlet {
 			List<BoardVo> boardList = bs.selectList(pageVo);
 			
 			//화면
-			System.out.println(boardList);
-			
 			req.setAttribute("boardList", boardList);
+			req.setAttribute("pageVo", pageVo);
 			req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
 			
 		}catch(Exception e) {

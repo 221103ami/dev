@@ -84,6 +84,39 @@ public class BoardDao {
 		
 		return cnt;
 	}
+
+	//게시글 상세조회
+	public BoardVo selectOne(Connection conn, String no) throws Exception {
+		
+		//SQL
+		String sql = "SELECT * FROM BOARD WHERE NO = ? AND DELETE_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs -> obj
+		BoardVo boardVo = null;
+		if( rs.next() ) {
+			String boardNo = rs.getString("NO");
+			String title = rs.getString("TITLE");
+			String content = rs.getString("CONTENT");
+			String writer = rs.getString("WRITER");
+			String enrollDate = rs.getString("ENROLL_DATE");
+			
+			boardVo = new BoardVo();
+			boardVo.setNo(boardNo);
+			boardVo.setTitle(title);
+			boardVo.setContent(content);
+			boardVo.setWriter(writer);
+			boardVo.setEnrollDate(enrollDate);
+		}
+		
+		//close 
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return boardVo;
+	}
 	
 
 }//class

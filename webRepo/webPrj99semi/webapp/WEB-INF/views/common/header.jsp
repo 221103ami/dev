@@ -45,7 +45,7 @@
     </div>
 
     <nav>
-        <div><a href="${root}/board/list">자유게시판</a></div>
+        <div><a href="${root}/board/list?page=1">자유게시판</a></div>
         <div>갤러리</div>
         <div>공지사항</div>
     </nav>
