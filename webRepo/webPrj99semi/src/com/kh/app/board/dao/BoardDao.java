@@ -9,15 +9,20 @@ import java.util.List;
 
 import com.kh.app.board.vo.BoardVo;
 import com.kh.app.util.JDBCTemplate;
+import com.kh.app.util.page.PageVo;
 
 public class BoardDao {
 
-	//게시글 조회
-	public List<BoardVo> selectList(Connection conn) throws Exception {
+	//게시글 조회 (페이징 처리가 된)
+	public List<BoardVo> selectList(Connection conn , PageVo pageVo) throws Exception {
 
 		//SQL (close)
-		String sql = "SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER , B.ENROLL_DATE , M.NICK FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N'";
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , TEMP.* FROM ( SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER , B.ENROLL_DATE , M.NICK FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY NO DESC ) TEMP ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		int startRow = (pageVo.getCurrentPage()-1) * pageVo.getBoardLimit() + 1;
+		int endRow = startRow + pageVo.getBoardLimit() - 1;
+		pstmt.setInt(1, startRow);
+		pstmt.setInt(2, endRow);
 		ResultSet rs = pstmt.executeQuery();
 		
 		//rs -> obj (List<BoardVo>)
@@ -59,6 +64,27 @@ public class BoardDao {
 		
 		return result;
 	}
+	
+	//게시글 전체 갯수 조회 (삭제되지않은)
+	public int selectCount(Connection conn) throws Exception {
+		
+		//SQL (close)
+		String sql = "SELECT COUNT(*) AS CNT FROM BOARD WHERE DELETE_YN = 'N'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//rs -> obj
+		int cnt = 0;
+		if( rs.next() ) {
+			cnt = rs.getInt("CNT");
+		}
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(pstmt);
+		
+		return cnt;
+	}
+	
 
 }//class
 
