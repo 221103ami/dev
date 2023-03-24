@@ -14,13 +14,17 @@
 		
 		<main>
 			
-			<form action="/board/write" method="post">
+			<form action="/board/write" method="post" enctype="multipart/form-data">
 
 				<input type="hidden" name="writer" value="${loginMember.no}">
 
 				<input type="text" name="title" placeholder="제목을 입력하세요">
 
 				<textarea name="content" placeholder="내용을 입력하세요"></textarea>
+				
+				<br>
+				
+				<input type="file" name="f">
 
 				<input type="submit" value="작성하기">
 

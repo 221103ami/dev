@@ -7,17 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.app.board.vo.AttachmentVo;
 import com.kh.app.board.vo.BoardVo;
+import static com.kh.app.util.JDBCTemplate.*;
+
 import com.kh.app.util.JDBCTemplate;
 import com.kh.app.util.page.PageVo;
 
 public class BoardDao {
 
-	//게시글 조회 (페이징 처리가 된)
+	//게시글 목록 조회 (페이징 처리가 된)
 	public List<BoardVo> selectList(Connection conn , PageVo pageVo) throws Exception {
 
 		//SQL (close)
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , TEMP.* FROM ( SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER , B.ENROLL_DATE , M.NICK FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY NO DESC ) TEMP ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , TEMP.* FROM ( SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER , B.ENROLL_DATE , B.HIT , M.NICK FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY NO DESC ) TEMP ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		int startRow = (pageVo.getCurrentPage()-1) * pageVo.getBoardLimit() + 1;
 		int endRow = startRow + pageVo.getBoardLimit() - 1;
@@ -35,6 +38,7 @@ public class BoardDao {
 			String content = rs.getString("CONTENT");
 			String writer = rs.getString("NICK");
 			String enrollDate = rs.getString("ENROLL_DATE");
+			String hit = rs.getString("HIT");
 			
 			BoardVo vo = new BoardVo();
 			vo.setNo(no);
@@ -42,6 +46,7 @@ public class BoardDao {
 			vo.setContent(content);
 			vo.setWriter(writer);
 			vo.setEnrollDate(enrollDate);
+			vo.setHit(hit);
 			
 			boardList.add(vo);
 		}
@@ -60,7 +65,7 @@ public class BoardDao {
 		pstmt.setString(3, vo.getWriter());
 		int result = pstmt.executeUpdate();
 		
-		JDBCTemplate.close(pstmt);
+		close(pstmt);
 		
 		return result;
 	}
@@ -79,8 +84,8 @@ public class BoardDao {
 			cnt = rs.getInt("CNT");
 		}
 		
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
+		close(rs);
+		close(pstmt);
 		
 		return cnt;
 	}
@@ -89,7 +94,7 @@ public class BoardDao {
 	public BoardVo selectOne(Connection conn, String no) throws Exception {
 		
 		//SQL
-		String sql = "SELECT * FROM BOARD WHERE NO = ? AND DELETE_YN = 'N'";
+		String sql = "SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER , B.ENROLL_DATE , B.HIT , A.CHANGE_NAME FROM BOARD B JOIN ATTACHMENT A ON (B.NO = A.REF_BOARD_NO) WHERE B.NO = ? AND B.DELETE_YN = 'N'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, no);
 		ResultSet rs = pstmt.executeQuery();
@@ -102,6 +107,8 @@ public class BoardDao {
 			String content = rs.getString("CONTENT");
 			String writer = rs.getString("WRITER");
 			String enrollDate = rs.getString("ENROLL_DATE");
+			String hit = rs.getString("HIT");
+			String changeName = rs.getString("CHANGE_NAME");
 			
 			boardVo = new BoardVo();
 			boardVo.setNo(boardNo);
@@ -109,15 +116,56 @@ public class BoardDao {
 			boardVo.setContent(content);
 			boardVo.setWriter(writer);
 			boardVo.setEnrollDate(enrollDate);
+			boardVo.setHit(hit);
+			boardVo.setChangeName(changeName);
 		}
 		
 		//close 
-		JDBCTemplate.close(rs);
-		JDBCTemplate.close(pstmt);
+		close(rs);
+		close(pstmt);
 		
 		return boardVo;
 	}
 	
+	
+	/**
+	 * 조회수 증가 
+	 * 
+	 * @param 커넥션
+	 * @param 게시글번호
+	 * @return 조회수 증가 성공여부
+	 * @throws Exception 
+	 */
+	public int increaseHit(Connection conn , String no) throws Exception {
+		
+		//SQL
+		String sql = "UPDATE BOARD SET HIT = HIT+1 WHERE NO = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, no);
+		int result = pstmt.executeUpdate();
+		
+		//close
+		close(pstmt);
+	
+		return result;
+	}
+
+	//첨부파일 인서트
+	public int insertAttachment(Connection conn, AttachmentVo atVo) throws Exception {
+		
+		//SQL
+		String sql = "INSERT INTO ATTACHMENT (NO, ORIGIN_NAME, CHANGE_NAME, REF_BOARD_NO) VALUES(SEQ_ATTACHMENT_NO.NEXTVAL , ? , ? , SEQ_BOARD_NO.CURRVAL)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, atVo.getOriginName());
+		pstmt.setString(2, atVo.getChangeName());
+		int result = pstmt.executeUpdate();
+		
+		//close
+		close(pstmt);
+		
+		return result;
+	}
+
 
 }//class
 

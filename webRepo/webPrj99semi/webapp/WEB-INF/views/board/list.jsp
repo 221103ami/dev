@@ -23,6 +23,7 @@
 						<th>제목</th>
 						<th>작성자</th>
 						<th>작성일시</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,6 +33,7 @@
 							<td>${bvo.title}</td>
 							<td>${bvo.writer}</td>
 							<td>${bvo.enrollDate}</td>
+							<td>${bvo.hit}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
