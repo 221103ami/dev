@@ -8,3 +8,4 @@ webRepo/Servers/
 *.classpath
 **/MANIFEST.MF
 *.jar
+*.PNG
