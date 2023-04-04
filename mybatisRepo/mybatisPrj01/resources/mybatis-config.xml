@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <!-- setting : mybatis 구동 시 설정할 내용 -->
+  <settings>
+  	<setting name="jdbcTypeForNull" value="NULL"/>
+  </settings>
+  
+  <!-- typeAlias : 클래스 별칭 -->
+  <typeAliases>
+  	<!-- <typeAlias type="클래스전체경로" alias="별칭"/> -->
+  </typeAliases>
+  
+  <!-- environment : mybatis 에서 연결할 DB 정보 -->
+  <environments default="env01">
+  	<environment id="env01">
+  		<!-- MANAGED(자동) vs JDBC(수동) -->
+  		<transactionManager type="JDBC"></transactionManager>
+  		<dataSource type="POOLED">	<!-- POOLED vs UNPOOLED -->
+  			<property name="driver" value="oracle.jdbc.OracleDriver"/>
+  			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+  			<property name="username" value="SEMI"/>
+  			<property name="password" value="1234"/>
+  		</dataSource>
+  	</environment>
+  </environments>
+  
+  <!-- mapper : SQL 구문 작성된 파일 -->
+  <mappers>
+  	<mapper resource="경로"/>
+  </mappers>
+  
+  
+  
+</configuration>
+
+
+
+
+
+

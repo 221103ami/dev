@@ -1,13 +1,39 @@
 package com.kh.app.util;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 public class JDBCTemplate {
+	
+	// SqlSession 얻기
+	public static SqlSession getSqlSession() {
+		
+		SqlSession ss = null;
+		try {
+			String resource = "/mybatis-config.xml";
+			InputStream inputStream = Resources.getResourceAsStream(resource);
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			ss = sqlSessionFactory.openSession(false);
+		}catch(Exception e) {
+			System.out.println("[ERROR] 마이바티스 연결 중 예외 발생 ...");
+			e.printStackTrace();
+		}
+		
+		return ss;
+	}
    
+	
+	
+	
    // conn 
    public static Connection getConnection() {
       
