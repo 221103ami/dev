@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+  
+  <settings>
+  	<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	<setting name="jdbcTypeForNull" value="NULL"/>
+  </settings>
+  
+  <typeAliases>
+  	
+  </typeAliases>
+  
+  <environments default="e01">
+  	
+  	<environment id="e01">
+  		<transactionManager type="JDBC" />
+  		<dataSource type="POOLED">
+  			<property name="driver" value="oracle.jdbc.OracleDriver"/>
+  			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+  			<property name="username" value="SEMI"/>
+  			<property name="password" value="1234"/>
+  		</dataSource>
+  	</environment>
+  
+  </environments>
+  
+  <mappers>
+  	<mapper resource="/sql/message-mapper.xml" />
+  </mappers>
+  
+</configuration>
+
+

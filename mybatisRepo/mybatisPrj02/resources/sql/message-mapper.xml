@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="message">
+
+	<select id="selectMsgList" resultType="string">
+		SELECT * FROM MESSAGE
+	</select>
+	
+	<delete id="del">
+		DELETE FROM 
+		MESSAGE WHERE MSG = #{msg}
+	</delete>
+
+	<insert id="write">
+		INSERT INTO MESSAGE
+		(
+		    MSG
+		)
+		VALUES 
+		(
+		    #{msg}
+		)
+	</insert>
+
+</mapper>
