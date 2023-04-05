@@ -25,13 +25,13 @@ public class MemberService {
 		
 		//3. tx || rs
 		if(result == 1) {
-			JDBCTemplate.commit(conn);
+			ss.commit();
 		}else {
-			JDBCTemplate.rollback(conn);
+			ss.rollback();
 		}
 		
 		//4. close
-		JDBCTemplate.close(conn);
+		ss.close();
 		
 		return result;
 	}//method

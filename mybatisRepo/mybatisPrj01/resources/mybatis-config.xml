@@ -30,7 +30,7 @@
   
   <!-- mapper : SQL 구문 작성된 파일 -->
   <mappers>
-  	<mapper resource="경로"/>
+  	<mapper resource="/sql/member-mapper.xml"/>
   </mappers>
   
   

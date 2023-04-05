@@ -7,9 +7,41 @@
 
 	<insert id="join">
 		INSERT INTO MEMBER
-		(NO, ID, PWD, NICK) 
+		(
+			NO
+			, ID
+			, PWD
+			, NICK
+		) 
 		VALUES 
-		(SEQ_MEMBER_NO.NEXTVAL , ?, ?, ?)
+		(
+			SEQ_MEMBER_NO.NEXTVAL 
+			, #{id}
+			, #{pwd}
+			, #{nick}
+		)
 	</insert>
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
