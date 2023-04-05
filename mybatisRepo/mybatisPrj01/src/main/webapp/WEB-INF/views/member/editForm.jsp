@@ -19,6 +19,21 @@
         <br>
         <input type="submit" value="수정하기">
     </form>
+    
+    <a href="/app01/member/quit">탈퇴하기</a>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

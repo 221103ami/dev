@@ -40,14 +40,15 @@ public class MemberService {
 	public MemberVo login(MemberVo vo) throws Exception {
 		
 		//1. conn
-		Connection conn = JDBCTemplate.getConnection();
+		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		MemberDao dao = new MemberDao();
-		MemberVo loginMember = dao.login(conn , vo);
+		MemberVo loginMember = dao.login(ss , vo);
 		
 		//4. close
-		JDBCTemplate.close(conn);
+		ss.close();
 		
+		System.out.println("마이바티스로 로그인한 결과 : " + loginMember);
 		return loginMember;
 	}
 
@@ -55,33 +56,55 @@ public class MemberService {
 	public MemberVo edit(MemberVo vo) throws Exception {
 		
 		//1. conn
-		Connection conn = JDBCTemplate.getConnection();
+		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		MemberVo updatedMember = null;
 		try {
 			
 			MemberDao dao = new MemberDao();
-			int result = dao.edit(conn , vo);
+			int result = dao.edit(ss , vo);
 			
 			//3. tx || rs
 			if(result == 1) {
-				updatedMember = dao.selectOneByNo(conn, vo.getNo());
+				updatedMember = dao.selectOneByNo(ss, vo.getNo());
 				if(updatedMember == null) {
-					JDBCTemplate.rollback(conn);
+					ss.rollback();
 					throw new Exception();
 				}
-				JDBCTemplate.commit(conn);
+				ss.commit();
 			}else {
-				JDBCTemplate.rollback(conn);
+				ss.rollback();
 			}
 			
 		}finally {
 			//4. close
-			JDBCTemplate.close(conn);
+			ss.close();
 		}
 		
 		return updatedMember;
 	}//method
+
+	//탈퇴하기
+	public int quit(String no) {
+		//conn
+		SqlSession ss = JDBCTemplate.getSqlSession();
+		
+		//SQL
+		MemberDao dao = new MemberDao();
+		int result = dao.quit(ss , no);
+		
+		//tx || rs
+		if(result == 1) {
+			ss.commit();
+		}else {
+			ss.rollback();
+		}
+		
+		//close
+		ss.close();
+		
+		return result;
+	}
 	
 
 }//class

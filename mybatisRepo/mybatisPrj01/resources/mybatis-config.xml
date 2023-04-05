@@ -7,11 +7,12 @@
   <!-- setting : mybatis 구동 시 설정할 내용 -->
   <settings>
   	<setting name="jdbcTypeForNull" value="NULL"/>
+  	<setting name="mapUnderscoreToCamelCase" value="true"/>
   </settings>
   
   <!-- typeAlias : 클래스 별칭 -->
   <typeAliases>
-  	<!-- <typeAlias type="클래스전체경로" alias="별칭"/> -->
+  	<typeAlias type="com.kh.app.member.vo.MemberVo" alias="MemberVo"/>
   </typeAliases>
   
   <!-- environment : mybatis 에서 연결할 DB 정보 -->

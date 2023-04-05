@@ -5,6 +5,42 @@
   
 <mapper namespace="member">
 
+	<delete id="quit">
+		DELETE FROM MEMBER 
+		WHERE NO = #{no}
+	</delete>
+
+	<select id="selectOneByNo" resultType="MemberVo">
+		SELECT * 
+		FROM MEMBER 
+		WHERE NO = #{no}
+	</select>
+
+	<update id="edit">
+		UPDATE MEMBER 
+		SET 
+			PWD = #{pwd} 
+		, 	NICK = #{nick} 
+		WHERE NO = #{no}
+	</update>
+
+	<select id="login" resultType="MemberVo">
+		SELECT * 
+		FROM MEMBER 
+		WHERE ID = #{id} 
+		AND PWD = #{pwd}
+	</select>
+	
+	<!-- 
+	<resultMap type="MemberVo" id="x">
+		<result column="NO" property="no"/>
+		<result column="ID" property="id"/>
+		<result column="PWD" property="pwd"/>
+		<result column="NICK" property="nick"/>
+		<result column="ENROLL_DATE" property="enrollDate"/>
+	</resultMap> 
+	-->
+
 	<insert id="join">
 		INSERT INTO MEMBER
 		(
