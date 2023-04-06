@@ -1,5 +1,8 @@
 package com.kh.app.board.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.app.board.dao.BoardDao;
@@ -31,4 +34,47 @@ public class BoardService {
 		return result;
 	}//method
 
+	public List<BoardVo> selectBoardList() {
+		
+		//conn
+		SqlSession ss = SqlSessionTemplate.getSqlSession();
+		
+		//SQL
+		BoardDao dao = new BoardDao();
+		List<BoardVo> list = dao.selectBoardList(ss);
+		//tx || rs
+		
+		//close
+		ss.close();
+		
+		return list;
+	}
+
+	//검색
+	public List<BoardVo> searchList(Map<String, String> map) {
+
+		//conn
+		SqlSession ss = SqlSessionTemplate.getSqlSession();
+		
+		//SQL
+		BoardDao dao = new BoardDao();
+		List<BoardVo> list = dao.search(ss , map);
+		//tx || rs
+		
+		//close
+		ss.close();
+		
+		return list;
+	}
+
 }//class
+
+
+
+
+
+
+
+
+
+

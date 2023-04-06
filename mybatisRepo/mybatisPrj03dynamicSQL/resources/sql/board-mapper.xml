@@ -4,7 +4,50 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="board">
-  
-  <insert id="write"></insert>
+
+	<select id="search" resultType="BoardVo">
+	
+		SELECT *
+		FROM BOARD
+		
+		
+		<where>
+			<if test="titleValue != null and titleValue != ''">
+				AND age <![CDATA[ < ]]> '%${titleValue}%'
+			</if>
+			<if test="contentValue != null and contentValue != ''">
+				AND CONTENT LIKE '%${contentValue}%'
+			</if>
+			<if test="writerValue != null and writerValue != ''">
+				AND WRITER LIKE '%${writerValue}%'
+			</if>	
+		</where>
+		
+		
+	
+	</select>
+
+	<select id="selectBoardList" resultType="BoardVo">
+		SELECT * 
+		FROM BOARD
+		ORDER BY NO DESC
+	</select>
+	
+  <insert id="write">
+  	INSERT INTO BOARD
+  	(
+	  	NO
+	  	, TITLE
+	  	, CONTENT 
+	  	, WRITER
+  	) 
+  	VALUES
+  	(
+	  	SEQ_BOARD_NO.NEXTVAL 
+	  	, #{title} 
+	  	, #{content} 
+	  	, 1
+  	)
+  </insert>
   
 </mapper>

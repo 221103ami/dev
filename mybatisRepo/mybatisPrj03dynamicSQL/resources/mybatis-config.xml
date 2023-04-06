@@ -27,7 +27,7 @@
   </environments>
   
   <mappers>
-  
+  	<mapper resource="/sql/board-mapper.xml"/>
   </mappers>
   
 </configuration>

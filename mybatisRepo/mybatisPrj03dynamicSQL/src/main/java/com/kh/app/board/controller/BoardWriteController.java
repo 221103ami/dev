@@ -1,6 +1,9 @@
 package com.kh.app.board.controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +24,12 @@ public class BoardWriteController extends HttpServlet {
 	} 
 	
 	//게시글 작성
-	// INSERT INTO BOARD(NO, TITLE, CONTENT , WRITER) VALUES(SEQ_BOARD_NO.NEXTVAL , ? , ? , 1)
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
+			//인코딩
+			req.setCharacterEncoding("UTF-8");
 			
 			//데꺼
 			String title = req.getParameter("title");
