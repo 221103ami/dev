@@ -5,6 +5,19 @@
   
 <mapper namespace="member">
   
-  
+  <insert id="join">
+  	INSERT INTO MEMBER
+  	(
+  		ID
+  		, PWD
+  		, NICK
+  	)
+  	VALUES
+  	(
+  		#{memberId}
+  		, #{memberPwd}
+  		, #{memberNick}
+  	)
+  </insert>
   
 </mapper>
