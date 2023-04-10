@@ -10,3 +10,6 @@ webRepo/Servers/
 *.jar
 *.PNG
 **/Servers/
+mvnRepo/
+**/target/
+*.springBeans
