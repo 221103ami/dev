@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -20,8 +21,8 @@
 	<!-- 팩토리 -->
 	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="bds" />
-		<property name="configLocation" value="/mybatis/conf.xml"/>
-		<property name="mapperLocations" value="/mybatis/mapper/*-mapper.xml"/>
+		<property name="configLocation" value="classpath:/mybatis/conf.xml"/>
+		<property name="mapperLocations" value="classpath:/mybatis/**/*-mapper.xml"/>
 	</bean>
 	
 	<!-- 데이터소스 -->
