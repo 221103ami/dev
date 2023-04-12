@@ -13,3 +13,4 @@ webRepo/Servers/
 mvnRepo/
 **/target/
 *.springBeans
+myapp.log
