@@ -1,0 +1,45 @@
+#wrap{
+    width: 800px;
+    height: 100vh;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 150px;
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+#logo-area{
+    display: flex;
+    justify-content: center;
+}
+
+#member-area > form {
+    margin-top: 30px;
+}
+
+#member-area input , #member-area button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav{
+    background-color: black;
+    font-size: 32px;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    grid-template-rows: 1fr;
+    place-items: center center;
+}
+
+nav a {
+    text-decoration: none;
+    color : white;
+}

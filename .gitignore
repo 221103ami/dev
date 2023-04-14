@@ -14,3 +14,4 @@ mvnRepo/
 **/target/
 *.springBeans
 myapp.log
+springRepo/springPrj99final/src/test/
