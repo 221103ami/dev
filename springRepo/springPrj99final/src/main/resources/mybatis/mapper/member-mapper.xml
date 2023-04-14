@@ -5,6 +5,34 @@
   
 <mapper namespace="member">
   
-  
+  <insert id="join">
+  	INSERT INTO MEMBER
+  	(
+  		NO
+		,ID
+		,PWD
+		,NICK
+		,PROFILE
+		,HOBBY
+  	)
+  	VALUES
+  	(
+  		SEQ_MEMBER_NO.NEXTVAL
+		, #{id}
+		, #{pwd}
+		, #{nick}
+		, #{profile}
+		, #{hobbyStr}
+  	)
+  </insert>
   
 </mapper>
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,15 @@
 
     <link rel="stylesheet" href="${root}/resources/css/common/header.css">
     
+    <c:if test="${ not empty alertMsg }">
+	    <script>
+	    	alert('${sessionScope.alertMsg}');
+	    </script>
+    </c:if>
+    
+    <c:remove var="alertMsg" scope="session"/>
+    
+    
 	<header>
             <div></div>
             <div id="logo-area">
@@ -15,9 +24,9 @@
             </div>
             <div id="member-area">
                 <form action="${root}/member/login" method="POST">
-                    <input type="text" name="memberId" placeholder="아이디">
+                    <input type="text" name="id" placeholder="아이디">
                     <br>
-                    <input type="password" name="memberPwd" placeholder="비밀번호">
+                    <input type="password" name="pwd" placeholder="비밀번호">
                     <br>
                     <input type="submit" value="로그인">
                 </form>
