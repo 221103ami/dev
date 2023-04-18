@@ -25,14 +25,21 @@
             	</a>
             </div>
             <div id="member-area">
-                <form action="${root}/member/login" method="POST">
-                    <input type="text" name="id" placeholder="아이디">
-                    <br>
-                    <input type="password" name="pwd" placeholder="비밀번호">
-                    <br>
-                    <input type="submit" value="로그인">
-                </form>
-                <button onclick="location.href='${root}/member/join'">회원가입</button>
+            	<c:if test="${ empty loginMember }">
+	                <form action="${root}/member/login" method="POST">
+	                    <input type="text" name="id" placeholder="아이디">
+	                    <br>
+	                    <input type="password" name="pwd" placeholder="비밀번호">
+	                    <br>
+	                    <input type="submit" value="로그인">
+	                </form>
+	                <button onclick="location.href='${root}/member/join'">회원가입</button>
+            	</c:if>
+            	<c:if test="${ not empty loginMember }">
+            		${ loginMember.nick } 님 환영합니다. ~^^
+            		<br>
+            		<a href="${root}/member/logout">로그아웃</a>
+            	</c:if>
             </div>
         </header>
 

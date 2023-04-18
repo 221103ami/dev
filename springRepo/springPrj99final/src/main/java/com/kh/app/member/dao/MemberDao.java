@@ -16,4 +16,31 @@ public class MemberDao {
 		return sst.selectOne("member.checkId" , id);
 	}
 
-}
+	public MemberVo login(SqlSessionTemplate sst, MemberVo vo) {
+		return sst.selectOne("member.login" , vo);
+	}
+
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

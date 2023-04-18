@@ -32,7 +32,17 @@
   	WHERE ID = #{id}
   </select>
   
+  <select id="login" resultType="memberVo">
+  	SELECT *
+  	FROM MEMBER
+  	WHERE 	ID = #{id}
+  	AND		PWD = #{pwd}
+  	AND 	STATUS = 'O'
+  </select>
+  
 </mapper>
+
+
 
 
 

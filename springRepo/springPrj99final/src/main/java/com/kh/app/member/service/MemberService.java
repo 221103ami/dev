@@ -29,6 +29,10 @@ public class MemberService {
 		return dao.checkId(sst , id);
 	}
 
+	public MemberVo login(MemberVo vo) {
+		return dao.login(sst, vo);
+	}
+
 }//class
 
 

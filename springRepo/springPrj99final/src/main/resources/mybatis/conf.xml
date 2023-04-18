@@ -11,7 +11,17 @@
   </settings>
   
   <typeAliases>
-  	
+  	<typeAlias type="com.kh.app.member.vo.MemberVo" alias="memberVo"/>
   </typeAliases>
   
 </configuration>
+
+
+
+
+
+
+
+
+
+

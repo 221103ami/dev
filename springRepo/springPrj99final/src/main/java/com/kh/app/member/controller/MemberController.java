@@ -74,6 +74,25 @@ public class MemberController {
 	}
 	
 	//로그인
+	//SELECT * FROM MEMBER WHERE ID = ? AND PWD = ? AND STATUS = 'O'
+	@PostMapping("login")
+	public String login(MemberVo vo , HttpSession session) {
+		
+		//서비스
+		MemberVo loginMember = ms.login(vo);
+		
+		//화면
+		session.setAttribute("loginMember", loginMember);
+		return "redirect:/home";
+		
+	}
+	
+	//로그아웃
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/home";
+	}
 	
 	//정보수정 화면
 	//정보수정
