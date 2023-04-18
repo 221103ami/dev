@@ -12,4 +12,8 @@ public class MemberDao {
 		return sst.insert("member.join" , vo);
 	}
 
+	public int checkId(SqlSessionTemplate sst, String id) {
+		return sst.selectOne("member.checkId" , id);
+	}
+
 }

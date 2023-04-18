@@ -75,6 +75,35 @@
 
 <script>
 
+    //아이디 중복확인
+    function checkDup(){
+
+        //1. 현재 입력된 아이디 준비
+        //2. 서버한테 아이디 전달
+        //3. 결과를 받아오기 (isDup , notDup)
+        //4. 결과에 따라 , 중복 여부를 알려주기
+        
+        const id = document.querySelector("main input[name=id]").value;
+        $.ajax({
+            url : '/app/member/id-check' ,
+            type : 'POST' ,
+            data : {
+                'id' : id
+            } ,
+            success : function(data){
+                if(data == 'notDup'){
+                    alert("사용 가능한 아이디 입니다.");
+                }else{
+                    alert("사용 불가한 아이디 입니다.");
+                }
+            } ,
+            error : function(e){
+                console.log(e);
+            } ,
+        });
+
+    }
+
     //비밀번호 일치해야 제출 가능하게
     function checkValidation(){
         if(!isPwdOk()){

@@ -26,6 +26,12 @@
   	)
   </insert>
   
+  <select id="checkId" resultType="int"> 
+  	SELECT COUNT(*)
+  	FROM MEMBER
+  	WHERE ID = #{id}
+  </select>
+  
 </mapper>
 
 

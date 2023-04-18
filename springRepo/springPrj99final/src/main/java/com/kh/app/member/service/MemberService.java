@@ -25,6 +25,10 @@ public class MemberService {
 		return dao.join(sst , vo);
 	}
 
+	public int checkId(String id) {
+		return dao.checkId(sst , id);
+	}
+
 }//class
 
 

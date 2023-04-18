@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.app.member.service.MemberService;
 import com.kh.app.member.vo.MemberVo;
@@ -57,11 +58,52 @@ public class MemberController {
 		return "redirect:/home";
 	}
 	
+	//아이디 중복확인
+	@RequestMapping("id-check")
+	@ResponseBody
+	public String idCheck(String id) {
+		
+		int result = ms.checkId(id);
+		
+		if(result > 0) {
+			return "isDup";
+		}else {
+			return "notDup";
+		}
+		
+	}
+	
 	//로그인
 	
 	//정보수정 화면
 	//정보수정
 	
 	//회원탈퇴
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
