@@ -81,6 +81,10 @@ public class MemberController {
 		//서비스
 		MemberVo loginMember = ms.login(vo);
 		
+		if(loginMember == null) {
+			session.setAttribute("alertMsg", "로그인 실패 ... ");
+		}
+		
 		//화면
 		session.setAttribute("loginMember", loginMember);
 		return "redirect:/home";
