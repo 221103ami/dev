@@ -33,11 +33,47 @@
   </select>
   
   <select id="login" resultType="memberVo">
-  	SELECT *
+  	SELECT 
+  		NO
+		,ID
+		,PWD
+		,NICK
+		,PROFILE
+		,HOBBY		AS hobbyStr
+		,STATUS
+		,ENROLL_DATE
+		,MODIFY_DATE
   	FROM MEMBER
   	WHERE 	ID = #{id}
   	AND		PWD = #{pwd}
   	AND 	STATUS = 'O'
+  </select>
+  
+  <update id="edit">
+  	UPDATE MEMBER
+  		SET 
+  			PWD = #{pwd}
+  			, NICK = #{nick}
+  			, PROFILE = #{profile}
+  			, HOBBY = #{hobbyStr}
+  			, MODIFY_DATE = SYSDATE
+  		WHERE
+  			NO = #{no}
+  </update>
+  
+  <select id="getMember" resultType="memberVo">
+  	SELECT 
+  		NO
+		,ID
+		,PWD
+		,NICK
+		,PROFILE
+		,HOBBY		AS hobbyStr
+		,STATUS
+		,ENROLL_DATE
+		,MODIFY_DATE
+  	FROM MEMBER
+  	WHERE NO = #{no}
   </select>
   
 </mapper>

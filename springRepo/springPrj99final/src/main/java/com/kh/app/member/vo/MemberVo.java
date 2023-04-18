@@ -15,6 +15,13 @@ public class MemberVo {
 	private String status;
 	private String enrollDate;
 	private String modifyDate;
+	
+	public void setHobby(String[] hobby) {
+		this.hobby = hobby;
+		if(hobby != null) {
+			this.hobbyStr = String.join(",", hobby);
+		}
+	}
 
 }
 

@@ -20,6 +20,14 @@ public class MemberDao {
 		return sst.selectOne("member.login" , vo);
 	}
 
+	public int edit(SqlSessionTemplate sst, MemberVo vo) {
+		return sst.update("member.edit" , vo);
+	}
+
+	public MemberVo selectOneByNo(SqlSessionTemplate sst, MemberVo vo) {
+		return sst.selectOne("member.getMember" , vo);
+	}
+
 }//class
 
 

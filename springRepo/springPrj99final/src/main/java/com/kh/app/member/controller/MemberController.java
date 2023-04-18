@@ -39,12 +39,6 @@ public class MemberController {
 	@PostMapping("join")
 	public String join(MemberVo vo , HttpServletRequest req , HttpSession session , Model model) throws Exception {
 		
-		//데이터
-		if(vo.getHobby() != null) {
-			String hobbyStr = String.join(",", vo.getHobby());
-			vo.setHobbyStr(hobbyStr);
-		}
-		
 		//서비스
 		int result = ms.join(vo);
 		
@@ -99,7 +93,32 @@ public class MemberController {
 	}
 	
 	//정보수정 화면
+	@GetMapping("edit")
+	public String edit(HttpSession session , Model model) {
+		if(session.getAttribute("loginMember") == null) {
+			model.addAttribute("errorMsg" , "로그인 먼저 해주세요");
+			return "common/error-page";
+		}
+		return "member/edit";
+	}
+	
 	//정보수정
+	@PostMapping("edit")
+	public String edit(MemberVo vo , Model model , HttpSession session) throws Exception {
+		//서비스
+		MemberVo updatedMember = ms.edit(vo);
+		
+		//화면
+		if(updatedMember == null) {
+			model.addAttribute("errorMsg" , "정보 수정 실패 ...");
+			return "common/error-page";
+		}
+		
+		session.setAttribute("loginMember", updatedMember);
+		session.setAttribute("alertMsg", "정보 수정 성공 !!!");
+		return "redirect:/home";
+		
+	}
 	
 	//회원탈퇴
 	

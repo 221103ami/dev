@@ -33,6 +33,14 @@ public class MemberService {
 		return dao.login(sst, vo);
 	}
 
+	public MemberVo edit(MemberVo vo) throws Exception {
+		int result = dao.edit(sst , vo);
+		if(result != 1) {
+			throw new Exception();
+		}
+		return dao.selectOneByNo(sst , vo);
+	}
+
 }//class
 
 
