@@ -14,4 +14,24 @@ public class NoticeDao {
 		return sst.selectList("notice.getNoticeList");
 	}
 
-}
+	public int write(SqlSessionTemplate sst, NoticeVo vo) {
+		return sst.insert("notice.write" , vo);
+	}
+
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

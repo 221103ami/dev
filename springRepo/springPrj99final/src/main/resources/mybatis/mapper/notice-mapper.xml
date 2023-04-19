@@ -11,5 +11,46 @@
   	WHERE STATUS = 'O'
   	ORDER BY NO DESC
   </select>
+  
+  <insert id="write">
+  	INSERT INTO NOTICE
+  	(
+  		NO
+		,TITLE
+		,CONTENT
+  	)
+  	VALUES
+  	(
+  		SEQ_NOTICE_NO.NEXTVAL
+  		, #{title}
+  		, #{content}
+  	)
+  </insert>
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

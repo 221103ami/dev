@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#write-btn-area {
+		width:600px;
+		margin : auto;
+		display : flex;
+		flex-direction: row-reverse;
+	}
+</style>
 </head>
 <body>
 
@@ -14,6 +22,10 @@
 		
 		<main>
 			<h1 align="center">공지사항 목록</h1>
+			
+			<div id="write-btn-area">
+				<a id="write-btn" class="btn btn-primary" href="${root}/notice/write">글쓰기</a>
+			</div>
 
 			<table>
 				<thead>

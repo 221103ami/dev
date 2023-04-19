@@ -5,11 +5,13 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.app.notice.dao.NoticeDao;
 import com.kh.app.notice.vo.NoticeVo;
 
 @Service
+@Transactional
 public class NoticeService {
 	
 	private final NoticeDao dao;
@@ -23,6 +25,10 @@ public class NoticeService {
 
 	public List<NoticeVo> getNoticeList() {
 		return dao.getNoticeList(sst);
+	}
+
+	public int write(NoticeVo vo) {
+		return dao.write(sst , vo);
 	}
 
 }
