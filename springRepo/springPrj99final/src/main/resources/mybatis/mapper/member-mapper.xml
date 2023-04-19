@@ -76,6 +76,13 @@
   	WHERE NO = #{no}
   </select>
   
+  <update id="quit">
+  	UPDATE MEMBER
+  		SET
+  			STATUS = 'X'
+  		WHERE NO = #{no}
+  </update>
+  
 </mapper>
 
 

@@ -121,6 +121,25 @@ public class MemberController {
 	}
 	
 	//회원탈퇴
+	@RequestMapping("quit")
+	public String quit(HttpSession session) {
+		
+		//데이터
+		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		String no = loginMember.getNo();
+		
+		//서비스
+		int result = ms.quit(no);
+		
+		//화면
+		if(result == 1) {
+			session.invalidate();
+		}else {
+			session.setAttribute("alertMsg", "회원탈퇴 실패...");
+		}
+		return "redirect:/home";
+		
+	}
 	
 
 }

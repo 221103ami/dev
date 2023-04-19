@@ -61,6 +61,7 @@
                     </div>
                     <div>
                         <input type="submit" value="수정하기">
+                        <a class="btn btn-secondary" href="${root}/member/quit">탈퇴하기</a>
                     </div>
                 </div>
             </form>

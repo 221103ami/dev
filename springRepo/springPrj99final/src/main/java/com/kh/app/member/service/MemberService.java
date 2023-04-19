@@ -41,6 +41,10 @@ public class MemberService {
 		return dao.selectOneByNo(sst , vo);
 	}
 
+	public int quit(String no) {
+		return dao.quit(sst , no);
+	}
+
 }//class
 
 
