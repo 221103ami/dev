@@ -18,6 +18,10 @@ public class NoticeDao {
 		return sst.insert("notice.write" , vo);
 	}
 
+	public NoticeVo getNotice(SqlSessionTemplate sst, String num) {
+		return sst.selectOne("notice.getNotice" , num);
+	}
+
 }//class
 
 

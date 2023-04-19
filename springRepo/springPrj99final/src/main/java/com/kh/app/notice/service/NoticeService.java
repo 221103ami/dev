@@ -31,6 +31,10 @@ public class NoticeService {
 		return dao.write(sst , vo);
 	}
 
+	public NoticeVo getNotice(String num) {
+		return dao.getNotice(sst , num);
+	}
+
 }
 
 

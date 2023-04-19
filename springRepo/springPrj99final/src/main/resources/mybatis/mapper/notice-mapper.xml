@@ -26,6 +26,13 @@
   		, #{content}
   	)
   </insert>
+  
+  <select id="getNotice" resultType="noticeVo">
+  	SELECT *
+  	FROM NOTICE
+  	WHERE NO = #{num}
+  	AND	  STATUS = 'O'
+  </select>
 
 </mapper>
 

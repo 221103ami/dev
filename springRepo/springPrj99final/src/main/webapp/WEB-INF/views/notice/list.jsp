@@ -12,6 +12,12 @@
 		display : flex;
 		flex-direction: row-reverse;
 	}
+
+	main table > tbody > tr:hover {
+		background-color: lightgray;
+		cursor: pointer;
+	}
+
 </style>
 </head>
 <body>
@@ -61,6 +67,15 @@
 
 <link rel="stylesheet" href="${root}/resources/css/notice/list.css">
 
+<script>
+
+	const table = document.querySelector("main table tbody");
+	table.addEventListener("click" , function(event){
+		const num = event.target.parentNode.children[0].innerText;
+		location.href = '${root}/notice/detail?num=' + num;
+	});
+
+</script>
 
 
 

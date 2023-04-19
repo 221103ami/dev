@@ -37,8 +37,6 @@ public class NoticeController {
 		return "notice/list";
 	}
 	
-	//공지사항 상세조회
-	
 	//공지사항 작성하기 화면 (관리자만)
 	@GetMapping("write")
 	public String write(HttpSession session , Model model) {
@@ -71,6 +69,21 @@ public class NoticeController {
 		}
 		
 		return "redirect:/notice/list";
+	}
+	
+	//공지사항 상세조회
+	@GetMapping("detail")
+	public String detail(String num , Model model) {
+		
+		NoticeVo vo = ns.getNotice(num);
+		
+		if(vo == null) {
+			model.addAttribute("errorMsg", "조회 실패...");
+			return "common/error-page";
+		}
+		
+		model.addAttribute("vo" , vo);
+		return "notice/detail";
 	}
 	
 	//공지사항 수정하기 (관리자만)
