@@ -22,6 +22,10 @@ public class NoticeDao {
 		return sst.selectOne("notice.getNotice" , num);
 	}
 
+	public int edit(SqlSessionTemplate sst, NoticeVo vo) {
+		return sst.update("notice.edit" , vo);
+	}
+
 }//class
 
 

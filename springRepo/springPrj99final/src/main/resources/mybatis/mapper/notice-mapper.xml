@@ -33,6 +33,15 @@
   	WHERE NO = #{num}
   	AND	  STATUS = 'O'
   </select>
+  
+  <update id="edit">
+  	UPDATE NOTICE
+  		SET
+  			TITLE = #{title}
+  			, CONTENT = #{content}
+  			, MODIFY_DATE = SYSDATE
+  		WHERE NO = #{no}
+  </update>
 
 </mapper>
 

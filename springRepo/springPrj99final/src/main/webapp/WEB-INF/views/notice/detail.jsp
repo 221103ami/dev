@@ -74,6 +74,7 @@
 
             <div class="form-area">
                 <form action="${root}/notice/edit" method="POST">
+                    <input type="hidden" name="no" value="${vo.no}">
                     <div id="notice-area">
                         <div>제목</div>
                         <div><input type="text" name="title" value="${vo.title}"></div>

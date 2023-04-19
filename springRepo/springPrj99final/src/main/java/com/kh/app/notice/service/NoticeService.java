@@ -35,6 +35,10 @@ public class NoticeService {
 		return dao.getNotice(sst , num);
 	}
 
+	public int edit(NoticeVo vo) {
+		return dao.edit(sst , vo);
+	}
+
 }
 
 

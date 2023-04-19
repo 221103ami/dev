@@ -87,7 +87,19 @@ public class NoticeController {
 	}
 	
 	//공지사항 수정하기 (관리자만)
-
+	@PostMapping("edit")
+	public String edit(NoticeVo vo , Model model , HttpSession session) {
+		int result = ns.edit(vo);
+		
+		if(result != 1) {
+			model.addAttribute("errorMsg", "수정실패 ...");
+			return "common/error-page";
+		}
+		
+		session.setAttribute("alertMsg", "수정 성공!!!");
+		return "redirect:/notice/detail?num=" + vo.getNo();
+	}
+	
 	//공지사항 삭제하기 (관리자만)
 	
 }
