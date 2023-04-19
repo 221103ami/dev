@@ -5,18 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	main table {
-		width: 600px;
-		margin: auto;
-		text-align: center;
-	}
-
-	main table td {
-		border: 1px solid black;
-	}
-
-</style>
 </head>
 <body>
 
@@ -54,12 +42,10 @@
 		
 	</div>
 
-	${ nvoList }
-
 </body>
 </html>
 
-
+<link rel="stylesheet" href="${root}/resources/css/notice/list.css">
 
 
 
