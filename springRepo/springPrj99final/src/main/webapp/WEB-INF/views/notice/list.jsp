@@ -23,9 +23,11 @@
 		<main>
 			<h1 align="center">공지사항 목록</h1>
 			
-			<div id="write-btn-area">
-				<a id="write-btn" class="btn btn-primary" href="${root}/notice/write">글쓰기</a>
-			</div>
+			<c:if test="${loginMember.id == 'ADMIN'}">
+				<div id="write-btn-area">
+					<a id="write-btn" class="btn btn-primary" href="${root}/notice/write">글쓰기</a>
+				</div>
+			</c:if>
 
 			<table>
 				<thead>
