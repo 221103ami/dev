@@ -84,7 +84,7 @@ public class NoticeController {
 	
 	//공지사항 상세조회
 	@GetMapping("detail")
-	public String detail(String num , Model model) {
+	public String detail(String num , Model model) throws Exception {
 		
 		NoticeVo vo = ns.getNotice(num);
 		

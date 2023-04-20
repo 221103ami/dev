@@ -32,7 +32,11 @@ public class NoticeService {
 		return dao.write(sst , vo);
 	}
 
-	public NoticeVo getNotice(String num) {
+	public NoticeVo getNotice(String num) throws Exception {
+		int result = dao.increaseHit(sst , num);
+		if(result != 1) {
+			throw new Exception();
+		}
 		return dao.getNotice(sst , num);
 	}
 

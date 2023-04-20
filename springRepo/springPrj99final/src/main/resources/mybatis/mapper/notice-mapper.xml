@@ -56,6 +56,13 @@
   	FROM NOTICE
   	WHERE STATUS = 'O'
   </select>
+  
+  <update id="increaseHit">
+  	UPDATE NOTICE
+  		SET HIT = HIT+1
+  	WHERE NO = #{num}
+  	AND   STATUS = 'O'
+  </update>
 
 </mapper>
 

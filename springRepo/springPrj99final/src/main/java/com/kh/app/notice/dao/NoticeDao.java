@@ -39,6 +39,10 @@ public class NoticeDao {
 		return sst.selectOne("notice.getNoticeListCnt");
 	}
 
+	public int increaseHit(SqlSessionTemplate sst, String num) {
+		return sst.update("notice.increaseHit" , num);
+	}
+
 }//class
 
 
