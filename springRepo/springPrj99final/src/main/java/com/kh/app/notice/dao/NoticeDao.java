@@ -26,6 +26,10 @@ public class NoticeDao {
 		return sst.update("notice.edit" , vo);
 	}
 
+	public int delete(SqlSessionTemplate sst, String num) {
+		return sst.update("notice.delete" , num);
+	}
+
 }//class
 
 

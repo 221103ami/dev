@@ -42,6 +42,14 @@
   			, MODIFY_DATE = SYSDATE
   		WHERE NO = #{no}
   </update>
+  
+  <update id="delete">
+  	UPDATE NOTICE
+  		SET 
+  			STATUS = 'X'
+  			, MODIFY_DATE = SYSDATE
+  	WHERE NO = #{num}
+  </update>
 
 </mapper>
 

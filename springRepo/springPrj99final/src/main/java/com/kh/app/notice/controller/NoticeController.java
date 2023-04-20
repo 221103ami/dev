@@ -112,8 +112,19 @@ public class NoticeController {
 	}
 	
 	//공지사항 삭제하기 (관리자만)
+	@GetMapping("delete")
+	public String delete(String num) throws Exception {
+		int result = ns.delete(num);
+		
+		if(result != 1) {
+			throw new Exception("공지사항 삭제 실패 ...");
+		}
+		
+		return "redirect:/notice/list?page=1";
+	}
 	
-}
+}//class
+
 
 
 

@@ -39,6 +39,10 @@ public class NoticeService {
 		return dao.edit(sst , vo);
 	}
 
+	public int delete(String num) {
+		return dao.delete(sst , num);
+	}
+
 }
 
 
