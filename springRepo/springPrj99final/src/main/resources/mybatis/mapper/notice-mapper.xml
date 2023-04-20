@@ -50,6 +50,12 @@
   			, MODIFY_DATE = SYSDATE
   	WHERE NO = #{num}
   </update>
+  
+  <select id="getNoticeListCnt" resultType="int">
+  	SELECT COUNT(*)
+  	FROM NOTICE
+  	WHERE STATUS = 'O'
+  </select>
 
 </mapper>
 

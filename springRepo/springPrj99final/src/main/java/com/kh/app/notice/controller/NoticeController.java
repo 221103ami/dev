@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.app.common.page.PageVo;
 import com.kh.app.member.vo.MemberVo;
 import com.kh.app.notice.service.NoticeService;
 import com.kh.app.notice.vo.NoticeVo;
@@ -28,9 +31,16 @@ public class NoticeController {
 
 	//공지사항 목록 조회
 	@GetMapping("list")
-	public String list(Model model) {
+	public String list(Model model ,@RequestParam(defaultValue = "1") int page) {
+		
 		//서비스
-		List<NoticeVo> nvoList = ns.getNoticeList();
+		int listCount = ns.getNoticeListCnt();
+		int currentPage = page;
+		int pageLimit = 5;
+		int boardLimit = 10;
+		
+		PageVo pv = new PageVo(listCount, currentPage, pageLimit, boardLimit);
+		List<NoticeVo> nvoList = ns.getNoticeList(pv);
 		
 		//화면
 		model.addAttribute("nvoList", nvoList);

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.app.common.page.PageVo;
 import com.kh.app.notice.dao.NoticeDao;
 import com.kh.app.notice.vo.NoticeVo;
 
@@ -23,8 +24,8 @@ public class NoticeService {
 		this.sst = sst;
 	}
 
-	public List<NoticeVo> getNoticeList() {
-		return dao.getNoticeList(sst);
+	public List<NoticeVo> getNoticeList(PageVo pv) {
+		return dao.getNoticeList(sst , pv);
 	}
 
 	public int write(NoticeVo vo) {
@@ -41,6 +42,10 @@ public class NoticeService {
 
 	public int delete(String num) {
 		return dao.delete(sst , num);
+	}
+
+	public int getNoticeListCnt() {
+		return dao.getNoticeListCnt(sst);
 	}
 
 }
