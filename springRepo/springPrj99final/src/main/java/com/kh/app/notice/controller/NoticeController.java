@@ -43,6 +43,7 @@ public class NoticeController {
 		List<NoticeVo> nvoList = ns.getNoticeList(pv);
 		
 		//화면
+		model.addAttribute("pv", pv);
 		model.addAttribute("nvoList", nvoList);
 		return "notice/list";
 	}

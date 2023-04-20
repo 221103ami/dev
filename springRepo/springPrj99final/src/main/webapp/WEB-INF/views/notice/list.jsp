@@ -17,6 +17,14 @@
 		background-color: lightgray;
 		cursor: pointer;
 	}
+	
+	#page-area{
+		width:300px;
+		margin : auto;
+		margin-top : 30px;
+		display : flex;
+		justify-content: space-evenly;
+	}
 
 </style>
 </head>
@@ -57,6 +65,23 @@
 				
 				</tbody>
 			</table>
+			
+			<div id="page-area">
+				<c:if test="${pv.currentPage > 1}">
+					<a class="btn btn-primary btn-sm" href="${root}/notice/list?page=${pv.currentPage-1}">이전</a>
+				</c:if>
+				<c:forEach begin="${pv.startPage}" end="${pv.endPage}" step="1" var="i">
+					<c:if test="${pv.currentPage != i}">
+						<a class="btn btn-primary btn-sm" href="${root}/notice/list?page=${i}">${i}</a>
+					</c:if>
+					<c:if test="${pv.currentPage == i}">
+						<a class="btn btn-secondary btn-sm">${i}</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pv.currentPage < pv.maxPage}">
+					<a class="btn btn-primary btn-sm" href="${root}/notice/list?page=${pv.currentPage+1}">다음</a>
+				</c:if>
+			</div>
 
 		</main>
 		
