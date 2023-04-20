@@ -89,6 +89,17 @@ public class NoticeController {
 	//공지사항 수정하기 (관리자만)
 	@PostMapping("edit")
 	public String edit(NoticeVo vo , Model model , HttpSession session) {
+		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+		String id = null;
+		if(loginMember != null) {
+			id = loginMember.getId();
+		}
+		
+		if(!"ADMIN".equalsIgnoreCase(id)) {
+			model.addAttribute("errorMsg", "잘못된 요청입니다 ...");
+			return "common/error-page";
+		}
+		
 		int result = ns.edit(vo);
 		
 		if(result != 1) {

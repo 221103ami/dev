@@ -65,10 +65,12 @@
                     <div>내용</div>
                     <div>${vo.content}</div>
                 </div>
-                <div id="notice-btn-area">
-                    <button onclick="toggleActive();">수정하기</button>
-                    <button onclick="location.href='${root}/notice/delete?num=${vo.no}'">삭제하기</button>
-                </div>
+                <c:if test="${loginMember.id eq 'ADMIN'}">
+	                <div id="notice-btn-area">
+	                    <button onclick="toggleActive();">수정하기</button>
+	                    <button onclick="location.href='${root}/notice/delete?num=${vo.no}'">삭제하기</button>
+	                </div>
+                </c:if>
             </div>
 
 
