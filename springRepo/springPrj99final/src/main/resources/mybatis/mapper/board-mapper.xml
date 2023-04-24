@@ -71,7 +71,7 @@
 	        , MODIFY_DATE = SYSDATE
 	    WHERE   NO = #{no}
 	    AND     STATUS = 'O'
-	    AND     WRITER_NO = #{loginMember.no}
+	    AND     WRITER_NO = #{writerNo}
 	</update>
 	
 	<update id="delete">
@@ -80,8 +80,14 @@
 	        STATUS = 'X'
 	        , MODIFY_DATE = SYSDATE
 	    WHERE   NO = #{no}
-	    AND     WRITER_NO = #{loginMember.no}
+	    AND     WRITER_NO = #{writerNo}
 	</update>
+	
+	<select id="getCnt" resultType="int">
+		SELECT COUNT(NO)
+		FROM BOARD
+		WHERE STATUS = 'O'
+	</select>
 	
 </mapper>
 
