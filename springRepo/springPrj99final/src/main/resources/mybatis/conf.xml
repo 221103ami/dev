@@ -13,6 +13,7 @@
   <typeAliases>
   	<typeAlias type="com.kh.app.member.vo.MemberVo" alias="memberVo"/>
   	<typeAlias type="com.kh.app.notice.vo.NoticeVo" alias="noticeVo"/>
+  	<typeAlias type="com.kh.app.board.vo.BoardVo" alias="boardVo"/>
   </typeAliases>
   
 </configuration>

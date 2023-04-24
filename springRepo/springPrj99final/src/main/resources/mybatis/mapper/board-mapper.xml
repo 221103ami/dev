@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="board">
+
+	<select id="getBoardList" resultType="boardVo">
+		SELECT 
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,CATEGORY_NO
+		    ,ENROLL_DATE
+		    ,STATUS
+		    ,MODIFY_DATE
+		    ,HIT
+		FROM BOARD
+		WHERE STATUS = 'O'
+		ORDER BY NO DESC
+	</select>
+	
+	<insert id="write">
+		INSERT INTO BOARD
+		(
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,CATEGORY_NO
+		)
+		VALUES
+		(
+		    SEQ_BOARD_NO.NEXTVAL
+		    , #{title}
+		    , #{content}
+		    , #{writerNo}
+		    , #{categoryNo}
+		)
+	</insert>
+	
+	<select id="getBoard" resultType="boardVo">
+		SELECT 
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,CATEGORY_NO
+		    ,ENROLL_DATE
+		    ,STATUS
+		    ,MODIFY_DATE
+		    ,HIT
+		FROM BOARD
+		WHERE   STATUS = 'O'
+		AND     NO = #{no}
+	</select>
+	
+	<update id="increaseHit">
+		UPDATE BOARD
+		    SET HIT = HIT+1
+	    WHERE   NO = #{no}
+	    AND     STATUS = 'O'
+	</update>
+	
+	<update id="updateBoard">
+		UPDATE BOARD
+	    SET 
+	        TITLE = #{title}
+	        , CONTENT = #{content}
+	        , MODIFY_DATE = SYSDATE
+	    WHERE   NO = #{no}
+	    AND     STATUS = 'O'
+	    AND     WRITER_NO = #{loginMember.no}
+	</update>
+	
+	<update id="delete">
+		UPDATE BOARD
+	    SET
+	        STATUS = 'X'
+	        , MODIFY_DATE = SYSDATE
+	    WHERE   NO = #{no}
+	    AND     WRITER_NO = #{loginMember.no}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
