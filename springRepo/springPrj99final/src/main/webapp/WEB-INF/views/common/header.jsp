@@ -41,7 +41,7 @@
 	                <button onclick="location.href='${root}/member/join'">회원가입</button>
             	</c:if>
             	<c:if test="${ not empty loginMember }">
-            		${ loginMember.nick } 님 환영합니다. ~^^
+            		<img width="80px" height="80px" alt="프로필이미지" src="${root}/resources/upload/member/${loginMember.profileName}">
             		<br>
             		<a href="${root}/member/logout">로그아웃</a>
             	</c:if>

@@ -38,7 +38,7 @@
 		,ID
 		,PWD
 		,NICK
-		,PROFILE
+		,PROFILE	AS profileName
 		,HOBBY		AS hobbyStr
 		,STATUS
 		,ENROLL_DATE
