@@ -25,7 +25,7 @@
         <h1 align="center">회원가입</h1>
 
         <main>
-            <form action="${root}/member/join" method="POST" onsubmit="return checkValidation();">
+            <form action="${root}/member/join" method="POST" enctype="multipart/form-data" onsubmit="return checkValidation();">
                 <div id="form-area">
                     <div>
                         <input type="text" name="id" placeholder="아이디">

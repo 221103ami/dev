@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.app.common.file.FileUploader;
 import com.kh.app.member.service.MemberService;
 import com.kh.app.member.vo.MemberVo;
 
@@ -38,6 +39,11 @@ public class MemberController {
 	//회원가입 
 	@PostMapping("join")
 	public String join(MemberVo vo , HttpServletRequest req , HttpSession session , Model model) throws Exception {
+		
+		//파일업로드
+		String path = req.getServletContext().getRealPath("/resources/upload/member/");
+		String changeName = FileUploader.upload(vo.getProfile() , path);
+		vo.setProfileName(changeName);
 		
 		//서비스
 		int result = ms.join(vo);

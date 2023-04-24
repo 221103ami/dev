@@ -21,7 +21,7 @@
 		, #{id}
 		, #{pwd}
 		, #{nick}
-		, #{profile}
+		, #{profileName}
 		, #{hobbyStr}
   	)
   </insert>
