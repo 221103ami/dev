@@ -55,8 +55,12 @@ public class BoardService {
 	}
 	
 	// 게시글 갯수 조회
-	public int getCnt() {
-		return dao.getCnt(sst);
+	public int getCnt(Map<String, String> searchMap) {
+		return dao.getCnt(sst , searchMap);
+	}
+
+	public List<Map<String, String>> getCategoryList() {
+		return dao.getCategoryList(sst);
 	}
 
 }

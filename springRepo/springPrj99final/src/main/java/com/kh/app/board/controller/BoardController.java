@@ -38,7 +38,7 @@ public class BoardController {
 	public String getBoardList(@RequestParam(defaultValue = "1") int page ,@RequestParam Map<String , String> searchMap, Model model) {
 		
 		//데이터
-		int listCount = bs.getCnt();
+		int listCount = bs.getCnt(searchMap);
 		int currentPage = page;
 		int pageLimit = 5;
 		int boardLimit = 10;
@@ -46,8 +46,11 @@ public class BoardController {
 		
 		//서비스
 		List<BoardVo> bvoList = bs.getBoardList(pv, searchMap);
+		List<Map<String, String>> cvoList = bs.getCategoryList();
 		
 		//화면
+		model.addAttribute("cvoList" , cvoList);
+		model.addAttribute("searchMap" , searchMap);
 		model.addAttribute("pv" , pv);
 		model.addAttribute("bvoList" , bvoList);
 		return "board/list";

@@ -29,7 +29,7 @@
 			AND B.CONTENT LIKE '%${searchValue}%'
 		</if>
 		<if test="searchType == 'category'">
-			AND B.CATEGORY_NO = #{searchValue};
+			AND B.CATEGORY_NO = #{searchValue}
 		</if>
 		ORDER BY B.NO DESC
 	</select>
@@ -98,8 +98,24 @@
 	
 	<select id="getCnt" resultType="int">
 		SELECT COUNT(NO)
-		FROM BOARD
+		FROM BOARD B
 		WHERE STATUS = 'O'
+		<if test="searchType == 'title'">
+			AND B.TITLE LIKE '%${searchValue}%'
+		</if>
+		<if test="searchType == 'content'">
+			AND B.CONTENT LIKE '%${searchValue}%'
+		</if>
+		<if test="searchType == 'category'">
+			AND B.CATEGORY_NO = #{searchValue}
+		</if>
+	</select>
+	
+	<select id="getCategoryList" resultType="map">
+		SELECT 
+			NO
+			, NAME
+		FROM CATEGORY
 	</select>
 	
 </mapper>

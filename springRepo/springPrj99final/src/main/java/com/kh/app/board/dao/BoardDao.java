@@ -47,8 +47,12 @@ public class BoardDao {
 	}
 	
 	//	--게시글 갯수 조회
-	public int getCnt(SqlSessionTemplate sst) {
-		return sst.selectOne("board.getCnt");
+	public int getCnt(SqlSessionTemplate sst, Map<String, String> searchMap) {
+		return sst.selectOne("board.getCnt" , searchMap);
+	}
+
+	public List<Map<String, String>> getCategoryList(SqlSessionTemplate sst) {
+		return sst.selectList("board.getCategoryList");
 	}
 	
 
