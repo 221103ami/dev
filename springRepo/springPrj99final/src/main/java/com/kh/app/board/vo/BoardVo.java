@@ -16,5 +16,26 @@ public class BoardVo {
 	private String status;
 	private String modifyDate;
 	private String hit;
+	private String categoryName;
+	private String writerName;
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

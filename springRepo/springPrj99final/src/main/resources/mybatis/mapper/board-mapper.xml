@@ -7,18 +7,31 @@
 
 	<select id="getBoardList" resultType="boardVo">
 		SELECT 
-		    NO
-		    ,TITLE
-		    ,CONTENT
-		    ,WRITER_NO
-		    ,CATEGORY_NO
-		    ,ENROLL_DATE
-		    ,STATUS
-		    ,MODIFY_DATE
-		    ,HIT
-		FROM BOARD
-		WHERE STATUS = 'O'
-		ORDER BY NO DESC
+		    B.NO
+		    ,B.TITLE
+		    ,B.CONTENT
+		    ,B.WRITER_NO
+		    ,B.CATEGORY_NO
+		    ,B.ENROLL_DATE
+		    ,B.STATUS
+		    ,B.MODIFY_DATE
+		    ,B.HIT
+		    ,NVL(C.NAME , '없음') AS CATEGORY_NAME
+		    ,M.NICK AS WRITER_NAME
+		FROM BOARD B
+		LEFT JOIN CATEGORY C ON (B.CATEGORY_NO = C.NO)
+		JOIN MEMBER M ON (B.WRITER_NO = M.NO)
+		WHERE B.STATUS = 'O'
+		<if test="searchType == 'title'">
+			AND B.TITLE LIKE '%${searchValue}%'
+		</if>
+		<if test="searchType == 'content'">
+			AND B.CONTENT LIKE '%${searchValue}%'
+		</if>
+		<if test="searchType == 'category'">
+			AND B.CATEGORY_NO = #{searchValue};
+		</if>
+		ORDER BY B.NO DESC
 	</select>
 	
 	<insert id="write">

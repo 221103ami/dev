@@ -1,6 +1,7 @@
 package com.kh.app.board.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,11 +14,11 @@ import com.kh.app.common.page.PageVo;
 public class BoardDao {
 
 	//	--목록조회
-	public List<BoardVo> getBoardList(SqlSessionTemplate sst , PageVo pv) {
+	public List<BoardVo> getBoardList(SqlSessionTemplate sst , PageVo pv, Map<String, String> searchMap) {
 		int limit = pv.getBoardLimit();
 		int offset = (pv.getCurrentPage()-1) * limit;
 		RowBounds rb = new RowBounds(offset , limit);
-		return sst.selectList("board.getBoardList" , null , rb);
+		return sst.selectList("board.getBoardList" , searchMap , rb);
 	}
 	
 	//	--작성하기

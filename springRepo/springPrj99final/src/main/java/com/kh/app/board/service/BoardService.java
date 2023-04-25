@@ -1,6 +1,7 @@
 package com.kh.app.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class BoardService {
 	}
 	
 	// 목록조회
-	public List<BoardVo> getBoardList(PageVo pv) {
-		return dao.getBoardList(sst, pv);
+	public List<BoardVo> getBoardList(PageVo pv, Map<String, String> searchMap) {
+		return dao.getBoardList(sst, pv , searchMap);
 	}
 	
 	// 작성하기

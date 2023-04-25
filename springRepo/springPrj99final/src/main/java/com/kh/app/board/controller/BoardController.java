@@ -1,6 +1,7 @@
 package com.kh.app.board.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +19,9 @@ import com.kh.app.board.vo.BoardVo;
 import com.kh.app.common.page.PageVo;
 import com.kh.app.member.vo.MemberVo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("board")
 public class BoardController {
@@ -31,7 +35,7 @@ public class BoardController {
 
 	// 목록조회
 	@GetMapping("list")
-	public String getBoardList(@RequestParam(defaultValue = "1") int page , Model model) {
+	public String getBoardList(@RequestParam(defaultValue = "1") int page ,@RequestParam Map<String , String> searchMap, Model model) {
 		
 		//데이터
 		int listCount = bs.getCnt();
@@ -41,11 +45,18 @@ public class BoardController {
 		PageVo pv = new PageVo(listCount, currentPage, pageLimit, boardLimit);
 		
 		//서비스
-		List<BoardVo> bvoList = bs.getBoardList(pv);
+		List<BoardVo> bvoList = bs.getBoardList(pv, searchMap);
 		
 		//화면
+		model.addAttribute("pv" , pv);
 		model.addAttribute("bvoList" , bvoList);
 		return "board/list";
+	}
+	
+	// 작성하기 (화면)
+	@GetMapping("write")
+	public String write() {
+		return "board/write";
 	}
 	
 	// 작성하기
