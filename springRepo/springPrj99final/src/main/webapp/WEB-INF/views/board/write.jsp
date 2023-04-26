@@ -89,9 +89,16 @@
 
 	//이벤트 핸들러 연결
 	fileTag.addEventListener('change' , function(){
-		const reader = new FileReader();
-		reader.addEventListener("load" , processPreview);
-		reader.readAsDataURL(fileTag.files[0]);
+		thumbnailArea.innerHTML = '';		//썸네일 에리어 지우기
+
+		//파일 있으면 미리보기 작업 진행
+		if(fileTag.files.length > 0){
+			for(let f of fileTag.files){
+				const reader = new FileReader();
+				reader.addEventListener("load" , processPreview);
+				reader.readAsDataURL(f);
+			}
+		}
 	});
 
 	//이미지 요소 만들어서, 화면에 추가
