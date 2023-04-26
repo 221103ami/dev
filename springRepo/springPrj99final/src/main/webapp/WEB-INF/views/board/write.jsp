@@ -30,6 +30,11 @@
 		grid-column: span 4;
 	}
 
+	#thumbnail-tag{
+		/* display: none; */
+	}
+
+
 </style>
 
 </head>
@@ -43,12 +48,13 @@
 			
 			<h1>게시글 작성하기</h1>
 
-			<form action="최상단/board/write" method="POST">
+			<form action="${root}/board/write" method="POST">
 				<div id="form-area">
 					<label>제목</label>
 					<input type="text" name="title" placeholder="제목을 입력하세요">
 					<label>주제</label>
 					<select name="categoryNo">
+						<option>없음</option>
 						<option value="10">자유</option>
 						<option value="20">코딩</option>
 						<option value="30">게임</option>
@@ -58,8 +64,8 @@
 					<label>내용</label>
 					<textarea name="content"></textarea>
 					<div>
-						<label>사진</label>
-						<input type="file" name="f" multiple accept=".jpg,.png,.jpeg">
+						<label for="thumbnail-tag">사진</label>
+						<input id="thumbnail-tag" type="file" name="f" multiple accept=".jpg,.png,.jpeg">
 					</div>
 					<div id="thumbnail-area"></div>
 					<input type="submit" value="작성하기">
@@ -73,6 +79,31 @@
 </body>
 </html>
 
+
+<script>
+	//업로드 파일 미리보기
+
+	//변수 준비
+	const fileTag = document.querySelector('input[name="f"]');
+	const thumbnailArea = document.querySelector('#thumbnail-area');
+
+	//이벤트 핸들러 연결
+	fileTag.addEventListener('change' , function(){
+		const reader = new FileReader();
+		reader.addEventListener("load" , processPreview);
+		reader.readAsDataURL(fileTag.files[0]);
+	});
+
+	//이미지 요소 만들어서, 화면에 추가
+	function processPreview(event){
+		const imgTag = document.createElement('img');
+		imgTag.setAttribute("src" , event.target.result);
+		imgTag.setAttribute("width" , "100px");
+		imgTag.setAttribute("height" , "100px");
+		thumbnailArea.appendChild(imgTag);
+	}
+
+</script>
 
 
 

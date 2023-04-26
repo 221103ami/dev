@@ -50,6 +50,18 @@
 		margin: auto; 
 	}
 	
+	#write-btn-area{
+		width : 600px;
+		margin : auto;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+	tbody > tr:hover {
+		background-color: darkgray;
+		cursor: pointer;
+	}
+	
 </style>
 </head>
 <body>
@@ -101,6 +113,12 @@
 					</c:forEach>
 				</tbody>
 			</table>
+
+			<c:if test="${not empty loginMember}">
+				<div id="write-btn-area">
+					<a class="btn btn-primary" href="${root}/board/write">작성하기</a>
+				</div>
+			</c:if>
 
 			<div id="page-area">
 				<c:if test="${pv.currentPage > 1}">
@@ -196,7 +214,25 @@
 	//이벤트 리스너 //서치밸류 형태 변경하는 이벤트 등록
 	searchTypeTag.addEventListener('change' , toggleSearchValueTag);
 	
+	
+	//행 클릭했을 때 , 상세조회
+	const tbody = document.querySelector('main > table > tbody');
+	tbody.addEventListener("click" , (event)=>{
+		const no = event.target.parentNode.children[0].innerText;
+		location.href = '${root}/board/detail?no=' + no;
+	});
+
+	
+	
 </script>
+
+
+
+
+
+
+
+
 
 
 

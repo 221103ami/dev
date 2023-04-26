@@ -55,18 +55,20 @@
 	
 	<select id="getBoard" resultType="boardVo">
 		SELECT 
-		    NO
-		    ,TITLE
-		    ,CONTENT
-		    ,WRITER_NO
-		    ,CATEGORY_NO
-		    ,ENROLL_DATE
-		    ,STATUS
-		    ,MODIFY_DATE
-		    ,HIT
-		FROM BOARD
-		WHERE   STATUS = 'O'
-		AND     NO = #{no}
+		    B.NO
+		    ,B.TITLE
+		    ,B.CONTENT
+		    ,B.WRITER_NO
+		    ,B.CATEGORY_NO
+		    ,B.ENROLL_DATE
+		    ,B.STATUS
+		    ,B.MODIFY_DATE
+		    ,B.HIT
+		    ,C.NAME AS categoryName
+		FROM BOARD B
+		LEFT JOIN CATEGORY C ON (B.CATEGORY_NO = C.NO)
+		WHERE   B.STATUS = 'O'
+		AND     B.NO = #{no}
 	</select>
 	
 	<update id="increaseHit">

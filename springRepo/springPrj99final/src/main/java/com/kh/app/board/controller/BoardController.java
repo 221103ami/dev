@@ -64,7 +64,20 @@ public class BoardController {
 	
 	// 작성하기
 	@PostMapping("write")
-	public String write(BoardVo vo) throws Exception {
+	public String write(BoardVo vo , HttpSession session) throws Exception {
+		
+		//로그인 여부 체크
+		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		if( loginMember == null ) {
+			throw new Exception("로그인 후 이용 가능합니다.");
+		}
+		
+		//데이터 준비
+		if("없음".equals(vo.getCategoryNo())) {
+			vo.setCategoryNo(null);
+		}
+		vo.setWriterNo(loginMember.getNo());
+		
 		int result = bs.write(vo);
 		if(result != 1) {
 			throw new Exception("게시글 작성 실패 ...");
