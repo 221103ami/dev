@@ -58,7 +58,7 @@ CREATE TABLE BOARD(
     NO              NUMBER          PRIMARY KEY
     , TITLE         VARCHAR2(100)   NOT NULL
     , CONTENT       VARCHAR2(4000)  NOT NULL
-    , WRITER_NO     NUMBER
+    , WRITER_NO     NUMBER          NOT NULL
     , CATEGORY_NO   NUMBER
     , ENROLL_DATE   TIMESTAMP       DEFAULT SYSDATE
     , STATUS        CHAR(1)         DEFAULT 'O' CHECK( STATUS IN ('O' , 'X') )
