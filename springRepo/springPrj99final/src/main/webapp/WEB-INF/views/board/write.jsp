@@ -48,7 +48,7 @@
 			
 			<h1>게시글 작성하기</h1>
 
-			<form action="${root}/board/write" method="POST">
+			<form action="${root}/board/write" method="POST" enctype="multipart/form-data">
 				<div id="form-area">
 					<label>제목</label>
 					<input type="text" name="title" placeholder="제목을 입력하세요">

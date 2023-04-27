@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.app.board.vo.BoardVo;
+import com.kh.app.common.file.FileVo;
 import com.kh.app.common.page.PageVo;
 
 @Repository
@@ -53,6 +54,10 @@ public class BoardDao {
 
 	public List<Map<String, String>> getCategoryList(SqlSessionTemplate sst) {
 		return sst.selectList("board.getCategoryList");
+	}
+
+	public int insertAttachment(SqlSessionTemplate sst, List<FileVo> fvoList) {
+		return sst.insert("board.insertAttachment" , fvoList);
 	}
 	
 

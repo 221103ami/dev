@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.app.board.dao.BoardDao;
 import com.kh.app.board.vo.BoardVo;
+import com.kh.app.common.file.FileVo;
 import com.kh.app.common.page.PageVo;
 
 @Service
@@ -30,9 +31,21 @@ public class BoardService {
 		return dao.getBoardList(sst, pv , searchMap);
 	}
 	
+	/**
+	 * BOARD 에 insert
+	 * ATTACHMENT 에 changeNameList 의 값들을 insert (BOARD 기본키 참조)
+	 * 
+	 * @param 게시글 관련 데이터
+	 * @param 파일업로드 이후 저장된 파일명 리스트
+	 * @return Board테이블 및 Attachment 테이블 에 insert 한 결과
+	 */
 	// 작성하기
-	public int write(BoardVo vo) {
-		return dao.write(sst, vo);
+	public int write(BoardVo vo, List<FileVo> fvoList) throws Exception {
+		int boardResult = dao.write(sst, vo);
+		if(boardResult != 1) {
+			throw new Exception();
+		}
+		return dao.insertAttachment(sst , fvoList);
 	}
 	
 	// 상세조회 (조회수)
