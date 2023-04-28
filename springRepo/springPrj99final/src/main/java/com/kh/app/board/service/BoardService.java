@@ -54,7 +54,10 @@ public class BoardService {
 		if(result != 1) {
 			throw new Exception();
 		}
-		return dao.getBoard(sst, no);
+		BoardVo bvo = dao.getBoard(sst, no);
+		List<FileVo> fileList = dao.getAttachmentList(sst , no);
+		bvo.setAttList(fileList);
+		return bvo;
 	}
 	
 	// 수정하기 (작성자 본인만)

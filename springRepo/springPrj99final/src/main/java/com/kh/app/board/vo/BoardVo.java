@@ -1,6 +1,10 @@
 package com.kh.app.board.vo;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kh.app.common.file.FileVo;
 
 import lombok.Data;
 
@@ -18,6 +22,7 @@ public class BoardVo {
 	private String hit;
 	private String categoryName;
 	private String writerName;
+	private List<FileVo> attList;
 	
 }
 

@@ -59,6 +59,10 @@ public class BoardDao {
 	public int insertAttachment(SqlSessionTemplate sst, List<FileVo> fvoList) {
 		return sst.insert("board.insertAttachment" , fvoList);
 	}
+
+	public List<FileVo> getAttachmentList(SqlSessionTemplate sst, String no) {
+		return sst.selectList("board.getAttachmentList" , no);
+	}
 	
 
 }

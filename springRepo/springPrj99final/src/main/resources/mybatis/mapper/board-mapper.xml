@@ -128,6 +128,19 @@
 		SELECT 1 FROM DUAL
 	</insert>
 	
+	<select id="getAttachmentList" resultType="fileVo">
+		SELECT 
+			NO
+			,BNO
+			,ORIGIN_NAME
+			,CHANGE_NAME
+			,ENROLL_DATE
+			,STATUS
+		FROM ATTACHMENT
+		WHERE BNO = #{bno}
+		AND STATUS = 'O'
+	</select>
+	
 </mapper>
 
 

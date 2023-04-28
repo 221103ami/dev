@@ -14,6 +14,7 @@
   	<typeAlias type="com.kh.app.member.vo.MemberVo" alias="memberVo"/>
   	<typeAlias type="com.kh.app.notice.vo.NoticeVo" alias="noticeVo"/>
   	<typeAlias type="com.kh.app.board.vo.BoardVo" alias="boardVo"/>
+  	<typeAlias type="com.kh.app.common.file.FileVo" alias="fileVo"/>
   </typeAliases>
   
 </configuration>
