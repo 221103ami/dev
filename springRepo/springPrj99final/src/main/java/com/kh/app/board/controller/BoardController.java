@@ -114,6 +114,7 @@ public class BoardController {
 			throw new Exception("게시글 상세 조회 실패 ...");
 		}
 		model.addAttribute("bvo" , vo);
+		model.addAttribute("path" , "resources/upload/board");
 		return "board/detail";
 	}
 	

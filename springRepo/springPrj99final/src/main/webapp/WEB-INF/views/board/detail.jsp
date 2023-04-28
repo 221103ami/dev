@@ -62,7 +62,9 @@
 						<label for="thumbnail-tag">사진</label>
 						<input id="thumbnail-tag" type="file" name="f" multiple accept=".jpg,.png,.jpeg">
 					</div>
-					<div id="thumbnail-area"></div>
+					<div id="thumbnail-area">
+					
+					</div>
 				</div>
 			</form>
 			
@@ -73,9 +75,23 @@
 </body>
 </html>
 
+<script>
 
+	const div = document.querySelector('#thumbnail-area');
+	
+	let imgTag;
+	<c:forEach items="${bvo.attList}" var="fvo">
+		//이미지 요소 만들기
+		imgTag = document.createElement('img');
+		imgTag.setAttribute("src" , "${root}/${path}/${fvo.changeName}");
+		imgTag.setAttribute("alt" , "${fvo.originName}");
+		imgTag.setAttribute("width" , "100px");
+		imgTag.setAttribute("height" , '100px');
+		//이미지 요소를 div 안에 추가하기
+		div.appendChild(imgTag);
+	</c:forEach>
 
-
+</script>
 
 
 
