@@ -1,12 +1,18 @@
 package com.kh.app.board.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -150,8 +156,53 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	//파일 다운로드
+	@GetMapping("att/down")
+	public void download(HttpServletResponse resp , String ano) throws Exception {
+		
+		//header 셋팅
+		resp.setHeader("Content-Type", "application/octet-stream");
+		resp.setHeader("Content-Disposition", "~~~");
+		resp.setHeader("Content-Length", "~~~");
+		
+		//내보낼 통로 준비
+		resp.setContentType("application/octet-stream");
+		ServletOutputStream os = resp.getOutputStream();
+		
+		//파일 객체 준비
+		String path = "개발자가 직접 써줄예정";
+		String changeName = bs.getAttachment(ano);
+		File f = new File(path + changeName);
+		
+		//파일 객체를 이용해서 통로 준비
+		FileInputStream fis = new FileInputStream(f);
+		
+		//데이터 읽고 내보내기 (직접)
+//		byte[] buf = new byte[1024];
+//		int size = 0;
+//		while((size = fis.read(buf)) != -1) {
+//			os.write(buf , 0 , size);
+//		}
+		
+		//데이터 읽고 내보내기 (라이브러리)
+		byte[] data = FileUtils.readFileToByteArray(f) ;
+		os.write(data);
+		
+	}
+	
 
-}
+	
+	
+}//class
+
+
+
+
+
+
+
+
+
 
 
 

@@ -123,7 +123,10 @@
 	<insert id="insertAttachment">
 		INSERT ALL
 			<foreach collection="list" item="x" separator=" ">
-			    INTO ATTACHMENT(NO, BNO, ORIGIN_NAME, CHANGE_NAME) VALUES ((SELECT GET_ATTACHMENT_SEQ FROM DUAL), SEQ_BOARD_NO.CURRVAL , #{x.originName} , #{x.changeName})
+			    INTO ATTACHMENT
+			    (NO, BNO, ORIGIN_NAME, CHANGE_NAME) 
+			    VALUES 
+			    ((SELECT GET_ATTACHMENT_SEQ FROM DUAL), SEQ_BOARD_NO.CURRVAL , #{x.originName} , #{x.changeName})
 			</foreach>
 		SELECT 1 FROM DUAL
 	</insert>
