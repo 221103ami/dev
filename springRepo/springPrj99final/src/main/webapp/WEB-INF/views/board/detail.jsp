@@ -80,15 +80,23 @@
 	const div = document.querySelector('#thumbnail-area');
 	
 	let imgTag;
+	let aTag;
 	<c:forEach items="${bvo.attList}" var="fvo">
+		//a태그 만들기
+		aTag = document.createElement('a');
+		aTag.href = "${root}/board/att/down?ano=${fvo.no}";
 		//이미지 요소 만들기
 		imgTag = document.createElement('img');
 		imgTag.setAttribute("src" , "${root}/${path}/${fvo.changeName}");
 		imgTag.setAttribute("alt" , "${fvo.originName}");
 		imgTag.setAttribute("width" , "100px");
 		imgTag.setAttribute("height" , '100px');
-		//이미지 요소를 div 안에 추가하기
-		div.appendChild(imgTag);
+
+		//a태그 내부에 img 추가
+		aTag.appendChild(imgTag);
+
+		//div 안에 a태그 추가
+		div.appendChild(aTag);
 	</c:forEach>
 
 </script>

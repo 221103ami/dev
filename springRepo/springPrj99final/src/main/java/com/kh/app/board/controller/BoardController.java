@@ -3,6 +3,8 @@ package com.kh.app.board.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -156,23 +161,27 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	//파일 다운로드
-	@GetMapping("att/down")
-	public void download(HttpServletResponse resp , String ano) throws Exception {
+	//파일 다운로드 (방식1)
+//	@GetMapping("att/down")
+	public void download(HttpServletRequest req , HttpServletResponse resp , String ano) throws Exception {
+
+		//파일 객체 준비
+		String path = req.getServletContext().getRealPath("/resources/upload/board/");
+		FileVo fvo = bs.getAttachment(ano);
+		File f = new File(path + fvo.getChangeName());
+		
+		//바이트 배열로 변환
+		byte[] data = FileUtils.readFileToByteArray(f) ;
 		
 		//header 셋팅
+//		resp.setContentType("application/octet-stream");	//아래줄과 동일함
 		resp.setHeader("Content-Type", "application/octet-stream");
-		resp.setHeader("Content-Disposition", "~~~");
-		resp.setHeader("Content-Length", "~~~");
+		resp.setHeader("Content-Disposition", "attachment; filename=" + "\"" + URLEncoder.encode(fvo.getOriginName() , "UTF-8") + "\"" );
+		resp.setHeader("Content-Length", data.length + "");
+//		resp.setHeader("당근", "유저01입니다.");
 		
 		//내보낼 통로 준비
-		resp.setContentType("application/octet-stream");
 		ServletOutputStream os = resp.getOutputStream();
-		
-		//파일 객체 준비
-		String path = "개발자가 직접 써줄예정";
-		String changeName = bs.getAttachment(ano);
-		File f = new File(path + changeName);
 		
 		//파일 객체를 이용해서 통로 준비
 		FileInputStream fis = new FileInputStream(f);
@@ -185,12 +194,54 @@ public class BoardController {
 //		}
 		
 		//데이터 읽고 내보내기 (라이브러리)
-		byte[] data = FileUtils.readFileToByteArray(f) ;
+		
+		
+		
+		//내보내기
 		os.write(data);
+		
+		
+		/*
+		 * Content-Type : 사용자(브라우저)에게 알려주는 이 데이터의 형식
+		 * Content-Disposition : 사용자 화면에 표시되는 다운로드 파일 이름
+		 * Content-Length : 데이터의 크기 (사용자 화면에 다운로드 진행상황 표시 가능)
+		 * 
+		 * 띄어쓰기가 정상적으로 인식되려면, 
+		 * filename="파일명" 형태로 따옴표로 감싸져야함
+		 *  
+		 * 한글 등 유니코드가 정상처리되려면 다음과 같은 처리가 필요하다.
+		 * URLEncoder.encode(값,"UTF-8");
+		 * 위의 명령은 주소에 포함될 수 없는 형태의 글자들(%,? 등)을 가능한 형태로 변환
+		 */
 		
 	}
 	
 
+	
+	//파일 다운로드 (방식2)	//ResponseEntity
+	@GetMapping("att/down")
+	public void download2(String ano , HttpServletRequest req) throws Exception {
+		
+		
+		
+		//바디 채우기
+		//파일 객체 준비
+		String path = req.getServletContext().getRealPath("/resources/upload/board/");
+		FileVo fvo = bs.getAttachment(ano);
+		File f = new File(path + fvo.getChangeName());
+		//바이트 배열로 변환
+		byte[] data = FileUtils.readFileToByteArray(f) ;
+		
+		//헤더 채우기 (객체 만들면서 바로 진행)
+		//ResponseEntity 만들기
+		ResponseEntity
+			.ok()
+			.contentType(MediaType.APPLICATION_OCTET_STREAM)
+			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "\"" + URLEncoder.encode(fvo.getOriginName() , "UTF-8") + "\"" )
+			.contentLength(길이)
+			.body()
+		
+	}
 	
 	
 }//class

@@ -79,6 +79,10 @@ public class BoardService {
 		return dao.getCategoryList(sst);
 	}
 
+	public FileVo getAttachment(String ano) {
+		return dao.getAttachment(sst, ano);
+	}
+
 }
 
 

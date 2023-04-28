@@ -63,6 +63,10 @@ public class BoardDao {
 	public List<FileVo> getAttachmentList(SqlSessionTemplate sst, String no) {
 		return sst.selectList("board.getAttachmentList" , no);
 	}
+
+	public FileVo getAttachment(SqlSessionTemplate sst, String ano) {
+		return sst.selectOne("board.getAttachment" , ano);
+	}
 	
 
 }
