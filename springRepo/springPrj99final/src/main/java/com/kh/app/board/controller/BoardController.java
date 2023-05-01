@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -220,9 +221,7 @@ public class BoardController {
 	
 	//파일 다운로드 (방식2)	//ResponseEntity
 	@GetMapping("att/down")
-	public void download2(String ano , HttpServletRequest req) throws Exception {
-		
-		
+	public ResponseEntity<ByteArrayResource> download2(String ano , HttpServletRequest req) throws Exception {
 		
 		//바디 채우기
 		//파일 객체 준비
@@ -231,16 +230,20 @@ public class BoardController {
 		File f = new File(path + fvo.getChangeName());
 		//바이트 배열로 변환
 		byte[] data = FileUtils.readFileToByteArray(f) ;
+		ByteArrayResource bar = new ByteArrayResource(data);
 		
 		//헤더 채우기 (객체 만들면서 바로 진행)
 		//ResponseEntity 만들기
-		ResponseEntity
+		ResponseEntity<ByteArrayResource> entity = ResponseEntity
 			.ok()
 			.contentType(MediaType.APPLICATION_OCTET_STREAM)
 			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "\"" + URLEncoder.encode(fvo.getOriginName() , "UTF-8") + "\"" )
-			.contentLength(길이)
-			.body()
+			.header(HttpHeaders.CONTENT_ENCODING, "UTF-8")
+			.contentLength(data.length)
+			.body(bar)
+			;
 		
+		return entity;
 	}
 	
 	
