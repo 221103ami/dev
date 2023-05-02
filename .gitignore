@@ -15,3 +15,6 @@ mvnRepo/
 *.springBeans
 myapp.log
 springRepo/springPrj99final/src/test/
+.idea/
+*.class
+*.iml
