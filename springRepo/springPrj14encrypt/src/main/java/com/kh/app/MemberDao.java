@@ -12,4 +12,17 @@ public class MemberDao {
 		return sst.insert("member.join" , paramMap);
 	}
 
+	public Map<String, String> getMember(SqlSessionTemplate sst, Map<String, String> paramMap) {
+		return sst.selectOne("member.login" , paramMap);
+	}
+
 }
+
+
+
+
+
+
+
+
+

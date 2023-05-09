@@ -5,6 +5,14 @@
   
 <mapper namespace="member">
 
+  <select id="login" resultType="map">
+  	SELECT 
+  		ID
+  		,PWD
+  	FROM TEMP_MEMBER
+  	WHERE ID = #{id}
+  </select>
+
   <insert id="join">
 	  INSERT INTO TEMP_MEMBER
 	  (

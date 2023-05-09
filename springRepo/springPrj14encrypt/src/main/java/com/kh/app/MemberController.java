@@ -1,5 +1,6 @@
 package com.kh.app;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,26 @@ public class MemberController {
 		}
 		
 	}
+	
+	
+	//로그인 (화면)
+	@GetMapping("login")
+	public String login() {
+		return "login";
+	}
+	
+	//로그인
+	@PostMapping("login")
+	@ResponseBody
+	public String login(@RequestParam Map<String, String> paramMap) {
+		Map<String, String> memberMap = ms.login(paramMap);
+		return memberMap.get("ID") + " 님 로그인 성공 !";
+	}
+	
+	
 
 }
+
 
 
 

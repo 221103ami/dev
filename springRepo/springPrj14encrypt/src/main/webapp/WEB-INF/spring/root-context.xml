@@ -10,6 +10,11 @@
 
 
 <!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- 암호화 관련 Bean 등록 -->
+	<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	
+	</bean>
 	
 	<!-- DB 연결을 위한 Bean 등록 -->
 	

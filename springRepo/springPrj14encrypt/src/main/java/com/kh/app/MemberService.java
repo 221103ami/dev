@@ -14,18 +14,19 @@ public class MemberService {
 	
 	private final SqlSessionTemplate sst;
 	private final MemberDao dao;
+	private final BCryptPasswordEncoder enc;
 	
 	@Autowired
-	public MemberService(SqlSessionTemplate sst, MemberDao dao) {
+	public MemberService(SqlSessionTemplate sst, MemberDao dao , BCryptPasswordEncoder enc) {
 		this.sst = sst;
 		this.dao = dao;
+		this.enc = enc;
 	}
 
 	//회원가입
 	public int join(Map<String, String> paramMap) {
 		String pwd = paramMap.get("pwd");
 		
-		BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
 		String newPwd = enc.encode(pwd);
 		
 		paramMap.put("pwd", newPwd);
@@ -35,12 +36,16 @@ public class MemberService {
 	//로그인
 	public Map<String, String> login(Map<String, String> paramMap) {
 		
-		Map<String, String> memberMap = dao.getMember(paramMap);
+		Map<String, String> memberMap = dao.getMember(sst, paramMap);
 		
 		String userPwd = paramMap.get("pwd");
-		String dbPwd = memberMap.get("pwd");
-		
-		
+		String dbPwd = memberMap.get("PWD");
+		boolean result = enc.matches(userPwd, dbPwd);
+		if(result) {
+			return memberMap;
+		}else {
+			return null;
+		}
 	}
 
 }
