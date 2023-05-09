@@ -21,7 +21,6 @@
 	${ data.response.body.items.item[2] }
 	<br>
 	
-
 </body>
 </html>
 
