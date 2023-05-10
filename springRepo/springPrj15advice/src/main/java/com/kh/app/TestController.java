@@ -2,6 +2,7 @@ package com.kh.app;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,8 +14,8 @@ public class TestController {
 		throw new NotFoundException();
 	}
 	
-	@GetMapping("test")
-	public String test(int num) throws Exception {
+	@GetMapping(value = {"test/{num}" , "test"})
+	public String test(@PathVariable(required = false) int num) throws Exception {
 		
 		if(num == 4) {
 			throw new NullPointerException();
