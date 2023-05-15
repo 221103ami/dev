@@ -19,7 +19,8 @@
 	
 	<script>
 
-        const socket = new WebSocket("ws://127.0.0.1:8888/app/server");
+		const addr = prompt('웹소켓 경로입력 ( 예시 - 127.0.0.1:8888/app/server)');
+        const socket = new WebSocket("ws://" + addr);
 
         socket.onopen = function(){
             console.log("웹소켓 연결됨...");
@@ -29,6 +30,7 @@
         }
         socket.onerror = function(){
             console.log("웹소켓 연결 실패...");
+            alert("onerror .. 실패");
         }
         socket.onmessage = function(e){
             const msgArea = document.querySelector("#msg-area");
