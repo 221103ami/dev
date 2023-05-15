@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.app.member.vo.MemberVo;
 
+import oracle.net.aso.af;
+
 @Repository
 public class MemberDao {
 
@@ -17,6 +19,7 @@ public class MemberDao {
 	}
 
 	public MemberVo login(SqlSessionTemplate sst, MemberVo vo) {
+		System.out.println("로그인 dao 호출됨 ...");
 		return sst.selectOne("member.login" , vo);
 	}
 

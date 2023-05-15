@@ -37,6 +37,7 @@ import com.kh.app.common.page.PageVo;
 import com.kh.app.member.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
+import sim.wy.app.HiWorld;
 
 @Slf4j
 @Controller
@@ -53,6 +54,8 @@ public class BoardController {
 	// 목록조회
 	@GetMapping("list")
 	public String getBoardList(@RequestParam(defaultValue = "1") int page ,@RequestParam Map<String , String> searchMap, Model model) {
+		
+		new HiWorld().hi();
 		
 		//데이터
 		int listCount = bs.getCnt(searchMap);
