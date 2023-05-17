@@ -34,6 +34,14 @@
 		display: none;
 	}
 
+	#comment-area{
+		width: 100%;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		display: grid;
+		grid-template-columns: 5fr 1fr;
+	}
+
 
 </style>
 
@@ -68,6 +76,13 @@
 				</div>
 			</form>
 			
+			<div id="comment-area">
+				<input type="text" name="comment" placeholder="댓글을 입력하세요">
+				<button onclick="writeComment();" class="btn btn-primary btn-sm">댓글작성</button>
+				<div>댓글내용111</div>
+				<div>댓글작성자</div>
+			</div>
+			
 		</main>
 	
 	</div>
@@ -98,6 +113,35 @@
 		//div 안에 a태그 추가
 		div.appendChild(aTag);
 	</c:forEach>
+
+
+
+	function writeComment(){
+		//ajax 이용해서 서버에 댓글내용 보내기
+		const content = document.querySelector('input[name=comment]').value;
+		
+		$.ajax({
+			url : '${root}/board/reply/write' ,
+			type : 'POST' ,
+			data : {
+				'bno' : '${bvo.no}' ,
+				'content' : content ,
+			} , 
+			success : function(data){
+				if(data == 'ok'){
+					alert("댓글 작성 완료 !");
+				}else if(data == 'unauthor'){
+					alert("로그인 후 작성 가능합니다.");
+				}
+				else{
+					alert("댓글 작성 실패 ...");
+				}
+			} , 
+			error : function(){
+				alert('bad...');
+			} ,
+		});
+	}
 
 </script>
 
