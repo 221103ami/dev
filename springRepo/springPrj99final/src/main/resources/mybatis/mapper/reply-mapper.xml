@@ -5,6 +5,21 @@
 
 <mapper namespace="reply">
 
+	<select id="getReplyList" resultType="replyVo">
+		SELECT 
+		    R.NO
+		    ,R.BNO
+		    ,R.CONTENT
+		    ,R.WRITER_NO
+		    ,R.ENROLL_DATE
+		    ,R.STATUS
+		    ,M.NICK
+		FROM REPLY R
+		JOIN MEMBER M ON (R.WRITER_NO = M.NO)
+		WHERE R.BNO = #{bno}
+		AND R.STATUS = 'O'
+	</select>
+
 	<insert id="write">
 		
 		INSERT INTO REPLY

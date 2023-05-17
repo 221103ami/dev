@@ -1,4 +1,4 @@
-package com.kh.app.board.reply.controller;
+package com.kh.app.board.reply.vo;
 
 import lombok.Data;
 

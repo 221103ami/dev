@@ -1,11 +1,13 @@
 package com.kh.app.board.reply.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.app.board.reply.controller.ReplyVo;
 import com.kh.app.board.reply.dao.ReplyDao;
+import com.kh.app.board.reply.vo.ReplyVo;
 
 @Service
 public class ReplyService {
@@ -23,7 +25,12 @@ public class ReplyService {
 		return dao.write(sst , vo);
 	}
 
+	public List<ReplyVo> getReplyList(String bno) {
+		return dao.getReplyList(sst, bno);
+	}
+
 }
+
 
 
 
