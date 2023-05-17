@@ -42,10 +42,11 @@ public class BoardService {
 	// 작성하기
 	public int write(BoardVo vo, List<FileVo> fvoList) throws Exception {
 		int boardResult = dao.write(sst, vo);
-		if(boardResult != 1) {
-			throw new Exception();
+		int attResult = 1;
+		if(fvoList.size() > 0) {
+			attResult = dao.insertAttachment(sst , fvoList);
 		}
-		return dao.insertAttachment(sst , fvoList);
+		return boardResult * attResult;
 	}
 	
 	// 상세조회 (조회수)

@@ -99,14 +99,15 @@ public class BoardController {
 		
 		//데이터 준비 (이름 리스트)
 		List<FileVo> fvoList = new ArrayList<FileVo>();
-		int size = changeNameList.size();
-		for (int i = 0; i < size; i++) {
-			FileVo fvo = new FileVo();
-			fvo.setOriginName(originNameList.get(i));
-			fvo.setChangeName(changeNameList.get(i));
-			fvoList.add(fvo);
+		if(changeNameList != null) {
+			int size = changeNameList.size();
+			for (int i = 0; i < size; i++) {
+				FileVo fvo = new FileVo();
+				fvo.setOriginName(originNameList.get(i));
+				fvo.setChangeName(changeNameList.get(i));
+				fvoList.add(fvo);
+			}
 		}
-		
 		
 		//데이터 준비 (카테고리)
 		if("없음".equals(vo.getCategoryNo())) {
@@ -115,7 +116,7 @@ public class BoardController {
 		vo.setWriterNo(loginMember.getNo());
 		
 		int result = bs.write(vo , fvoList);
-		if( changeNameList != null && result < 1 ) {	//근데,, 사진 첨부 안하면?? 실패임??? 일단 킾 ,,,
+		if( result <= 0 ) {
 			throw new Exception("게시글 작성 실패 ...");
 		}
 		return "redirect:/board/list";
