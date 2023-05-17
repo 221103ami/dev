@@ -51,8 +51,8 @@ public class TimerAspect {
 	
 	// 메소드 형태가 지정되어 있음
 	// 리턴타입 , 파라미터 , 예외
-	//@Around("target(com.kh.app.member.dao.MemberDao)")
-	@Around("execution( public * com.kh.app.member.dao.MemberDao.login(..) )")
+	@Around("execution( public * com.kh.app.*.dao.*.*(..))")
+//	@Around("execution( public * com.kh.app.member.dao.MemberDao.login(..) )")
 //	@Around("execution( public * com.swy.app.aop.TestService.a() )") //리턴타입 무관
 //	@Around("execution( public java.lang.String com.swy.app.aop.TestService.a() )") //리턴타입 String
 //	@Around("execution( public * com.swy.app.aop.TestService.a(int) )")//매개변수 int
@@ -76,7 +76,7 @@ public class TimerAspect {
 		long finish = System.currentTimeMillis();
 		long time = finish - start;
 		String methodName = jp.getSignature().toString();
-		log.info("{} 메소드 실행에 걸린 시간 : {} ms" , methodName , time);
+		log.trace("{} 메소드 실행에 걸린 시간 : {} ms" , methodName , time);
 		
 		return jpResult;
 	}

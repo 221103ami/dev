@@ -15,7 +15,7 @@
 		<param name="file" value="D:/dev/myapp.log" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%-5p] %c - %m%n" />
+			<param name="ConversionPattern" value="[%-5p] %d{yyyy-MM-dd HH:mm:ss} %c - %m%n" />
 		</layout>
 	</appender>
 	
