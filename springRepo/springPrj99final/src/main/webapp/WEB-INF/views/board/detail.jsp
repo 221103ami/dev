@@ -117,6 +117,13 @@
 
 
 	function writeComment(){
+		//로그인 안되어있으면 ㄴㄴ
+		const writerNo = '${loginMember.no}';
+		if(writerNo <= 0){
+			alert("로그인 후 작성 가능합니다. (JS에서 검사)");
+			return;
+		}
+
 		//ajax 이용해서 서버에 댓글내용 보내기
 		const content = document.querySelector('input[name=comment]').value;
 		
