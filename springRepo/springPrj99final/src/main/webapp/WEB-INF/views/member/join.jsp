@@ -75,6 +75,8 @@
 
 <script>
 
+	let isIdDupOk = false;
+
     //아이디 중복확인
     function checkDup(){
 
@@ -92,6 +94,7 @@
             } ,
             success : function(data){
                 if(data == 'notDup'){
+                	isIdDupOk = true;
                     alert("사용 가능한 아이디 입니다.");
                 }else{
                     alert("사용 불가한 아이디 입니다.");
@@ -106,6 +109,12 @@
 
     //비밀번호 일치해야 제출 가능하게
     function checkValidation(){
+    	
+    	if(!isIdDupOk){
+    		alert("중복확인을 진행해주세요");
+    		return false;
+    	}
+    	
         if(!isPwdOk()){
             alert("비밀번호가 일치하지 않습니다.");
             document.querySelector("main input[name=pwd]").focus();
@@ -113,7 +122,7 @@
         }
         return true;
     }
-
+    
     function isPwdOk(){
         const pwd1 = document.querySelector("main input[name=pwd]").value;
         const pwd2 = document.querySelector("main input[name=pwd2]").value;
@@ -121,5 +130,31 @@
         if(pwd1 != pwd2) return false;
         return true;
     }
+    
+    //아이디 값이 변경되면, 중복확인 값 초기화시키기
+    const idTag = document.querySelector("main input[name=id]");
+    idTag.addEventListener('change' , checkIdChange);
+    
+    function checkIdChange(){
+    	isIdDupOk = false;
+    }
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
