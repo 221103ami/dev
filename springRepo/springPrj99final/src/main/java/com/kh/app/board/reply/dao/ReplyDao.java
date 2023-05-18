@@ -22,6 +22,10 @@ public class ReplyDao {
 		return sst.update("reply.delete" , rvo);
 	}
 
+	public int edit(SqlSessionTemplate sst, ReplyVo vo) {
+		return sst.update("reply.edit" , vo);
+	}
+
 }
 
 

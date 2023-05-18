@@ -42,8 +42,16 @@
 	<update id="delete">
 		UPDATE REPLY
 		    SET STATUS = 'X'
-		WHERE NO = ${no}
-		AND WRITER_NO = ${writerNo}
+		WHERE NO = #{no}
+		AND WRITER_NO = #{writerNo}
+	</update>
+	
+	<update id="edit">
+		UPDATE REPLY
+		    SET CONTENT = #{content}
+		WHERE NO = #{no}
+		AND STATUS = 'O'
+		AND WRITER_NO = #{writerNo}
 	</update>
 
 </mapper>

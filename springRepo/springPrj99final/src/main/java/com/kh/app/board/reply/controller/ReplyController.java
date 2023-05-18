@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -85,6 +86,30 @@ public class ReplyController {
 			return "del-ok";
 		}else {
 			return "del-fail";
+		}
+	}
+	
+	//댓글 수정
+	@PostMapping("edit")
+	public String edit(ReplyVo vo , HttpSession session) {
+		
+		//작성자 번호 셋팅
+		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		if(loginMember == null) {
+			throw new IllegalStateException("로그인 하고 오세요 ~~~");
+		}
+		vo.setWriterNo(loginMember.getNo());
+		
+		System.out.println(vo);
+		
+		//서비스
+		int result = rs.edit(vo);
+		
+		//문자열 내보내기
+		if(result == 1) {
+			return "edit-ok";
+		}else {
+			return "edit-fail";
 		}
 	}
 	

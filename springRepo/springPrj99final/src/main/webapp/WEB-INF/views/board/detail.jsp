@@ -207,9 +207,11 @@
 			// } ,
 			success : function(data){
 				console.log(data);
+				alert("삭제 완료 !");
 			} ,
 			error : function(error){
 				console.log(error);
+				alert("삭제 실패 ...");
 			} ,
 		});
 
@@ -217,7 +219,25 @@
 
 	//댓글 수정 함수
 	function editReply(rno){
-		alert(rno + '수정 ~~~');
+		//댓글번호 , 수정할내용
+		const newContent = "수정내용ㅋㅋㅋ";
+
+		//수정 요청 보내기
+		$.ajax({
+			url : '${root}/board/reply/edit' , 
+			type : 'post' , 
+			data : {
+				content : newContent ,
+				no : rno ,
+			} , 
+			success : function(data){
+				console.log(data);
+			} , 
+			error : function(error){
+				console.log(error);
+			} , 
+		});
+
 	}
 
 
