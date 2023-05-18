@@ -18,6 +18,10 @@ public class ReplyDao {
 		return sst.selectList("reply.getReplyList" , bno);
 	}
 
+	public int delete(SqlSessionTemplate sst, ReplyVo rvo) {
+		return sst.update("reply.delete" , rvo);
+	}
+
 }
 
 

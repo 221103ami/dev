@@ -29,6 +29,10 @@ public class ReplyService {
 		return dao.getReplyList(sst, bno);
 	}
 
+	public int delete(ReplyVo rvo) {
+		return dao.delete(sst , rvo);
+	}
+
 }
 
 

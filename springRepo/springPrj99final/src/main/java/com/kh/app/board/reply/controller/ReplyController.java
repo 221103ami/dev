@@ -68,8 +68,24 @@ public class ReplyController {
 	
 	//댓글 삭제
 	@DeleteMapping("delete")
-	public void delete() {
+	public String delete(String rno , HttpSession session) throws Exception {
+		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		if(loginMember == null) {
+			throw new Exception("로그인 plz");
+		}
+		String memberNo = loginMember.getNo();
 		
+		ReplyVo rvo = new ReplyVo();
+		rvo.setNo(rno);
+		rvo.setWriterNo(memberNo);
+		
+		int result = rs.delete(rvo);
+		
+		if(result == 1) {
+			return "del-ok";
+		}else {
+			return "del-fail";
+		}
 	}
 	
 }

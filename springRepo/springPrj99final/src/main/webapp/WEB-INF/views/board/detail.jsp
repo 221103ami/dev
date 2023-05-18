@@ -39,7 +39,7 @@
 		border-left: 1px solid black;
 		border-right: 1px solid black;
 		display: grid;
-		grid-template-columns: 5fr 1fr;
+		grid-template-columns: 4fr 1fr;
 	}
 
 
@@ -157,6 +157,8 @@
 
 	function loadReply(){
 
+		const writerNo = '${loginMember.no}';
+
 		$.ajax({
 			url : '${root}/board/reply/list' ,
 			type  : 'get' ,
@@ -174,7 +176,13 @@
 					str += replyVo.content;
 					str += "</div>";
 					str += "<div>";
+					str += "<span>"
 					str += replyVo.writerNick;
+					str += "</span>"
+					if(writerNo == replyVo.writerNo){
+						str += "<button class='btn btn-warning btn-sm' onclick='editReply(" + replyVo.no + ");'>수정</button>";
+						str += "<button class='btn btn-danger btn-sm' onclick='deleteReply(" + replyVo.no + ");'>삭제</button>";
+					}
 					str += "</div>";
 					commentArea.innerHTML += str;
 				}
@@ -188,6 +196,30 @@
 	}
 
 	
+	//댓글 삭제 함수
+	function deleteReply(rno){
+		
+		$.ajax({
+			url : '${root}/board/reply/delete?rno=' + rno ,
+			type : 'delete' ,
+			// data : {
+			// 	'rno' : rno
+			// } ,
+			success : function(data){
+				console.log(data);
+			} ,
+			error : function(error){
+				console.log(error);
+			} ,
+		});
+
+	}
+
+	//댓글 수정 함수
+	function editReply(rno){
+		alert(rno + '수정 ~~~');
+	}
+
 
 </script>
 

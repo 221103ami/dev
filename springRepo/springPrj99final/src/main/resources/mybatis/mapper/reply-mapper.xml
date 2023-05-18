@@ -38,6 +38,13 @@
 		)
 		
 	</insert>
+	
+	<update id="delete">
+		UPDATE REPLY
+		    SET STATUS = 'X'
+		WHERE NO = ${no}
+		AND WRITER_NO = ${writerNo}
+	</update>
 
 </mapper>
 
