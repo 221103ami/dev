@@ -13,7 +13,7 @@
 		    ,R.WRITER_NO
 		    ,R.ENROLL_DATE
 		    ,R.STATUS
-		    ,M.NICK
+		    ,M.NICK		AS writerNick
 		FROM REPLY R
 		JOIN MEMBER M ON (R.WRITER_NO = M.NO)
 		WHERE R.BNO = #{bno}

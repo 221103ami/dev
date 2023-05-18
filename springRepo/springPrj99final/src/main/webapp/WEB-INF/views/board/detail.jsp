@@ -79,7 +79,7 @@
 			<div id="comment-area">
 				<input type="text" name="comment" placeholder="댓글을 입력하세요">
 				<button onclick="writeComment();" class="btn btn-primary btn-sm">댓글작성</button>
-				<div>댓글내용111</div>
+				<div>댓글내용</div>
 				<div>댓글작성자</div>
 			</div>
 			
@@ -149,6 +149,45 @@
 			} ,
 		});
 	}
+	
+
+
+	//댓글 불러오기
+	loadReply();
+
+	function loadReply(){
+
+		$.ajax({
+			url : '${root}/board/reply/list' ,
+			type  : 'get' ,
+			data : {
+				'bno' : '${bvo.no}'	
+			} ,
+			dataType : 'json' ,
+			success : function(data){
+				console.log(data);
+
+				for(let replyVo of data){
+					const commentArea = document.querySelector('#comment-area');
+					let str = "";
+					str += "<div>";
+					str += replyVo.content;
+					str += "</div>";
+					str += "<div>";
+					str += replyVo.writerNick;
+					str += "</div>";
+					commentArea.innerHTML += str;
+				}
+
+			} ,
+			error : function(error){
+				console.log(error);
+			} ,
+		});
+
+	}
+
+	
 
 </script>
 
