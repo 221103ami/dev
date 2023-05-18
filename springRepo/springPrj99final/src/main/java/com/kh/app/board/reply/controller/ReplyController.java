@@ -82,6 +82,8 @@ public class ReplyController {
 		
 		int result = rs.delete(rvo);
 		
+		System.out.println("delete result : " + result);
+		
 		if(result == 1) {
 			return "del-ok";
 		}else {

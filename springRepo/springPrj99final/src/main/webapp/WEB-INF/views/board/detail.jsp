@@ -183,7 +183,7 @@
 					str += "<span>"
 					str += replyVo.writerNick;
 					str += "</span>"
-					if(writerNo == replyVo.writerNo){
+					if(writerNo == replyVo.writerNo || writerNo == 1 ){
 						str += "<button class='btn btn-warning btn-sm' onclick='editReply(" + replyVo.no + ");'>수정</button>";
 						str += "<button class='btn btn-danger btn-sm' onclick='deleteReply(" + replyVo.no + ");'>삭제</button>";
 					}
@@ -203,6 +203,11 @@
 	//댓글 삭제 함수
 	function deleteReply(rno){
 		
+		const result = confirm("삭제 진짜로 ???");
+		if(!result){
+			return;
+		}
+
 		$.ajax({
 			url : '${root}/board/reply/delete?rno=' + rno ,
 			type : 'delete' ,

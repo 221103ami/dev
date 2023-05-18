@@ -18,6 +18,7 @@
 		JOIN MEMBER M ON (R.WRITER_NO = M.NO)
 		WHERE R.BNO = #{bno}
 		AND R.STATUS = 'O'
+		ORDER BY NO DESC
 	</select>
 
 	<insert id="write">
@@ -43,7 +44,7 @@
 		UPDATE REPLY
 		    SET STATUS = 'X'
 		WHERE NO = #{no}
-		AND WRITER_NO = #{writerNo}
+		AND ( WRITER_NO = #{writerNo}  OR  ${writerNo} = 1 )
 	</update>
 	
 	<update id="edit">
