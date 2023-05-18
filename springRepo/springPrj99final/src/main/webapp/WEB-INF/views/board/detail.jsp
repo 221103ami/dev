@@ -34,7 +34,8 @@
 		display: none;
 	}
 
-	#comment-area{
+	#comment-area , 
+	#comment-header {
 		width: 100%;
 		border-left: 1px solid black;
 		border-right: 1px solid black;
@@ -76,11 +77,12 @@
 				</div>
 			</form>
 			
-			<div id="comment-area">
+			<div id="comment-header">
 				<input type="text" name="comment" placeholder="댓글을 입력하세요">
 				<button onclick="writeComment();" class="btn btn-primary btn-sm">댓글작성</button>
-				<div>댓글내용</div>
-				<div>댓글작성자</div>
+			</div>
+			<div id="comment-area">
+				
 			</div>
 			
 		</main>
@@ -137,10 +139,11 @@
 			success : function(data){
 				if(data == 'ok'){
 					alert("댓글 작성 완료 !");
+					document.querySelector('input[name=comment]').value = '';
+					loadReply();
 				}else if(data == 'unauthor'){
 					alert("로그인 후 작성 가능합니다.");
-				}
-				else{
+				}else{
 					alert("댓글 작성 실패 ...");
 				}
 			} , 
@@ -157,6 +160,8 @@
 
 	function loadReply(){
 
+		const commentArea = document.querySelector('#comment-area');
+		commentArea.innerHTML = '';
 		const writerNo = '${loginMember.no}';
 
 		$.ajax({
@@ -170,7 +175,6 @@
 				console.log(data);
 
 				for(let replyVo of data){
-					const commentArea = document.querySelector('#comment-area');
 					let str = "";
 					str += "<div>";
 					str += replyVo.content;
@@ -208,6 +212,7 @@
 			success : function(data){
 				console.log(data);
 				alert("삭제 완료 !");
+				loadReply();
 			} ,
 			error : function(error){
 				console.log(error);
@@ -220,7 +225,7 @@
 	//댓글 수정 함수
 	function editReply(rno){
 		//댓글번호 , 수정할내용
-		const newContent = "수정내용ㅋㅋㅋ";
+		const newContent = window.prompt("수정할 내용을 입력하세요");
 
 		//수정 요청 보내기
 		$.ajax({
@@ -231,10 +236,11 @@
 				no : rno ,
 			} , 
 			success : function(data){
-				console.log(data);
+				alert("수정 완료 !");
+				loadReply();
 			} , 
 			error : function(error){
-				console.log(error);
+				alert("수정 실패 ...");
 			} , 
 		});
 
