@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- 제이쿼리 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 <!-- 썸머노트 -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
@@ -35,6 +37,9 @@
         maxHeight : 600,
         minHeight : 200,
         width : 800,
+        callbacks : {
+        	onImageUpload : f01
+        },
         toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],
@@ -45,6 +50,29 @@
           ['view', ['fullscreen', 'codeview', 'help']]
         ]
       });
+      
+      //썸머노트에 이미지 업로드가 발생하였을 때 동작하는 함수
+      function f01(fileList){
+    	  console.log(fileList);
+    	  
+        const fd = new FormData();
+        fd.append('file' , fileList[0]);
+
+    	  $.ajax({
+          url : '/app/upload' ,
+          type : 'post' ,
+          data : fd ,
+          processData : false ,
+          contentType : false ,
+          success : function(data){
+            console.log(data);
+          } ,
+          error : (error)=>{
+            console.log(error);
+          } ,
+        });
+      }
+      
     </script>
 
 </body>
