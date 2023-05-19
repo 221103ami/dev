@@ -10,7 +10,6 @@ import javax.servlet.ServletResponse;
 
 import org.springframework.stereotype.Component;
 
-@Component(value = "encFilter")
 public class MyEncodingFilter implements Filter {
 
 	@Override

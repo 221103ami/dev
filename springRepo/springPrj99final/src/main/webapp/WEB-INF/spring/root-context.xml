@@ -37,18 +37,18 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="bds"></property>
 	</bean>
+	
+	<!-- 필터 빈 등록 -->
+	<bean id="encFilter" class="com.kh.app.filter.encoding.MyEncodingFilter"></bean>
 
 	<!-- @Aspect 및 하위 어노테이션 활성화 -->
 	<aop:aspectj-autoproxy/>
 
 	<!-- @Aspect 어노테이션도 scan 하기 위함 -->
-	<context:component-scan base-package="com.kh.app">
+	<context:component-scan base-package="com.kh.app" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
 	</context:component-scan>
 	
-	<!-- Gson 등록 -->
-	<bean id="gson " class="com.google.gson.Gson"></bean>
-		
 </beans>
 
 
