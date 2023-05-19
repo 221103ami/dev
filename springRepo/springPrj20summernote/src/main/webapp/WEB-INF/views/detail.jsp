@@ -14,18 +14,14 @@
 </head>
 <body>
 
-	<h1>게시글 작성</h1>
+	<h1>게시글 조회</h1>
 	
-	<form action="/app/write" method="post">
-		<input type="text" name="title">
-		
-		<br>
-		<br>
-		
-		<textarea id="summernote" name="content"></textarea>
-		<br>
-		<input type="submit" value="작성">
-	</form>
+	<input type="text" name="title" value="${vo.title}">
+	<br>
+	<br>
+	<textarea id="summernote" name="content">
+		${vo.content}
+	</textarea>
 	
 	<script>
       $('#summernote').summernote({
