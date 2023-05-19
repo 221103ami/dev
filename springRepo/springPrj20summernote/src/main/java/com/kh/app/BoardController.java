@@ -2,7 +2,9 @@ package com.kh.app;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.Gson;
+
+import oracle.net.aso.f;
 
 @Controller
 public class BoardController {
@@ -54,17 +60,25 @@ public class BoardController {
 	//ajax 로 들어오는 파일 업로드 요청 처리
 	@PostMapping("upload")
 	@ResponseBody
-	public String upload(List<MultipartFile> file , HttpServletRequest req) throws Exception {
-		System.out.println(file.get(0));
+	public String upload(List<MultipartFile> fileList , HttpServletRequest req) throws Exception {
 		
-		MultipartFile f = file.get(0);
+		List<String> changeNameList = new ArrayList<String>();
 		
-		String path = req.getServletContext().getRealPath("/img/");
-		File target = new File(path + "abc.png");
+		for(MultipartFile f : fileList) {
+			//경로 준비
+			String path = req.getServletContext().getRealPath("/resources/img/");
+			String changeName = UUID.randomUUID().toString();
+			String ext = f.getOriginalFilename().substring(f.getOriginalFilename().lastIndexOf("."));
+			//타겟파일 준비
+			File target = new File(path + changeName + ext);
+			//파일전송
+			f.transferTo(target);
+			
+			changeNameList.add(changeName + ext);
+		}
 		
-		f.transferTo(target);
-		
-		return "ok";
+		Gson gson = new Gson();
+		return gson.toJson(changeNameList);
 	}
 }
 

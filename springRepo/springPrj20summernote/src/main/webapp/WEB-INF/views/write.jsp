@@ -56,7 +56,10 @@
     	  console.log(fileList);
     	  
         const fd = new FormData();
-        fd.append('file' , fileList[0]);
+
+        for(let file of fileList){
+          fd.append('fileList' , file);
+        }
 
     	  $.ajax({
           url : '/app/upload' ,
@@ -64,8 +67,14 @@
           data : fd ,
           processData : false ,
           contentType : false ,
-          success : function(data){
-            console.log(data);
+          dataType : 'json' ,
+          success : function(changeNameList){
+            console.log(changeNameList);
+
+            for(let changeName of changeNameList){
+              $("#summernote").summernote('insertImage' , '/app/resources/img/' + changeName);
+            }
+
           } ,
           error : (error)=>{
             console.log(error);
