@@ -65,6 +65,7 @@
                     </div>
                 </div>
             </form>
+            <a href="${root}/admin/member/list" class="btn btn-primary">전체 회원 목록 조회</a>
         </main>
         
 
