@@ -46,6 +46,17 @@
 		</main>
 	
 	</div>
+	
+	<script>
+		//행 클릭시 , 해당 회원번호로 상세조회 요청 보내기
+		const tbody = document.querySelector("tbody");
+		tbody.addEventListener('click' , function(event){
+			const no = event.target.parentNode.children[0].innerText;
+			location.href="${root}/admin/member/one/" + no;
+		});
+		
+		
+	</script>
 
 </body>
 </html>
