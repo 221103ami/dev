@@ -1,6 +1,9 @@
 package com.kh.app.admin.member.controller;
 
+import java.nio.channels.IllegalSelectorException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +28,7 @@ public class AdminMemberController {
 
 	//전체 회원 목록 조회
 	@GetMapping("list")
-	public String list(Model model) {
+	public String list(Model model , HttpSession session) {
 		//서비스
 		List<MemberVo> list = ams.getMemberList();
 		
@@ -38,7 +41,6 @@ public class AdminMemberController {
 	//회원번호로 조회
 	@GetMapping("one/{no}")
 	public String getMemberByNo(@PathVariable String no , Model model) {
-		
 		MemberVo vo = ams.getMemberByNo(no);
 		
 		model.addAttribute("vo" , vo);

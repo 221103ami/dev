@@ -38,6 +38,15 @@
 	<!-- Gson 등록 -->
 	<beans:bean id="gson " class="com.google.gson.Gson"></beans:bean>
 	
+	<!-- 인터셉터 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"/>
+			<exclude-mapping path="/admin/login"/>
+			<beans:bean class="com.kh.app.interceptor.admin.AdminChecker"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
 
 
