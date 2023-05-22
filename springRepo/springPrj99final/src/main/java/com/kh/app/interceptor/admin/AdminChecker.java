@@ -16,9 +16,12 @@ public class AdminChecker implements HandlerInterceptor {
 		
 		HttpSession session = request.getSession();
 		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		if(loginMember == null) {
+			throw new IllegalStateException("로그인 하고오세요");
+		}
 		String no = loginMember.getNo();
 		if(!"1".equals(no)) {
-			throw new IllegalStateException("아무튼 에러");
+			throw new IllegalStateException("관리자만 가능");
 		}
 		
 		return true;

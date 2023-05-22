@@ -14,9 +14,11 @@ public class ErrorProcessor {
 	@ExceptionHandler(Exception.class)
 	public String errorAdvice(Exception e , Model model) {
 		log.error(e.toString());
-		model.addAttribute("errorMsg" , "ㅈㅅ");
+		model.addAttribute("errorMsg" , e.getMessage());
 		return "common/error-page";
 	}
+	
+	
 	
 }
 
