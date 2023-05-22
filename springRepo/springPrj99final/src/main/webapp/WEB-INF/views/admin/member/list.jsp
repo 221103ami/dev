@@ -54,8 +54,6 @@
 			const no = event.target.parentNode.children[0].innerText;
 			location.href="${root}/admin/member/one/" + no;
 		});
-		
-		
 	</script>
 
 </body>

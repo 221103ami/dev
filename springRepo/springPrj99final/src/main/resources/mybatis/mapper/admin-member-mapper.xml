@@ -5,6 +5,23 @@
   
 <mapper namespace="admin.member">
 
+	<select id="getMemberByNo" resultType="memberVo">
+		SELECT 
+		    NO
+		    ,ID
+		    ,PWD
+		    ,NICK
+		    ,PROFILE
+		    ,HOBBY
+		    ,STATUS
+		    ,ENROLL_DATE
+		    ,MODIFY_DATE
+		FROM MEMBER
+		WHERE NO = #{no}
+	</select>
+
+
+
 	<select id="getMemberList" resultType="memberVo">
 		SELECT 
 		    NO

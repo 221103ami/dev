@@ -14,6 +14,10 @@ public class AdminMemberDao {
 		return sst.selectList("admin.member.getMemberList");
 	}
 
+	public MemberVo getMemberByNo(SqlSessionTemplate sst, String no) {
+		return sst.selectOne("admin.member.getMemberByNo" , no);
+	}
+
 }
 
 

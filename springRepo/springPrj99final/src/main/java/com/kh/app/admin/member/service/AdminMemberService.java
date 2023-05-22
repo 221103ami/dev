@@ -28,6 +28,10 @@ public class AdminMemberService {
 		return dao.getMemberList(sst);
 	}
 
+	public MemberVo getMemberByNo(String no) {
+		return dao.getMemberByNo(sst , no);
+	}
+
 }
 
 
