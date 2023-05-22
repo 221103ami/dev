@@ -19,7 +19,6 @@ public class MemberDao {
 	}
 
 	public MemberVo login(SqlSessionTemplate sst, MemberVo vo) {
-		System.out.println("로그인 dao 호출됨 ...");
 		return sst.selectOne("member.login" , vo);
 	}
 
