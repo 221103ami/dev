@@ -1,13 +1,24 @@
 package com.kh.app.gallery.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.app.common.file.FileUploader;
 import com.kh.app.gallery.service.GalleryService;
 import com.kh.app.gallery.vo.GalleryVo;
+import com.kh.app.member.vo.MemberVo;
 
 @Controller
 @RequestMapping("gallery")
@@ -22,19 +33,47 @@ public class GalleryController {
 
 	//작성(화면)
 	@GetMapping("write")
-	public String write() {
+	public String write(@SessionAttribute MemberVo loginMember) {
+		//로그인 상태 체크
+		if(loginMember == null) {
+			throw new IllegalStateException("로그인 하고 오세요");
+		}
 		return "gallery/write";
 	}
 	
 	//작성
 	@PostMapping("write")
-	public String write(GalleryVo vo) {
-		return "redirect:/home";
+	public String write(HttpServletRequest req, MultipartFile f, GalleryVo vo , @SessionAttribute MemberVo loginMember) {
+		//로그인 상태 체크
+		if(loginMember == null) {
+			throw new IllegalStateException("로그인 하고 오세요");
+		}
+		String path = req.getServletContext().getRealPath("/resources/upload/gallery/");
+		String changeName = FileUploader.upload(f, path);
+		
+		String writerNo = loginMember.getNo();
+		String originName = f.getOriginalFilename();
+		
+		vo.setWriterNo(writerNo);
+		vo.setOriginName(originName);
+		vo.setChangeName(changeName);
+		
+		//서비스
+		int result = gs.write(vo);
+		
+		if(result != 1) {
+			throw new IllegalStateException("갤러리 작성 실패");
+		}
+		
+		//결과
+		return "redirect:/gallery/list";
 	}
 	
 	//목록 조회
 	@GetMapping("list")
-	public String list() {
+	public String list(Model model) {
+		List<GalleryVo> voList = gs.getGalleryList();
+		model.addAttribute("voList", voList);
 		return "gallery/list";
 	}
 	

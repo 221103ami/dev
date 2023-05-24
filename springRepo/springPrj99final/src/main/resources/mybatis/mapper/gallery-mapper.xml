@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="gallery">
+
+	<insert id="write">
+		INSERT INTO GALLERY
+		(
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,ORIGIN_NAME
+		    ,CHANGE_NAME
+		)
+		VALUES
+		(
+		    SEQ_GALLERY_NO.NEXTVAL
+		    , #{title}
+		    , #{content}
+		    , #{writerNo}
+		    , #{originName}
+		    , #{changeName}
+		)
+	</insert>
+
+	<select id="getGalleryList" resultType="galleryVo">
+		SELECT 
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,ORIGIN_NAME
+		    ,CHANGE_NAME
+		    ,ENROLL_DATE
+		    ,STATUS
+		    ,HIT
+		FROM GALLERY
+		WHERE STATUS = 'O'
+		ORDER BY NO DESC
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

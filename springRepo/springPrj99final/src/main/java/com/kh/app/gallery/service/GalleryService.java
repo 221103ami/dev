@@ -1,11 +1,14 @@
 package com.kh.app.gallery.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.app.gallery.dao.GalleryDao;
+import com.kh.app.gallery.vo.GalleryVo;
 
 @Service
 @Transactional
@@ -19,9 +22,35 @@ public class GalleryService {
 		this.dao = dao;
 		this.sst = sst;
 	}
+
+	
+	public List<GalleryVo> getGalleryList() {
+		return dao.getGalleryList(sst);
+	}
+
+
+	public int write(GalleryVo vo) {
+		return dao.write(sst, vo);
+	}
 	
 	
 
 	
 
-}
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
