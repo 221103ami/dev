@@ -30,20 +30,20 @@
 			<hr>
 
 			<div id="gallery-area">
-
-				<div>
-					<img 
-						width="100" 
-						height="100" 
-						src="${root}/resources/upload/gallery/${voList[0].changeName}" 
-						alt="${voList[0].originName}"
-					>
-					<span>${voList[0].title}</span>
-				</div>
-
+				<c:forEach items="${voList}" var="vo">
+					<a href="${root}/gallery/detail/${vo.no}">
+						<div>
+							<img 
+								width="100" 
+								height="100" 
+								src="${root}/resources/upload/gallery/${vo.changeName}" 
+								alt="${vo.originName}"
+							>
+							<div>${vo.title}</div>
+						</div>
+					</a>
+				</c:forEach>
 			</div>
-
-			
 		</main>
 	
 	</div>

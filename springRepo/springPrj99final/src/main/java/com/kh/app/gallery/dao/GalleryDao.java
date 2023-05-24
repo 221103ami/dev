@@ -18,6 +18,10 @@ public class GalleryDao {
 		return sst.insert("gallery.write" , vo);
 	}
 
+	public GalleryVo getGallery(SqlSessionTemplate sst, String no) {
+		return sst.selectOne("gallery.getGallery" , no);
+	}
+
 }//class
 
 

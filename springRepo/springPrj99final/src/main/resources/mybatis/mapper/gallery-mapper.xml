@@ -6,6 +6,22 @@
   
 <mapper namespace="gallery">
 
+	<select id="getGallery" resultType="galleryVo">
+		SELECT 
+		    NO
+		    ,TITLE
+		    ,CONTENT
+		    ,WRITER_NO
+		    ,ORIGIN_NAME
+		    ,CHANGE_NAME
+		    ,ENROLL_DATE
+		    ,STATUS
+		    ,HIT
+		FROM GALLERY
+		WHERE NO = #{no}
+		AND STATUS = 'O'
+	</select>
+
 	<insert id="write">
 		INSERT INTO GALLERY
 		(

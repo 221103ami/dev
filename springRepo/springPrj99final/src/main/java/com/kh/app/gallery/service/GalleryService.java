@@ -32,11 +32,13 @@ public class GalleryService {
 	public int write(GalleryVo vo) {
 		return dao.write(sst, vo);
 	}
-	
-	
 
-	
 
+	public GalleryVo getGallery(String no) {
+		return dao.getGallery(sst, no);
+	}
+	
+	
 }//class
 
 

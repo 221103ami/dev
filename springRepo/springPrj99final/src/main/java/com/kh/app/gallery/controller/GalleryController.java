@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -33,7 +34,7 @@ public class GalleryController {
 
 	//작성(화면)
 	@GetMapping("write")
-	public String write(@SessionAttribute MemberVo loginMember) {
+	public String write(@SessionAttribute(required = false) MemberVo loginMember) {
 		//로그인 상태 체크
 		if(loginMember == null) {
 			throw new IllegalStateException("로그인 하고 오세요");
@@ -78,8 +79,12 @@ public class GalleryController {
 	}
 	
 	//상세 조회
-	@GetMapping("detail")
-	public String detail(String no) {
+	@GetMapping("detail/{no}")
+	public String detail(@PathVariable String no , Model model) {
+		
+		GalleryVo vo = gs.getGallery(no);
+		
+		model.addAttribute("vo" , vo);
 		return "gallery/detail";
 	}
 	

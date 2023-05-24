@@ -1,5 +1,7 @@
 package com.kh.app.gallery.vo;
 
+import com.kh.app.member.vo.MemberVo;
+
 import lombok.Data;
 
 @Data
