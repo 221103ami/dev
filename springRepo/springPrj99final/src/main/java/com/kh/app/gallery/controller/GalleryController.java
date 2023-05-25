@@ -103,9 +103,9 @@ public class GalleryController {
 	
 	//삭제
 	@GetMapping("del/{no}/{fname}")
-	public String del(@PathVariable String no , @PathVariable(name = "fname") String str) {
+	public String del(HttpServletRequest req , @PathVariable String no , @PathVariable(name = "fname") String str) {
 		
-		File f = new File("~~~");
+		File f = new File(req.getServletContext().getRealPath("/resources/upload/gallery/") + str);
 		f.delete();
 		
 		int result = gs.del(no);
