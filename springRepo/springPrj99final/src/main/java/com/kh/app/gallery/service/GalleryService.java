@@ -37,6 +37,11 @@ public class GalleryService {
 	public GalleryVo getGallery(String no) {
 		return dao.getGallery(sst, no);
 	}
+
+
+	public int del(String no) {
+		return dao.del(sst , no);
+	}
 	
 	
 }//class

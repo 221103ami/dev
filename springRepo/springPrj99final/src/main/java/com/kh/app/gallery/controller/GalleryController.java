@@ -1,5 +1,6 @@
 package com.kh.app.gallery.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,12 +102,31 @@ public class GalleryController {
 	}
 	
 	//삭제
-	@GetMapping("del")
-	public String del(String no) {
-		return "redirect:/home";
+	@GetMapping("del/{no}/{fname}")
+	public String del(@PathVariable String no , @PathVariable(name = "fname") String str) {
+		
+		File f = new File("~~~");
+		f.delete();
+		
+		int result = gs.del(no);
+		
+		if(result != 1) {
+			new IllegalStateException("갤럴 ㅣ삭제 싪패 ... ");
+		}
+		
+		return "redirect:/gallery/list";
 	}
 
 }
+
+
+
+
+
+
+
+
+
 
 
 

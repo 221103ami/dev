@@ -19,6 +19,13 @@
 			<img src="${root}/resources/upload/gallery/${vo.changeName}">
 			<div>${vo.content }</div>
 			
+			<hr>
+			
+			<c:if test="${ loginMember.no eq vo.writerNo }">
+				<a class="btn btn-warning" href="${root}/gallery/edit/${vo.no}">수정</a>
+				<a class="btn btn-danger" href="${root}/gallery/del/${vo.no}/${vo.changeName}">삭제</a>
+			</c:if>
+			
 		</main>
 		
 	</div>

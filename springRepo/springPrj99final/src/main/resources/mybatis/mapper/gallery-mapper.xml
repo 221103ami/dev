@@ -6,6 +6,12 @@
   
 <mapper namespace="gallery">
 
+	<update id="del">
+		UPDATE GALLERY
+			SET STATUS = 'X'
+			WHERE NO = #{no}
+	</update>
+
 	<select id="getGallery" resultType="galleryVo">
 		SELECT 
 		    NO

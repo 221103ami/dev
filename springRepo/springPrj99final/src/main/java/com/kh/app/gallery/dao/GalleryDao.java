@@ -22,6 +22,10 @@ public class GalleryDao {
 		return sst.selectOne("gallery.getGallery" , no);
 	}
 
+	public int del(SqlSessionTemplate sst, String no) {
+		return sst.update("gallery.del" , no);
+	}
+
 }//class
 
 
