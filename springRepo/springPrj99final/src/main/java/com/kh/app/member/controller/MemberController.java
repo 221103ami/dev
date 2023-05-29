@@ -1,5 +1,6 @@
 package com.kh.app.member.controller;
 
+import javax.inject.Qualifier;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.app.common.file.FileUploader;
 import com.kh.app.member.service.MemberService;
+import com.kh.app.member.service.MemberService2;
+import com.kh.app.member.service.MemberService3;
+import com.kh.app.member.service.MemberServiceInter;
 import com.kh.app.member.vo.MemberVo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +27,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberController {
 	
-	private final MemberService ms;
+	private final MemberServiceInter ms;
 	
 	@Autowired
-	public MemberController(MemberService x) {
+	public MemberController(MemberServiceInter x) {
 		this.ms = x;
 	}
 

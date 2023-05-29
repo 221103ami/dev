@@ -2,6 +2,7 @@ package com.kh.app.member.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +11,7 @@ import com.kh.app.member.vo.MemberVo;
 
 @Service
 @Transactional
-public class MemberService {
+public class MemberService implements MemberServiceInter {
 	
 	private final SqlSessionTemplate sst;
 	private final MemberDao dao;

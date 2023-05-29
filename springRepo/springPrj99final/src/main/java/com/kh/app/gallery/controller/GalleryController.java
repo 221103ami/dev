@@ -95,11 +95,41 @@ public class GalleryController {
 		return "gallery/edit";
 	}
 	
-	//수정
+	//수정 (번호 , 제목, 내용 , 파일) + 작성자번호,체인지네임,오리진네임
 	@PostMapping("edit")
-	public String edit(GalleryVo vo) {
-		return "redirect:/home";
+	public String edit(GalleryVo vo , HttpSession session, MultipartFile f) {
+		
+		//본인만 수정 가능
+		MemberVo loginMember = (MemberVo) session.getAttribute("loginMember");
+		if(loginMember == null) {
+			throw new IllegalStateException("잘못된 접근입니다");
+		}
+		String memberNo = loginMember.getNo();
+		vo.setWriterNo(memberNo);
+		
+		//제목 내용 은 걍 수정 //데이터는 이미 vo 에 있음
+		
+		//파일은 있으면 수정(서버에저장,오리진,체인지) ,,, 없으면 건들지말기
+		if(!f.isEmpty()) {
+			String path = session.getServletContext().getRealPath("/resources/upload/gallery/");
+			String changeName = FileUploader.upload(f, path);
+			String originName = f.getOriginalFilename();
+			vo.setOriginName(originName);
+			vo.setChangeName(changeName);
+		}
+		int result = gs.edit(vo);
+		
+		if(result != 1) {
+			throw new IllegalStateException("갤러리 수정 실패 ..");
+		}
+		
+		//알람 추가
+		session.setAttribute("alertMsg", "갤러리 수정 완료 !");
+		
+		return "redirect:/gallery/detail/" + vo.getNo();
 	}
+	
+	
 	
 	//삭제
 	@GetMapping("del/{no}/{fname}")
@@ -111,7 +141,7 @@ public class GalleryController {
 		int result = gs.del(no);
 		
 		if(result != 1) {
-			new IllegalStateException("갤럴 ㅣ삭제 싪패 ... ");
+			throw new IllegalStateException("갤럴 ㅣ삭제 싪패 ... ");
 		}
 		
 		return "redirect:/gallery/list";

@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.app.gallery.vo.GalleryVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Repository
+@Slf4j
 public class GalleryDao {
 
 	public List<GalleryVo> getGalleryList(SqlSessionTemplate sst) {
@@ -24,6 +27,11 @@ public class GalleryDao {
 
 	public int del(SqlSessionTemplate sst, String no) {
 		return sst.update("gallery.del" , no);
+	}
+
+	public int edit(SqlSessionTemplate sst, GalleryVo vo) {
+		log.info(vo.toString());
+		return sst.update("gallery.edit" , vo);
 	}
 
 }//class

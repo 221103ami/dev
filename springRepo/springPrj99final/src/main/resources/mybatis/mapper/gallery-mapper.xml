@@ -6,6 +6,20 @@
   
 <mapper namespace="gallery">
 
+	<update id="edit">
+		UPDATE GALLERY
+			SET 
+				TITLE = #{title}
+			,	CONTENT = #{content}
+			<if test="changeName != null and changeName != ''">
+				,	ORIGIN_NAME = #{originName}
+				,	CHANGE_NAME = #{changeName}
+			</if>
+			WHERE 	NO = #{no}
+			AND		WRITER_NO = #{writerNo}
+			AND		STATUS = 'O'
+	</update>
+
 	<update id="del">
 		UPDATE GALLERY
 			SET STATUS = 'X'

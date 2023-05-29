@@ -42,7 +42,11 @@ public class GalleryService {
 	public int del(String no) {
 		return dao.del(sst , no);
 	}
-	
+
+
+	public int edit(GalleryVo vo) {
+		return dao.edit(sst , vo);
+	}
 	
 }//class
 
