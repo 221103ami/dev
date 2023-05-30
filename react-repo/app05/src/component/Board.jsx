@@ -3,15 +3,16 @@ import dummy from "../db/data.json";
 
 export default function Board(){
 
-    const trList = [];
-    for(let i = 0; i < dummy.board.length; ++i){
-        const t = dummy.board[i].title;
-        const h = dummy.board[i].hit;
-        const id = dummy.board[i].id;
-        trList.push( <BoardTr key={id} title={t} writer="홍길동" hit={h}/> );
-    }
+    // const trList = [];
+    // for(let i = 0; i < dummy.board.length; ++i){
+    //     const t = dummy.board[i].title;
+    //     const h = dummy.board[i].hit;
+    //     const id = dummy.board[i].id;
+    //     trList.push( <BoardTr key={id} title={t} writer="홍길동" hit={h}/> );
+    // }
 
-    
+   
+
 
     return <>
         <table>
@@ -23,7 +24,16 @@ export default function Board(){
                 </tr>
             </thead>
             <tbody>
-                {trList}
+                    {
+                    dummy.board
+                    .filter( x => { return x.id === 3 })
+                    .map( x => {return <BoardTr 
+                            key={x.id} 
+                            title={x.title} 
+                            writer="홍길동" 
+                            hit={x.hit}
+                        /> } )
+                        }
             </tbody>
         </table>
     </>
