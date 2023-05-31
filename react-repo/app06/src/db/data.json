@@ -1,0 +1,13 @@
+{
+    "board" : [
+        {"id" : 1 , "title" : "안녕01", "content":"내용01" , "writer":"홍길동" , "hit":"0" } , 
+        {"id" : 2 , "title" : "안녕02", "content":"내용02" , "writer":"홍길은" , "hit":"0" } , 
+        {"id" : 3 , "title" : "안녕03", "content":"내용03" , "writer":"홍길금" , "hit":"0" } 
+    ] ,
+    "member" : [
+        {} , 
+        {} , 
+        {}
+    ]
+}
+
