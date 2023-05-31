@@ -17,7 +17,7 @@ export default function BoardList(){
             <tbody>
                 {
                     dummy.board.map( 
-                        x => <BoardListTr key={x.id} title={x.title} writer={x.writer} hit={x.hit} />
+                        x => <BoardListTr key={x.id} id={x.id} title={x.title} writer={x.writer} hit={x.hit} />
                         )
                 }
             </tbody>
