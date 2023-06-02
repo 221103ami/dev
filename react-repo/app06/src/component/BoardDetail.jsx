@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 export default function BoardDetail(){
 
     console.log("함수 실행됨 ...");
-``
     const {num} = useParams();
 
     //기존에는 파일에서 직접 데이터를 읽어옴
