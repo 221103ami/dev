@@ -2,12 +2,14 @@ package com.kh.app2.board.controller;
 
 import com.kh.app2.board.service.BoardService;
 import com.kh.app2.board.vo.BoardVo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(
+        origins = {"http://localhost:3000"} ,
+        methods = { RequestMethod.GET , RequestMethod.POST ,}
+)
 @RestController
 @RequestMapping("board")
 public class BoardController {
