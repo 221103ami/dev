@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function BoardList(){
 
-    const [tempList , setTempList] = useState([{}]);
+    const [tempList , setTempList] = useState([]);
 
     useEffect( ()=>{
         fetch("http://127.0.0.1:8888/board/list" , {})
@@ -23,12 +23,12 @@ export default function BoardList(){
                 </tr>
             </thead>
             <tbody>
-                {tempList.map( vo => { <tr>
+                {tempList.map( vo => <tr key={vo.no}>
                     <td>{vo.no}</td>
                     <td>{vo.title}</td>
                     <td>{vo.enroll_date}</td>
                     <td>{vo.hit}</td>
-                    </tr> })}
+                    </tr>) }
             </tbody>
         </table>
     </>
